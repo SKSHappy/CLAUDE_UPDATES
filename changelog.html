@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code – Changelog</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f1a;
+    --bg2: #131629;
+    --card: #1a1d2e;
+    --card-hover: #1f2238;
+    --border: #2a2d45;
+    --text: #e2e5f1;
+    --muted: #6b7094;
+    --accent: #7c6af7;
+    --accent2: #a78bfa;
+    --grad1: #0d0f1a;
+    --grad2: #130d2e;
+    --cat-prod: #22c55e;
+    --cat-dev: #3b82f6;
+    --cat-devops: #f97316;
+    --cat-sec: #ef4444;
+    --cat-ux: #ec4899;
+    --cat-int: #06b6d4;
+    --cat-perf: #eab308;
+    --cat-fix: #8b5cf6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.6;
+  }
 
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,26,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+  }
+  .nav-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .nav-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .nav-logo { font-size: 17px; font-weight: 700; color: var(--accent2); letter-spacing: -0.3px; white-space: nowrap; }
+  .nav-logo span { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 6px; }
+  #searchInput {
+    flex: 1; min-width: 160px; max-width: 320px;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px;
+    padding: 7px 12px; font-size: 13px; font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color .2s;
+  }
+  #searchInput:focus { border-color: var(--accent); }
+  #searchInput::placeholder { color: var(--muted); }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn {
+    cursor: pointer; border: none; border-radius: 20px;
+    padding: 4px 12px; font-size: 12px; font-weight: 500;
+    font-family: 'Inter', sans-serif; transition: all .2s;
+    background: var(--card); color: var(--muted); border: 1px solid var(--border);
+  }
+  .filter-btn:hover { color: var(--text); }
+  .filter-btn.active { color: #fff; border-color: transparent; }
+  .filter-btn[data-cat="alle"].active { background: var(--accent); }
+  .filter-btn[data-cat="Produktivität"].active { background: var(--cat-prod); }
+  .filter-btn[data-cat="Entwicklung"].active { background: var(--cat-dev); }
+  .filter-btn[data-cat="DevOps"].active { background: var(--cat-devops); }
+  .filter-btn[data-cat="Sicherheit"].active { background: var(--cat-sec); }
+  .filter-btn[data-cat="UI/UX"].active { background: var(--cat-ux); }
+  .filter-btn[data-cat="Integration"].active { background: var(--cat-int); }
+  .filter-btn[data-cat="Performance"].active { background: var(--cat-perf); }
+  .filter-btn[data-cat="Fix"].active { background: var(--cat-fix); }
+
+  /* MAIN */
+  main { max-width: 900px; margin: 0 auto; padding: 32px 24px 60px; }
+  .page-title { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .page-sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+  #count { color: var(--accent2); font-weight: 600; }
+
+  /* CARDS */
+  .entry {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; margin-bottom: 14px;
+    transition: background .2s, border-color .2s;
+  }
+  .entry:hover { background: var(--card-hover); border-color: #353860; }
+  .entry-header { display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .entry-version {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+    background: rgba(124,106,247,0.15); color: var(--accent2);
+    border: 1px solid rgba(124,106,247,0.3); border-radius: 6px;
+    padding: 2px 8px; white-space: nowrap;
+  }
+  .entry-date { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 2px; }
+  .entry-title { font-size: 15px; font-weight: 600; color: #fff; flex: 1; min-width: 200px; line-height: 1.4; }
+  .badge {
+    font-size: 11px; font-weight: 600; border-radius: 20px;
+    padding: 2px 9px; white-space: nowrap;
+    display: inline-block; margin-top: 2px;
+  }
+  .badge-Produktivität { background: rgba(34,197,94,.15); color: var(--cat-prod); border: 1px solid rgba(34,197,94,.3); }
+  .badge-Entwicklung  { background: rgba(59,130,246,.15); color: var(--cat-dev); border: 1px solid rgba(59,130,246,.3); }
+  .badge-DevOps       { background: rgba(249,115,22,.15); color: var(--cat-devops); border: 1px solid rgba(249,115,22,.3); }
+  .badge-Sicherheit   { background: rgba(239,68,68,.15); color: var(--cat-sec); border: 1px solid rgba(239,68,68,.3); }
+  .badge-UI\/UX       { background: rgba(236,72,153,.15); color: var(--cat-ux); border: 1px solid rgba(236,72,153,.3); }
+  .badge-Integration  { background: rgba(6,182,212,.15); color: var(--cat-int); border: 1px solid rgba(6,182,212,.3); }
+  .badge-Performance  { background: rgba(234,179,8,.15); color: var(--cat-perf); border: 1px solid rgba(234,179,8,.3); }
+  .badge-Fix          { background: rgba(139,92,246,.15); color: var(--cat-fix); border: 1px solid rgba(139,92,246,.3); }
+  .entry-desc { color: #bbbdd6; font-size: 13.5px; line-height: 1.65; }
+
+  .no-results { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .no-results p { font-size: 20px; margin-bottom: 8px; }
+
+  @media (max-width: 600px) {
+    main { padding: 20px 14px 50px; }
+    .page-title { font-size: 22px; }
+    .nav-inner { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-top">
+      <div class="nav-logo">Claude Code Changelog <span>CLI Updates</span></div>
+      <input type="text" id="searchInput" placeholder="Suchen…" oninput="filterEntries()">
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-cat="alle" onclick="setFilter('alle',this)">Alle</button>
+      <button class="filter-btn" data-cat="Produktivität" onclick="setFilter('Produktivität',this)">Produktivität</button>
+      <button class="filter-btn" data-cat="Entwicklung" onclick="setFilter('Entwicklung',this)">Entwicklung</button>
+      <button class="filter-btn" data-cat="DevOps" onclick="setFilter('DevOps',this)">DevOps</button>
+      <button class="filter-btn" data-cat="Sicherheit" onclick="setFilter('Sicherheit',this)">Sicherheit</button>
+      <button class="filter-btn" data-cat="UI/UX" onclick="setFilter('UI/UX',this)">UI/UX</button>
+      <button class="filter-btn" data-cat="Integration" onclick="setFilter('Integration',this)">Integration</button>
+      <button class="filter-btn" data-cat="Performance" onclick="setFilter('Performance',this)">Performance</button>
+      <button class="filter-btn" data-cat="Fix" onclick="setFilter('Fix',this)">Fix</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <h1 class="page-title">Claude Code – Changelog</h1>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 01. April 2026 · <span id="count"></span></p>
+
+  <div id="entries">
+
+    <!-- v2.1.89 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">Defer-Permission: Headless Sessions pausieren &amp; fortsetzen</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">PreToolUse-Hooks können jetzt <code>"defer"</code> zurückgeben, um eine laufende headless Session an einem Tool-Aufruf zu pausieren. Mit <code>claude -p --resume</code> lässt sich die Session nach manueller Prüfung nahtlos fortsetzen – ideal für CI/CD-Pipelines, die menschliche Freigaben benötigen.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">CLAUDE_CODE_NO_FLICKER – flimmerfreies Terminal-Rendering</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Mit der neuen Umgebungsvariable <code>CLAUDE_CODE_NO_FLICKER=1</code> wird Alt-Screen-Rendering aktiviert, das Bildschirmflimmern eliminiert und virtuelles Scrollback-Puffering ermöglicht. Besonders nützlich in Terminals wie WezTerm oder Ghostty.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">PermissionDenied-Hook mit Retry-Unterstützung</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Ein neuer <code>PermissionDenied</code>-Hook feuert nach Ablehnungen durch den Auto-Mode-Classifier. Gibt der Hook <code>{retry: true}</code> zurück, kann das Modell den Aufruf erneut versuchen – ermöglicht flexible Eskalationslogiken in Workflows.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">Kritische Bugfixes: CRLF, Memory-Leak &amp; StructuredOutput</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Edit/Write-Tools verdoppelten CRLF-Zeilenenden auf Windows. Ein Schema-Cache-Bug verursachte ~50 % Fehlerrate bei mehrfachen StructuredOutput-Schemata. Ein Memory-Leak durch große JSON-Inputs im LRU-Cache wurde behoben. Alle drei Fixes stabilisieren Windows-Workflows erheblich.</p>
+    </div>
+
+    <!-- v2.1.87 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.87</span>
+        <span class="entry-date">29. März 2026</span>
+        <div class="entry-title">Cowork Dispatch – Kritischer Fix für Nachrichtenlieferung</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Nachrichten im Cowork Dispatch wurden nicht zugestellt – ein kritischer Regression-Bug, der kollaborative Multi-Agent-Sessions blockierte. Der Hotfix stellt die zuverlässige Nachrichtenübermittlung zwischen Agenten wieder her.</p>
+    </div>
+
+    <!-- v2.1.86 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.86</span>
+        <span class="entry-date">27. März 2026</span>
+        <div class="entry-title">X-Claude-Code-Session-Id Header für Proxy-Aggregation</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Alle API-Anfragen enthalten jetzt den Header <code>X-Claude-Code-Session-Id</code>, der die Zuordnung von Requests zu einer Session ermöglicht. Proxys und API-Gateways können damit alle Anfragen einer Nutzersitzung aggregieren und auswerten.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.86</span>
+        <span class="entry-date">27. März 2026</span>
+        <div class="entry-title">Schnellerer Startup &amp; bessere Prompt-Cache-Trefferrate</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Macintosh-Keychain-Cache auf 30 Sekunden verlängert (war 5s), was Startpausen durch viele MCP-Konnektoren reduziert. Token-Overhead bei @-Datei-Erwähnungen gesenkt, Prompt-Cache-Trefferrate für Bedrock/Vertex/Foundry verbessert.</p>
+    </div>
+
+    <!-- v2.1.85 -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.85</span>
+        <span class="entry-date">26. März 2026</span>
+        <div class="entry-title">Bedingte Hooks mit if-Feld (Permission-Rule-Syntax)</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Hooks unterstützen jetzt ein optionales <code>if</code>-Feld mit Permission-Rule-Syntax (z. B. <code>Bash(git *)</code>), um die Ausführung gezielt zu filtern. Dadurch lassen sich präzise Automationsregeln definieren, ohne separate Hook-Skripte zu benötigen.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.85</span>
+        <span class="entry-date">26. März 2026</span>
+        <div class="entry-title">MCP OAuth nach RFC 9728 – Protected Resource Metadata</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">MCP-OAuth folgt jetzt dem RFC 9728-Standard für Protected Resource Metadata Discovery. Zusätzlich wurden neue Umgebungsvariablen (<code>CLAUDE_CODE_MCP_SERVER_NAME</code>, <code>CLAUDE_CODE_MCP_SERVER_URL</code>) ergänzt, damit ein einzelnes headersHelper-Skript mehrere MCP-Server bedienen kann.</p>
+    </div>
+
+    <!-- v2.1.84 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.84</span>
+        <span class="entry-date">26. März 2026</span>
+        <div class="entry-title">PowerShell-Tool für Windows (Opt-in Preview)</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Windows-Nutzer können jetzt PowerShell als native Shell in Claude Code verwenden (Opt-in Preview). Damit entfällt die Notwendigkeit von Bash-Emulatoren und Windows-native Skripte laufen direkt in der gewohnten Umgebung.</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.84</span>
+        <span class="entry-date">26. März 2026</span>
+        <div class="entry-title">Neue Hooks: TaskCreated &amp; WorktreeCreate mit HTTP-Support</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Der neue <code>TaskCreated</code>-Hook feuert beim Erstellen von Tasks via <code>TaskCreate</code>. <code>WorktreeCreate</code> unterstützt jetzt <code>type: "http"</code> und kann den Worktree-Pfad via <code>hookSpecificOutput.worktreePath</code> zurückgeben – optimal für Remote-Build-Systeme.</p>
+    </div>
+
+    <!-- v2.1.83 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.83</span>
+        <span class="entry-date">25. März 2026</span>
+        <div class="entry-title">Transcript-Suche: / zum Durchsuchen von Sitzungsverläufen</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Im Transcript-Modus (<code>Ctrl+O</code>) öffnet <code>/</code> jetzt eine Echtzeit-Suche über alle Nachrichten. Mit <code>n</code>/<code>N</code> navigiert man zwischen Treffern – wie in Vim. Macht das Wiederfinden vergangener Ergebnisse in langen Sessions deutlich schneller.</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.83</span>
+        <span class="entry-date">25. März 2026</span>
+        <div class="entry-title">CwdChanged &amp; FileChanged – Reaktive Hooks für Umgebungsmanagement</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Zwei neue Hook-Events ermöglichen reaktive Umgebungsverwaltung: <code>CwdChanged</code> feuert beim Verzeichniswechsel (z. B. für direnv), <code>FileChanged</code> bei Dateiänderungen. Automatische Umgebungsanpassungen ohne manuelle Eingriffe werden damit möglich.</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.83</span>
+        <span class="entry-date">25. März 2026</span>
+        <div class="entry-title">managed-settings.d/ – Drop-in Policy-Fragmente für Teams</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Neben <code>managed-settings.json</code> gibt es jetzt ein <code>managed-settings.d/</code>-Verzeichnis für Drop-in Policy-Fragmente. Teams können unabhängige Policy-Dateien deployen, die alphabetisch zusammengeführt werden – ideal für Enterprise-Umgebungen mit mehreren IT-Teams.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.83</span>
+        <span class="entry-date">25. März 2026</span>
+        <div class="entry-title">Sicherheitsfix: --mcp-config umging Managed Policy</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Ein Sicherheitslücke erlaubte es, per <code>--mcp-config</code> Flag die zentrale Managed-Policy-Durchsetzung zu umgehen. Der Fix stellt sicher, dass alle MCP-Konfigurationen konsequent unter der gültigen Organisationsrichtlinie laufen.</p>
+    </div>
+
+  </div><!-- #entries -->
+
+  <div class="no-results" id="noResults" style="display:none">
+    <p>Keine Einträge gefunden</p>
+    <span>Suchbegriff oder Filter anpassen</span>
+  </div>
+</main>
+
+<script>
+  let activeFilter = 'alle';
+
+  function setFilter(cat, btn) {
+    activeFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterEntries();
+  }
+
+  function filterEntries() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const entries = document.querySelectorAll('.entry');
+    let visible = 0;
+    entries.forEach(e => {
+      const cat = e.dataset.cat;
+      const text = e.textContent.toLowerCase();
+      const matchCat = activeFilter === 'alle' || cat === activeFilter;
+      const matchQ = !q || text.includes(q);
+      const show = matchCat && matchQ;
+      e.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('count').textContent = visible + ' Einträge';
+    document.getElementById('noResults').style.display = visible === 0 ? 'flex' : 'none';
+    document.getElementById('noResults').style.flexDirection = 'column';
+    document.getElementById('noResults').style.alignItems = 'center';
+  }
+
+  // init count
+  filterEntries();
+</script>
+</body>
+</html>
