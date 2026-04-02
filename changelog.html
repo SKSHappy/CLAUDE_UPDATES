@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 01. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 02. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.90 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.90</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">/powerup – Interaktive Feature-Lektionen mit animierten Demos</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der neue Befehl <code>/powerup</code> startet interaktive Lektionen, die Claude-Code-Features mit animierten Demos erklären. Einsteiger lernen den vollen Funktionsumfang direkt im Terminal – ohne externe Dokumentation.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.90</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">DNS-Datenschutz: Sensible Cache-Befehle aus Auto-Allow entfernt</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc"><code>Get-DnsClientCache</code> und <code>ipconfig /displaydns</code> wurden aus der Auto-Allow-Liste des PowerShell-Tools entfernt, da sie sensitive Netzwerk-Informationen preisgeben können. Damit schließt Claude Code eine potenzielle Datenschutzlücke in automatisierten Workflows.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.90</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">Quadratische Laufzeit-Bugs beseitigt: SSE, SDK-Transkripte &amp; MCP-Cache</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">SSE-Transport verarbeitete große Frames in quadratischer Zeit — jetzt linear. SDK-Sessions verlangsamten sich bei langen Gesprächen durch quadratische Transkript-Schreibvorgänge — behoben. MCP-Tool-Schemas werden nicht mehr pro Turn per <code>JSON.stringify</code> neu serialisiert. <code>/resume</code> lädt Sessions im All-Projects-View jetzt parallel.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.90</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">Bugfixes: Rate-Limit-Loop, --resume Cache-Miss &amp; PostToolUse-Konflikte</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Ein Endlos-Loop im Rate-Limit-Dialog wurde behoben (öffnete sich wiederholt nach Überschreitung). <code>--resume</code> verursachte seit v2.1.69 einen vollständigen Prompt-Cache-Miss bei Nutzern mit deferred Tools oder MCP-Servern — jetzt gefixt. Edit/Write schlug mit „File content has changed" fehl, wenn ein <code>PostToolUse</code>-Format-Hook die Datei zwischen Edits überschrieb.</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.90</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">CLAUDE_CODE_PLUGIN_KEEP_MARKETPLACE_ON_FAILURE – Offline-Robustheit</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Die neue Umgebungsvariable <code>CLAUDE_CODE_PLUGIN_KEEP_MARKETPLACE_ON_FAILURE=1</code> behält den vorhandenen Marketplace-Cache, wenn <code>git pull</code> fehlschlägt. Ideal für Offline-Umgebungen oder CI-Pipelines ohne Internetzugang — Plugins bleiben verfügbar statt komplett zu versagen.</p>
+    </div>
 
     <!-- v2.1.89 -->
     <div class="entry" data-cat="Entwicklung">
