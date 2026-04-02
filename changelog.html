@@ -248,6 +248,37 @@
       <p class="entry-desc">Edit/Write-Tools verdoppelten CRLF-Zeilenenden auf Windows. Ein Schema-Cache-Bug verursachte ~50 % Fehlerrate bei mehrfachen StructuredOutput-Schemata. Ein Memory-Leak durch große JSON-Inputs im LRU-Cache wurde behoben. Alle drei Fixes stabilisieren Windows-Workflows erheblich.</p>
     </div>
 
+    <!-- v2.1.89 additional (2) -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">Named Subagents in @-Mention-Typeahead</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Benannte Subagenten erscheinen nun in den <code>@</code>-Mention-Vorschlägen der Eingabezeile. Multi-Agenten-Workflows lassen sich damit deutlich schneller komponieren, ohne Agentennamen auswendig wissen zu müssen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">Autocompact-Thrash-Loop &amp; /stats-Unterzählung behoben</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Der Autocompact-Mechanismus erkennt jetzt, wenn der Kontext sich sofort nach dreimaliger Komprimierung wieder füllt, und stoppt mit einem Fehler — statt weiterhin API-Kosten zu verbrennen. Außerdem zählte <code>/stats</code> Tokens falsch (Subagenten ausgeschlossen) und verlor Daten nach 30 Tagen — beides jetzt gefixt.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">/buddy – April-Fools-Easter-Egg</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Ein kleines animiertes Wesen schaut per <code>/buddy</code> beim Coden zu — als Überraschung zum 1. April. Beeinträchtigt keine Funktionalität, hebt aber die Stimmung in langen Coding-Sessions.</p>
+    </div>
+
     <!-- v2.1.89 additional -->
     <div class="entry" data-cat="Produktivität">
       <div class="entry-header">
