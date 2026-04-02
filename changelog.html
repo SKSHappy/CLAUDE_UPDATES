@@ -248,6 +248,48 @@
       <p class="entry-desc">Edit/Write-Tools verdoppelten CRLF-Zeilenenden auf Windows. Ein Schema-Cache-Bug verursachte ~50 % Fehlerrate bei mehrfachen StructuredOutput-Schemata. Ein Memory-Leak durch große JSON-Inputs im LRU-Cache wurde behoben. Alle drei Fixes stabilisieren Windows-Workflows erheblich.</p>
     </div>
 
+    <!-- v2.1.89 additional -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">Voice STT auf 20 Sprachen erweitert inkl. Windows-Fix</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Die Spracherkennung unterstützt jetzt 20 Sprachen – neu hinzugekommen sind Russisch, Polnisch, Türkisch, Niederländisch, Ukrainisch, Griechisch, Tschechisch, Dänisch, Schwedisch und Norwegisch. Zusätzlich wurde Voice auf Windows repariert (schlug zuvor mit „WebSocket upgrade rejected HTTP 101" fehl) und Push-to-Talk-Modifier-Bindings funktionieren nun zuverlässig.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">MCP_CONNECTION_NONBLOCKING &amp; 5s-Timeout für schnelleren Headless-Start</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Mit <code>MCP_CONNECTION_NONBLOCKING=true</code> überspringt <code>claude -p</code> das Warten auf MCP-Verbindungen komplett. <code>--mcp-config</code>-Verbindungen werden jetzt auf maximal 5 Sekunden begrenzt, sodass ein langsamer Server nicht den gesamten Start blockiert.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.89</span>
+        <span class="entry-date">01. April 2026</span>
+        <div class="entry-title">Edit ohne vorheriges Read – flexiblere Dateibearbeitung</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das <code>Edit</code>-Tool erfordert kein vorheriges <code>Read</code> mehr. Dateien, die per <code>sed -n</code>, <code>cat</code> oder ähnlichen Bash-Befehlen betrachtet wurden, können direkt bearbeitet werden. Das vereinfacht komplexe Workflows erheblich.</p>
+    </div>
+
+    <!-- v2.1.88 -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.88</span>
+        <span class="entry-date">31. März 2026</span>
+        <div class="entry-title">Quellcode-Leak: 512.000 Zeilen TypeScript versehentlich auf npm veröffentlicht</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">v2.1.88 enthielt versehentlich eine 59,8 MB große <code>.map</code>-Datei, die auf ~512.000 Zeilen unminifizierten TypeScript-Quellcode auf Anthropics Cloudflare-R2-Bucket verwies — darunter das vollständige Tool-System, die Agentenarchitektur und 44 unveröffentlichte Feature-Flags. Ursache war ein Build-Pipeline-Fehler mit Buns Bundler (<code>oven-sh/bun#28001</code>). Anthropic erklärte, es seien keine Kundendaten oder Credentials betroffen. v2.1.88 wurde von npm zurückgezogen.</p>
+    </div>
+
     <!-- v2.1.87 -->
     <div class="entry" data-cat="Fix">
       <div class="entry-header">
@@ -257,6 +299,17 @@
         <span class="badge badge-Fix">Fix</span>
       </div>
       <p class="entry-desc">Nachrichten im Cowork Dispatch wurden nicht zugestellt – ein kritischer Regression-Bug, der kollaborative Multi-Agent-Sessions blockierte. Der Hotfix stellt die zuverlässige Nachrichtenübermittlung zwischen Agenten wieder her.</p>
+    </div>
+
+    <!-- Modell-Update -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">Modell</span>
+        <span class="entry-date">27. März 2026</span>
+        <div class="entry-title">1M-Context für Opus 4.6 jetzt Standard – Sonnet 4 läuft April aus</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Das 1-Millionen-Token-Kontextfenster für Claude Opus 4.6 ist jetzt standardmäßig für Max-, Team- und Enterprise-Pläne aktiviert (vorher kostenpflichtige Beta). Sonnet 4 und Sonnet 4.5 werden am 30. April 2026 eingestellt – Anfragen über 200k Token schlagen danach fehl. Migration auf Sonnet 4.6 oder Opus 4.6 empfohlen.</p>
     </div>
 
     <!-- v2.1.86 -->
