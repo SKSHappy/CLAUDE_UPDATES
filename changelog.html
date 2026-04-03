@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 02. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 03. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.91 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.91</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">MCP Tool-Ergebnis-Persistenz via <code>_meta["anthropic/maxResultSizeChars"]</code></div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">MCP-Tool-Ergebnisse können jetzt bis zu 500.000 Zeichen übermitteln, wenn der Server <code>_meta["anthropic/maxResultSizeChars"]</code> setzt – bisher wurden große Antworten (z. B. vollständige DB-Schemas) abgeschnitten. Ideal für Datenbank-Tools und andere MCP-Server mit großen Payloads.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.91</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">disableSkillShellExecution – Shell-Ausführung in Skills deaktivieren</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Die neue Einstellung <code>disableSkillShellExecution</code> verhindert die direkte Shell-Ausführung in Skills, Custom Slash Commands und Plugin-Commands. Nützlich in verwalteten Umgebungen, wo die Ausführung beliebiger Shell-Befehle durch Skills unterbunden werden soll.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.91</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">Multi-line Deep Links &amp; Plugin bin/-Executables</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc"><code>claude-cli://open?q=</code>-Deep-Links unterstützen nun mehrzeilige Prompts – kodierte Zeilenumbrüche (<code>%0A</code>) werden nicht länger abgelehnt. Außerdem können Plugins jetzt Executables im <code>bin/</code>-Verzeichnis ausliefern und diese direkt als Bare-Commands aus dem Bash-Tool aufrufen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.91</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">Bugfixes: Transcript-Chain, cmd+delete, Plan-Mode, JSON-Schema &amp; Windows-Cleanup</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>--resume</code> konnte bei asynchronen Schreibfehlern die Gesprächshistorie verlieren (Transcript-Chain-Break) – jetzt behoben. <code>cmd+delete</code> löscht wieder korrekt bis zum Zeilenanfang in iTerm2, kitty, WezTerm, Ghostty und Windows Terminal. Plan-Mode in Remote-Sessions verlor nach Container-Restart die Plan-Datei; zudem wurde die JSON-Schema-Validierung für <code>permissions.defaultMode: "auto"</code> und der Windows-Versionsbereinigungsschutz gefixt.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.91</span>
+        <span class="entry-date">02. April 2026</span>
+        <div class="entry-title">Schnelleres stripAnsi auf Bun &amp; kürzere Edit-Tool-Anchors</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc"><code>stripAnsi</code> nutzt jetzt nativ <code>Bun.stripANSI</code> statt einer JavaScript-Implementierung, was die Rendering-Performance deutlich verbessert. Das Edit-Tool verwendet kürzere <code>old_string</code>-Anchors, wodurch Output-Tokens und API-Kosten pro Bearbeitungsschritt sinken.</p>
+    </div>
 
     <!-- v2.1.90 -->
     <div class="entry" data-cat="Produktivität">
