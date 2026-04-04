@@ -152,9 +152,50 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 03. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 04. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.92 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.92</span>
+        <span class="entry-date">04. April 2026</span>
+        <div class="entry-title">Interaktiver Bedrock-Setup-Assistent direkt vom Login-Screen</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Ein neuer Bedrock-Setup-Wizard führt Nutzer direkt beim Login durch AWS-Authentifizierung, Region-Auswahl, Credential-Prüfung und Modell-Pinning. Damit entfällt die manuelle Konfiguration von AWS-Umgebungen für Claude Code – ideal für Teams, die über AWS Bedrock zugreifen.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.92</span>
+        <span class="entry-date">04. April 2026</span>
+        <div class="entry-title">/release-notes als interaktiver Versions-Picker &amp; /cost mit Modell-Aufschlüsselung</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>/release-notes</code> startet jetzt einen interaktiven Picker, mit dem man gezielt Versionen durchsuchen kann. <code>/cost</code> zeigt für Abonnenten eine detaillierte Aufschlüsselung nach Modell und Cache-Hits. Remote-Control-Sessions nutzen standardmäßig den Hostnamen als Session-Präfix (z. B. <code>myhost-graceful-unicorn</code>).</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.92</span>
+        <span class="entry-date">04. April 2026</span>
+        <div class="entry-title">Write-Tool-Diff 60 % schneller bei Tabs, &amp; und $</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Die Diff-Berechnung im Write-Tool ist bei Dateien mit Tab-Einrückungen, <code>&amp;</code>- oder <code>$</code>-Zeichen jetzt 60 % schneller. Das verbessert spürbar die Reaktionszeit beim Schreiben großer Konfigurationsdateien, Shell-Skripte und Makefiles.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.92</span>
+        <span class="entry-date">04. April 2026</span>
+        <div class="entry-title">Bugfixes: Subagent-Spawning, Stop-Hooks, Extended-Thinking-400 &amp; /tag+/vim entfernt</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Subagenten ließen sich nach tmux-bezogenen Änderungen nicht mehr spawnen – behoben. Stop-Hooks feuerten fehlerhaft und JSON-Validierungsfehler in bestimmten Konfigurationen wurden korrigiert. API-400-Fehler bei Extended Thinking sind gefixt. Die veralteten Befehle <code>/tag</code> und <code>/vim</code> wurden entfernt.</p>
+    </div>
 
     <!-- v2.1.91 -->
     <div class="entry" data-cat="Integration">
