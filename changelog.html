@@ -152,9 +152,30 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 04. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 05. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.92 (nachträglich ergänzt 05.04.2026) -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.92</span>
+        <span class="entry-date">05. April 2026</span>
+        <div class="entry-title">forceRemoteSettingsRefresh – Managed Settings immer aktuell erzwingen</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Die neue Policy <code>forceRemoteSettingsRefresh</code> blockiert den CLI-Start, bis remote verwaltete Settings frisch vom Server geladen wurden. Schlägt der Abruf fehl, startet Claude Code nicht (Fail-Closed-Verhalten). Damit wird sichergestellt, dass Teams-Policies bei jedem Start wirksam sind.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.92</span>
+        <span class="entry-date">05. April 2026</span>
+        <div class="entry-title">Prompt-Cache-Hint für Pro-Nutzer nach Cache-Ablauf</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Pro-Nutzer sehen jetzt einen Footer-Hinweis, wenn der Prompt-Cache abgelaufen ist und der nächste Turn ungecachte Tokens verursacht. Damit lassen sich unerwartete Kosten frühzeitig erkennen und durch rechtzeitiges Absenden von Nachrichten reduzieren.</p>
+    </div>
 
     <!-- v2.1.92 -->
     <div class="entry" data-cat="Integration">
