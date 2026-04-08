@@ -152,9 +152,41 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 05. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 08. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.96 | 08.04.2026 -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.96</span>
+        <span class="entry-date">08. April 2026</span>
+        <div class="entry-title">Bedrock-Authorization-Regression behoben</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Behebt fehlende Authorization-Header bei Bedrock-Anfragen, wenn <code>AWS_BEARER_TOKEN_BEDROCK</code> oder <code>CLAUDE_CODE_SKIP_BEDROCK_AUTH</code> gesetzt ist. Die Regression war mit v2.1.94 eingeführt worden und blockierte Bedrock-Authentifizierung komplett.</p>
+    </div>
+
+    <!-- v2.1.94 | 07.04.2026 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.94</span>
+        <span class="entry-date">07. April 2026</span>
+        <div class="entry-title">Amazon Bedrock Mantle-Backend &amp; erhöhtes Standard-Effort-Level</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Neue Unterstützung für Amazon Bedrock mit Mantle-Backend-Routing. Das Standard-Anstrengungslevel wurde auf „high" erhöht. Slack-MCP-Integration erhält kompakte Targets mit klickbaren Channel-Links, und das Terminal-Rendering für CJK-Text wurde verbessert.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.94</span>
+        <span class="entry-date">07. April 2026</span>
+        <div class="entry-title">Bugfixes: Rate-Limit-Hänger, Plugin-Skill-Hooks &amp; macOS-Login</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Agenten bleiben nicht mehr nach 429-Rate-Limit-Antworten stecken. Plugin-Skill-Hooks werden nicht mehr still ignoriert. macOS Console-Login-Fehler wurden korrigiert.</p>
+    </div>
 
     <!-- v2.1.92 (nachträglich ergänzt 05.04.2026) -->
     <div class="entry" data-cat="Sicherheit">
