@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 08. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 09. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.97 | 09.04.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.97</span>
+        <span class="entry-date">09. April 2026</span>
+        <div class="entry-title">Focus View (Ctrl+O) &amp; Status-Line-Erweiterungen im NO_FLICKER-Modus</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Mit <code>Ctrl+O</code> lässt sich im NO_FLICKER-Modus eine kompakte Focus-Ansicht umschalten, die nur Prompt, ein-zeilige Tool-Zusammenfassung mit Diff-Stats und die Schlussantwort zeigt. Neu: <code>refreshInterval</code> im Status-Line-Setting aktualisiert den Status automatisch, und <code>workspace.git_worktree</code> ist jetzt Teil des Status-Line-JSON. Außerdem zeigt <code>/agents</code> einen Live-Zähler laufender Subagenten.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.97</span>
+        <span class="entry-date">09. April 2026</span>
+        <div class="entry-title">Bash-Tool-Permissions gehärtet &amp; dangerously-skip-permissions-Downgrade behoben</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc"><code>--dangerously-skip-permissions</code> wurde bisher still auf Accept-Edits-Modus herabgestuft, wenn ein Schreibvorgang einen geschützten Pfad traf – das ist jetzt korrekt gehandhabt. Zusätzlich wurden Bash-Tool-Berechtigungen rund um Env-Var-Präfixe und Netzwerk-Redirects strenger überprüft. Permission-Rules mit Namen wie <code>toString</code> (JS-Prototype-Eigenschaften) führten zum silenten Ignorieren von <code>settings.json</code> – ebenfalls behoben.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.97</span>
+        <span class="entry-date">09. April 2026</span>
+        <div class="entry-title">MCP-Buffer-Leak (~50 MB/h), 429-Retry-Burn &amp; OAuth-Token-Refresh gefixt</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">MCP-HTTP/SSE-Verbindungen akkumulierten bei Server-Reconnects bis zu 50 MB/h unreleased Buffer – jetzt behoben. 429-Retries verbrauchten alle Versuche in ~13 Sekunden bei kleinem <code>Retry-After</code>-Wert, statt zu warten. MCP-OAuth ignorierte <code>oauth.authServerMetadataUrl</code> nach einem Neustart beim Token-Refresh.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.97</span>
+        <span class="entry-date">09. April 2026</span>
+        <div class="entry-title">Bild-Komprimierung vereinheitlicht &amp; Accept-Edits-Modus intelligenter</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Eingefügte und angehängte Bilder werden jetzt auf dasselbe Token-Budget komprimiert wie via Read-Tool gelesene Bilder – das spart API-Kosten bei bild-intensiven Workflows. Der Accept-Edits-Modus genehmigt jetzt automatisch Dateisystem-Befehle, die mit sicheren Env-Var-Präfixen oder Prozess-Wrappern aufgerufen werden, sowie Sandbox-Netzwerkzugriffs-Prompts.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.97</span>
+        <span class="entry-date">09. April 2026</span>
+        <div class="entry-title">Multi-Fix: /resume-Cache, Subagent-Worktree-Isolation, Kompaktierung &amp; Plugin-Updates</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Der <code>/resume</code>-Picker hatte Cache-Misses und verlor Mid-Turn-Eingaben; Datei-Edit-Diffs für Dateien über 10 KB verschwanden bei <code>--resume</code>. Subagenten mit Worktree-Isolation leakten ihr Arbeitsverzeichnis in die Bash des Parent-Agents. Kompaktierung schrieb doppelte Multi-MB-Transkripte. <code>claude plugin update</code> meldete fälschlicherweise „bereits aktuell" bei Git-basierten Plugins.</p>
+    </div>
 
     <!-- v2.1.96 | 08.04.2026 -->
     <div class="entry" data-cat="Sicherheit">
