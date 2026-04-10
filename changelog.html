@@ -152,9 +152,80 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 09. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 10. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.98 | 10.04.2026 -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">Monitor Tool &amp; Subprocess-Sandboxing mit PID-Namespace-Isolierung auf Linux</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Das neue <strong>Monitor Tool</strong> ermöglicht das Streamen von Events aus Hintergrund-Skripten direkt in die Konversation – ideal für lang laufende Build- oder Deployment-Prozesse. Zusätzlich wird auf Linux nun ein PID-Namespace für Subprozesse aufgespannt, was Sandbox-Escapes über Prozess-Sichtbarkeit verhindert und die Isolierung von Agenten-Tasks deutlich verbessert.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">Interaktiver Google Vertex AI Setup-Wizard im Login-Screen</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Claude Code erhält einen geführten Setup-Wizard für <strong>Google Vertex AI</strong>, der direkt vom Login-Screen aus via „3rd-party platform" erreichbar ist. Der Wizard führt durch GCP-Authentifizierung, Projektauswahl, Region und Modell-Pinning – ohne manuelles Konfigurieren von Umgebungsvariablen. Damit steht neben dem Amazon-Bedrock-Wizard aus v2.1.92 nun auch Vertex nahtlos zur Verfügung.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">CLAUDE_CODE_PERFORCE_MODE, W3C TRACEPARENT für OTEL &amp; LSP-Selbstidentifikation</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Die neue Env-Var <code>CLAUDE_CODE_PERFORCE_MODE</code> schaltet den Read-only-Schutz für Perforce-Checkouts um und gibt automatisch <code>p4 edit</code>-Hinweise aus, bevor Dateien bearbeitet werden. Bash-Tool-Subprozesse erhalten jetzt einen W3C-konformen <code>TRACEPARENT</code>-Header für lückenloses OTEL-Tracing in Unternehmensumgebungen. LSP-Clients werden außerdem über <code>clientInfo</code> im Initialize-Request korrekt identifiziert.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">Mehrere Bash-Tool Permission-Bypasses geschlossen</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Kritische Sicherheitslücken im Bash-Tool wurden behoben: Backslash-maskierte Flags konnten Permission-Prüfungen umgehen, und zusammengesetzte Befehle (z. B. <code>cmd1 &amp;&amp; cmd2</code>) umgingen Permission-Prompts komplett. Zusätzlich wurden Bypasses über Env-Var-Präfixe und <code>/dev/tcp</code>-Netzwerk-Redirects geschlossen. Diese Fixes sind sicherheitsrelevant für alle Umgebungen, die mit nicht vertrauenswürdigen Repositories arbeiten.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">/agents Tabbed-Layout (Running/Library) &amp; Vim-Modus History-Navigation</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>/agents</code> zeigt jetzt ein Tab-Layout mit getrennten Reitern für laufende Agenten und die Plugin-Bibliothek – übersichtlicher bei mehreren parallelen Subagenten. Im Vim-Modus navigieren <code>j</code>/<code>k</code> im NORMAL-Modus durch den Eingabe-Verlauf und selektieren Footer-Pills, was eine vollständig tastaturbasierte Bedienung ermöglicht. <code>/reload-plugins</code> lädt Plugin-Skills nun auch ohne Neustart neu.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">--exclude-dynamic-system-prompt-sections für verbessertes Prompt-Caching</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Das neue Flag <code>--exclude-dynamic-system-prompt-sections</code> entfernt dynamische Abschnitte aus dem System-Prompt und verbessert so die Cache-Trefferrate erheblich – besonders relevant für lange Agentenläufe mit vielen API-Calls. Gestockte Streaming-Responses fallen jetzt korrekt auf einen Fallback zurück statt zu hängen, und der 429-Retry-Backoff greift nun als Minimum statt als festes Intervall.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.98</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">Fix-Welle: /resume, /export, Voice-Mode, Tastatur-Bugs &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Umfangreiches Fix-Paket: <code>/resume &lt;name&gt;</code> öffnete Sessions im nicht-editierbaren Zustand (behoben), <code>/export</code> ignorierte absolute Pfade und <code>~</code>-Expansion (behoben), Voice-Mode (Push-to-Talk) fügte beim Re-Hold Leerzeichen ein (behoben). Großbuchstaben wurden auf xterm/VS Code mit Kitty-Keyboard-Protokoll zu Kleinbuchstaben – jetzt korrekt. macOS-Text-Replacements löschten das Trigger-Wort statt die Ersetzung einzufügen – ebenfalls behoben.</p>
+    </div>
 
     <!-- v2.1.97 | 09.04.2026 -->
     <div class="entry" data-cat="UI/UX">
