@@ -152,9 +152,70 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 10. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 11. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.101 | 11.04.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.101</span>
+        <span class="entry-date">11. April 2026</span>
+        <div class="entry-title">/team-onboarding – Automatische Einführungsanleitung für neue Teammitglieder</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der neue Befehl <code>/team-onboarding</code> generiert aus der lokalen Claude-Code-Nutzungshistorie eine maßgeschneiderte Einführungsanleitung für Kolleg:innen – inklusive Team-Workflows, häufig genutzter Tools und projektspezifischer Befehle. Damit lassen sich neue Teammitglieder deutlich schneller in bestehende Claude-Code-Setups einarbeiten, ohne externe Dokumentation pflegen zu müssen.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.101</span>
+        <span class="entry-date">11. April 2026</span>
+        <div class="entry-title">OS CA-Zertifikatspeicher als Standard für Enterprise-TLS-Proxies</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Claude Code vertraut nun standardmäßig dem OS-eigenen CA-Zertifikatspeicher, was die Nutzung in Enterprise-Umgebungen mit TLS-Intercept-Proxies endlich ohne manuelle Konfiguration ermöglicht. Über die Umgebungsvariable <code>CLAUDE_CODE_CERT_STORE=bundled</code> lässt sich das frühere Verhalten (ausschließlich mitgelieferte CAs) wiederherstellen.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.101</span>
+        <span class="entry-date">11. April 2026</span>
+        <div class="entry-title">Command-Injection in POSIX-which-Fallback &amp; permissions.deny-Bypass behoben</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Kritische Sicherheitslücke geschlossen: Der POSIX-<code>which</code>-Fallback zur Pfadauflösung im Bash-Tool war anfällig für Command Injection. Zusätzlich konnten <code>permissions.deny</code>-Regeln bisher von PreToolUse-Hooks überschrieben werden – Deny-Regeln gelten jetzt immer als finale Entscheidung, unabhängig von Hook-Rückgaben.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.101</span>
+        <span class="entry-date">11. April 2026</span>
+        <div class="entry-title">Memory-Leak in langen Sessions &amp; API_TIMEOUT_MS-Ignorierung behoben</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Der Virtual-Scroller akkumulierte bei sehr langen Sitzungen einen Memory-Leak in der History-Verwaltung – bei Stunden-langen Agent-Läufen konnte das zu hunderten MB Overhead führen. Außerdem war der Request-Timeout auf 5 Minuten hardcoded und ignorierte <code>API_TIMEOUT_MS</code> komplett; <code>--resume</code>/<code>--continue</code> verlor bei großen Sessions den Kontext – beides ist jetzt behoben.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.101</span>
+        <span class="entry-date">11. April 2026</span>
+        <div class="entry-title">Rate-Limit-Transparenz, Ultraplan-Cloud-Envs &amp; Session-Titel bei --resume</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Rate-Limit-Retry-Meldungen zeigen jetzt Limit-Typ und genaue Reset-Zeit statt generischer Fehlertexte. API-Ablehnungen werden als erklärende Meldungen weitergegeben. <code>claude -p --resume &lt;name&gt;</code> akzeptiert nun Session-Titel (nicht nur IDs). <code>/ultraplan</code> und Remote-Sessions erstellen fehlende Cloud-Umgebungen automatisch.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.101</span>
+        <span class="entry-date">11. April 2026</span>
+        <div class="entry-title">Fix-Paket: Subagenten-MCP, Worktrees, VS Code, Plugins, Keybindings &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Umfangreiches Fix-Paket: Subagenten erben jetzt MCP-Tools dynamisch injizierter Server. <code>claude -w &lt;name&gt;</code> schlug bei veralteten Worktrees fälschlich mit „already exists" fehl. <code>RemoteTrigger</code> sendete leeren Body. Grep-ENOENT nach VS-Code-Auto-Updates behoben. <code>/btw</code> schrieb unnötigerweise bei jeder Nutzung Konversationskopien auf Disk. Custom-Keybindings auf Bedrock/Vertex wurden nicht geladen. Terminal-Keybindings (<code>ctrl+]</code>, <code>ctrl+\</code>, <code>ctrl+^</code>) feuerten nicht. Settings.json wurde nach Env-Änderungen nicht neu geladen.</p>
+    </div>
 
     <!-- v2.1.98 | 10.04.2026 -->
     <div class="entry" data-cat="DevOps">
