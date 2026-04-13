@@ -152,9 +152,30 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 11. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 13. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.104 | 13.04.2026 -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.104</span>
+        <span class="entry-date">13. April 2026</span>
+        <div class="entry-title">Permission-Mode-Enforcement: Explizite Genehmigung bei blockierten Tool-Aufrufen</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Wenn der aktive Permission-Mode einen Tool-Aufruf blockiert, muss dieser jetzt explizit vom Nutzer genehmigt werden. Bisher konnten bestimmte Tool-Calls trotz restriktivem Permission-Mode unbemerkt externe Aktionen auslösen. Mit diesem Fix ist die Genehmigungslogik konsistenter und verhindert unbeabsichtigte Aktionen in automatisierten Workflows.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.104</span>
+        <span class="entry-date">13. April 2026</span>
+        <div class="entry-title">System-Reminder-Prompts von 4 auf 2 Varianten konsolidiert</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Die internen System-Reminder-Prompt-Varianten wurden von vier auf zwei konsolidiert. Das verbessert die Konsistenz und Vorhersagbarkeit des Modell-Verhaltens über verschiedene Kontexte hinweg und reduziert potenziell verwirrende Inkonsistenzen im Gesprächsverlauf.</p>
+    </div>
 
     <!-- v2.1.101 | 11.04.2026 -->
     <div class="entry" data-cat="Produktivität">
@@ -215,6 +236,47 @@
         <span class="badge badge-Fix">Fix</span>
       </div>
       <p class="entry-desc">Umfangreiches Fix-Paket: Subagenten erben jetzt MCP-Tools dynamisch injizierter Server. <code>claude -w &lt;name&gt;</code> schlug bei veralteten Worktrees fälschlich mit „already exists" fehl. <code>RemoteTrigger</code> sendete leeren Body. Grep-ENOENT nach VS-Code-Auto-Updates behoben. <code>/btw</code> schrieb unnötigerweise bei jeder Nutzung Konversationskopien auf Disk. Custom-Keybindings auf Bedrock/Vertex wurden nicht geladen. Terminal-Keybindings (<code>ctrl+]</code>, <code>ctrl+\</code>, <code>ctrl+^</code>) feuerten nicht. Settings.json wurde nach Env-Änderungen nicht neu geladen.</p>
+    </div>
+
+    <!-- v2.1.100 | 10.04.2026 -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.100</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">--resume bis zu 45 % schneller & 100–150 MB weniger Speicherverbrauch</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Bei fork-intensiven oder sehr großen Sessions lädt <code>--resume</code> jetzt bis zu 45 % schneller und benötigt 100–150 MB weniger Arbeitsspeicher. Optimierungen im Session-Lademechanismus machen lange Agent-Läufe mit vielen Subprozessen deutlich schlanker. Außerdem bricht <code>Esc</code> jetzt laufende Non-Streaming-API-Requests zuverlässig ab.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.100</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">/model-Picker mit lesbaren Labels & Resume-Picker zeigt 50 Sessions</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der <code>/model</code>-Picker zeigt jetzt lesbare Modell-Namen (z. B. „Sonnet 4.5") statt roher API-IDs – inklusive Upgrade-Hinweis, wenn eine neuere Version verfügbar ist. Gleichzeitig wurde die Session-Auswahl beim <code>--resume</code>-Picker von 10 auf 50 Sessions erweitert, was bei aktiver Nutzung deutlich mehr Übersicht bringt.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.100</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">Monitor-Tool systemweit aktiviert & sleep-Nutzung in Bash eingeschränkt</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Das Monitor-Tool zur Hintergrundüberwachung wurde ins Systemprompt integriert: Claude streamt Events aus Hintergrundprozessen nun via Monitor statt durch busy-polling oder <code>sleep</code>-Schleifen. Bash-Befehle, die mit <code>sleep N</code> (N ≥ 2) beginnen, werden blockiert – was unnötige Wartezeiten in automatisierten Skripten vermeidet.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.100</span>
+        <span class="entry-date">10. April 2026</span>
+        <div class="entry-title">Fix-Trio: --resume-Fehler auf alten Sessions, Read/Write außerhalb Root & Auto-Mode-Grenzen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>--resume</code> schlug mit „tool_use ids were found without tool_result blocks" bei Sessions fehl, die vor v2.1.85 erstellt wurden. Write, Edit und Read schlugen fehl, wenn Conditional Skills/Rules konfiguriert waren und Dateien außerhalb des Projekt-Roots bearbeitet werden sollten. Der Auto-Mode ignorierte in bestimmten Szenarien explizite Nutzergrenzen und ein UI-Crash bei fehlerhafter Tool-Input-Validierung wurde behoben.</p>
     </div>
 
     <!-- v2.1.98 | 10.04.2026 -->
