@@ -152,9 +152,50 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 13. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 14. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.105 | 14.04.2026 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.105</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">EnterWorktree path-Parameter & PreCompact Hook mit Block-Entscheidung</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das <code>EnterWorktree</code>-Tool akzeptiert nun einen <code>path</code>-Parameter zum direkten Wechsel in bestehende Worktrees des aktuellen Repos – nützlich bei Multi-Branch-Workflows. Neu: <strong>PreCompact Hooks</strong> können Kompaktierungen blockieren, indem sie mit Exit-Code 2 oder <code>{"decision":"block"}</code> antworten, was unerwünschte Kontextverluste in sensiblen Agentenläufen verhindert.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.105</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Plugin-Background-Monitor & /proactive als Alias für /loop</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Plugins können nun über den <code>monitors</code>-Schlüssel im Manifest Hintergrundprozesse registrieren, die Events direkt in die Konversation streamen. Der neue Alias <code>/proactive</code> für <code>/loop</code> macht es intuitiver, Claude in einen proaktiv-überwachenden Modus zu versetzen. Skill-Beschreibungen unterstützen jetzt bis zu 1.536 Zeichen (vorher 250).</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.105</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Gestockte API-Streams: 5-Minuten-Timeout & Non-Streaming-Fallback</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Hängende Streaming-API-Verbindungen werden nach 5 Minuten ohne Daten automatisch abgebrochen und auf Non-Streaming umgeschaltet – bisher konnten solche Situationen Agenten-Läufe komplett blockieren. Netzwerkfehler zeigen jetzt sofort eine Retry-Meldung, und <code>WebFetch</code> entfernt nun <code>&lt;style&gt;</code>- und <code>&lt;script&gt;</code>-Inhalte für sauberere Ausgaben.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.105</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Fix-Paket: Bilder-Drop, Screen-Blank, Bash-Garbling & Terminal-Keybindings</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Bilder in eingereihten Nachrichten wurden beim Senden verworfen – jetzt korrekt übertragen. Der Bildschirm wurde kurz leer, wenn der Prompt in die zweite Zeile umbrach. Bash-Ausgaben mit klickbaren Dateilinks waren korrumpiert. <code>alt+enter</code> und <code>ctrl+j</code> fügen wieder Zeilenumbrüche ein; <code>cmd+delete</code> funktioniert auf mehreren Terminal-Emulatoren korrekt. Der <code>/model</code>-Picker verwarf keine ungültigen Modell-IDs mehr auf AWS Bedrock.</p>
+    </div>
 
     <!-- v2.1.104 | 13.04.2026 -->
     <div class="entry" data-cat="Sicherheit">
