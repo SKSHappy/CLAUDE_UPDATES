@@ -152,9 +152,72 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 14. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 15. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.109 | 15.04.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.109</span>
+        <span class="entry-date">15. April 2026</span>
+        <div class="entry-title">Erweiterter Thinking-Indikator mit rotierendem Fortschrittshinweis</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der Extended-Thinking-Indikator zeigt nun einen rotierenden Fortschrittshinweis während langer Denkphasen. Das macht sofort klar, dass das Modell noch aktiv arbeitet – statt eines statischen Icons erscheint ein animierter Hinweis, der die Wartezeit subjektiv verkürzt und das Nutzerfeedback verbessert.</p>
+    </div>
+
+    <!-- v2.1.108 | 14.04.2026 -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.108</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Prompt-Caching 1h-TTL & Lazy-Loading von Sprach-Grammars</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Neu: <code>ENABLE_PROMPT_CACHING_1H</code> aktiviert 1-Stunden-Cache-TTL für API-Key, Bedrock, Vertex und Foundry – senkt Kosten bei langen Agentenläufen mit stabilem Kontext erheblich. <code>FORCE_PROMPT_CACHING_5M</code> erzwingt 5-Minuten-TTL. Außerdem werden Sprach-Grammars für Syntax-Highlighting nun erst bei Bedarf geladen, was den Arbeitsspeicher bei Datei-Lesen, Edits und langen Sessions deutlich reduziert.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.108</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">/recap – Kontext-Zusammenfassung & Slash-Command-Erkennung via Skill-Tool</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der neue Befehl <code>/recap</code> liefert beim Zurückkehren zu einer Session eine kompakte Zusammenfassung des bisherigen Stands – konfigurierbar in <code>/config</code>, erzwingbar via <code>CLAUDE_CODE_ENABLE_AWAY_SUMMARY</code>. Zusätzlich kann das Modell nun Built-in-Slash-Commands wie <code>/init</code>, <code>/review</code> und <code>/security-review</code> selbstständig über das Skill-Tool entdecken und aufrufen.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.108</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">/undo-Alias, /model-Warnung, /resume-Picker & verbesserte Fehlermeldungen</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>/undo</code> ist jetzt ein Alias für <code>/rewind</code>. <code>/model</code> warnt vor einem Modellwechsel mitten in einer Konversation (Cache-Miss-Risiko). Der <code>/resume</code>-Picker zeigt standardmäßig Sessions des aktuellen Verzeichnisses – <code>Ctrl+A</code> öffnet alle Projekte. Rate-Limits werden klar von Plan-Nutzungslimits getrennt; 5xx/529-Fehler verlinken direkt auf status.claude.com; unbekannte Slash-Commands schlagen den nächsten passenden vor.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.108</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Fix-Paket: Paste, Diacritics, Teleport, Session-Titel & Policy-Plugins</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Paste funktionierte nicht mehr im <code>/login</code>-Codeprompt (Regression aus 2.1.105). Diakritische Zeichen (Umlaute, Akzente, Cedillen) wurden mit aktivierter <code>language</code>-Einstellung verworfen. <code>--teleport</code>- und <code>--resume &lt;id&gt;</code>-Fehler beendeten sich ohne Ausgabe. Session-Titel zeigten Platzhaltertext bei kurzen Begrüßungen. Policy-verwaltete Plugins aktualisierten sich nicht automatisch aus anderen Projekten.</p>
+    </div>
+
+    <!-- v2.1.107 | 14.04.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.107</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Thinking-Hinweise erscheinen früher bei langen Operationen</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Thinking-Hinweise werden nun früher eingeblendet, wenn Claude länger rechnet. Statt erst nach einer spürbaren Pause gibt das Interface sofort visuelles Feedback, dass eine lange Operation läuft – reduziert die wahrgenommene Wartezeit und verhindert das Gefühl, die Session sei eingefroren.</p>
+    </div>
 
     <!-- v2.1.105 | 14.04.2026 -->
     <div class="entry" data-cat="UI/UX">
