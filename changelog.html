@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 15. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 16. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.110 | 16.04.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.110</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">/tui-Befehl & Vollbild-Rendering ohne Flackern</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der neue Befehl <code>/tui fullscreen</code> aktiviert ein flackerfreies TUI-Rendering innerhalb derselben Konversation – kein Neustart notwendig. Das <code>tui</code>-Setting macht den Modus persistent. Zusätzlich verhindert <code>autoScrollEnabled: false</code> das automatische Runterscrollen im Vollbild-Modus bei langen Ausgaben.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.110</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Push-Benachrichtigungen via Remote Control (Mobile)</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Claude kann jetzt Push-Benachrichtigungen ans Mobilgerät senden, wenn eine Remote-Control-Session aktiv ist und „Push when Claude decides" in der Config aktiviert wurde. Das ermöglicht asynchrones Arbeiten: Task starten, Gerät weglegen, per Push benachrichtigt werden wenn Claude fertig ist.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.110</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Focus-Modus & Transcript-Modus sauber getrennt</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>Ctrl+O</code> schaltet jetzt ausschließlich den ausführlichen Transcript um – der Focus-Modus hat einen eigenen <code>/focus</code>-Befehl bekommen. Damit lassen sich kompaktes Ergebnis-View und detailliertes Tool-Protokoll unabhängig voneinander kombinieren. Außerdem kann Claude's letzte Antwort als auskommentierter Kontext im externen Editor (<code>Ctrl+G</code>) eingeblendet werden.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.110</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Session Recap für alle Nutzer & verbesserte Plugin-Übersicht</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der Session-Recap (kurze Zusammenfassung beim Zurückkehren zur Session) ist jetzt auch für Nutzer ohne Telemetrie aktiv – deaktivierbar via <code>/config</code> oder <code>CLAUDE_CODE_ENABLE_AWAY_SUMMARY=0</code>. Im <code>/plugin</code> Installed-Tab erscheinen Favoriten und Elemente mit Handlungsbedarf ganz oben; deaktivierte Plugins werden hinter einem Fold versteckt.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.110</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Fix-Paket: MCP-Hänger, CPU-Spikes, Keystroke-Drop & Bash-Timeout</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">MCP-Tool-Calls hingen unbegrenzt, wenn die Serververbindung mid-Response abbrach – jetzt korrekt abgebrochen. Hohe CPU-Auslastung im Vollbild bei selektiertem Text und verlorene Tastenanschläge nach CLI-Neustart wurden behoben. Bash-Befehle erzwingen nun den dokumentierten maximalen Timeout, sodass lang laufende Prozesse nicht mehr unbegrenzt blockieren.</p>
+    </div>
 
     <!-- v2.1.109 | 15.04.2026 -->
     <div class="entry" data-cat="UI/UX">
