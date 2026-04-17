@@ -152,9 +152,61 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 16. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 17. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.112 | 17.04.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.112</span>
+        <span class="entry-date">17. April 2026</span>
+        <div class="entry-title">Hotfix: Auto-Modus mit Opus 4.7 „temporarily unavailable"</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Hotfix für eine Regression aus v2.1.111: Der Auto-Modus zeigte bei <code>claude-opus-4-7</code> die Meldung „temporarily unavailable", obwohl das Modell erreichbar war. Nutzer, die direkt nach dem Opus-4.7-Update auf diesen Fehler stießen, können mit diesem Patch wieder störungsfrei arbeiten.</p>
+    </div>
+
+    <!-- v2.1.111 | 16.04.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Claude Opus 4.7 & xhigh-Effort-Level als neuer Standard</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Claude Opus 4.7 ist jetzt in Claude Code verfügbar. Das neue Effort-Level <code>xhigh</code> ergänzt die Skala zwischen <code>high</code> und <code>max</code> und ist nun für alle Pläne der Standard. Max-Abonnenten können im Auto-Modus automatisch Opus 4.7 für komplexe Aufgaben nutzen.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">/effort-Slider & „Auto (match terminal)"-Theme</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>/effort</code> ohne Argument öffnet jetzt einen interaktiven Slider – Pfeiltasten wechseln zwischen den Stufen, Enter bestätigt. Neu: die Theme-Option „Auto (match terminal)" folgt automatisch dem Dark-/Light-Mode des Terminals, ohne manuelles Umschalten in der Config.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">/ultrareview – Multi-Agent-Code-Review in der Cloud</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Der neue Befehl <code>/ultrareview</code> startet ein umfassendes Code-Review via parallele Agenten in der Cloud. Ohne Argumente wird der aktuelle Branch analysiert; <code>/ultrareview &lt;PR#&gt;</code> ruft direkt einen GitHub-PR ab. Ideal für kritische Änderungen, bei denen ein einzelner Review nicht ausreicht.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">/less-permission-prompts – Allowlist aus Transkript-Analyse</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Der neue Skill <code>/less-permission-prompts</code> scannt Sitzungstranskripte nach häufig genutzten, ungefährlichen Bash- und MCP-Tool-Aufrufen und schlägt eine priorisierte Allowlist für <code>.claude/settings.json</code> vor. Reduziert Berechtigungs-Popups gezielt ohne die Sicherheit zu kompromittieren.</p>
+    </div>
 
     <!-- v2.1.110 | 16.04.2026 -->
     <div class="entry" data-cat="UI/UX">
