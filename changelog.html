@@ -152,9 +152,30 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 17. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 18. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.113 | 17.04.2026 -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.113</span>
+        <span class="entry-date">17. April 2026</span>
+        <div class="entry-title">Natives Binary & sandbox.network.deniedDomains</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Die CLI startet nun ein plattformspezifisches natives Binary statt gebündeltem JavaScript – schnellerer Startprozess, geringerer RAM-Footprint. Neu: <code>sandbox.network.deniedDomains</code> erlaubt das gezielte Blockieren einzelner Domains, selbst wenn ein breiter <code>allowedDomains</code>-Wildcard ansonsten passen würde – essenziell für Enterprise-Setups mit feingranularer Netzwerkkontrolle.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.113</span>
+        <span class="entry-date">17. April 2026</span>
+        <div class="entry-title">Readline-Navigation, Windows Ctrl+Backspace & URL-Wrapping-Fix</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Readline-kompatible Zeilennavigation (Home/End, Alt+F/Alt+B) funktioniert jetzt auch im Vollbild-Modus korrekt. Windows-Nutzer können mit <code>Ctrl+Backspace</code> wortweise löschen. Klickbare URLs in Bash-/MCP-Ausgaben bleiben auch dann anklickbar, wenn das Terminal sie über mehrere Zeilen umbricht – ein häufiger Frustrationspunkt in langen Befehls-Ausgaben ist damit beseitigt.</p>
+    </div>
 
     <!-- v2.1.112 | 17.04.2026 -->
     <div class="entry" data-cat="Fix">
@@ -268,6 +289,28 @@
         <span class="badge badge-UI/UX">UI/UX</span>
       </div>
       <p class="entry-desc">Der Extended-Thinking-Indikator zeigt nun einen rotierenden Fortschrittshinweis während langer Denkphasen. Das macht sofort klar, dass das Modell noch aktiv arbeitet – statt eines statischen Icons erscheint ein animierter Hinweis, der die Wartezeit subjektiv verkürzt und das Nutzerfeedback verbessert.</p>
+    </div>
+
+    <!-- Desktop App Redesign | 14.04.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">Desktop 2.0</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Desktop App Redesign: Parallele Sessions, Sidebar & integrierter Editor</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Anthropic veröffentlichte ein komplett neu gestaltetes Claude Code Desktop-Erlebnis (Mac & Windows): Eine Sidebar verwaltet mehrere parallele Claude-Sessions im selben Fenster, Panels lassen sich per Drag-and-Drop anordnen. Dazu kommen ein integriertes Terminal für Builds/Tests, ein In-App-Datei-Editor, ein schnellerer Diff-Viewer für große Changesets sowie ein erweiterter Preview-Pane für HTML-Dateien, PDFs und lokale App-Server.</p>
+    </div>
+
+    <!-- Routines Research Preview | 14.04.2026 -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">Research Preview</span>
+        <span class="entry-date">14. April 2026</span>
+        <div class="entry-title">Routines – Claude-Automatisierungen ohne aktive Session</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Routines ermöglichen gespeicherte Claude Code-Automatisierungen, die auf Anthropics Cloud-Infrastruktur laufen – ohne dass der eigene Rechner aktiv sein muss. Eine Routine bündelt Prompt, Repository und Connectors in einer Konfiguration, die nach Zeitplan, per API-Call oder bei GitHub-Events (z. B. neuer PR) ausgelöst werden kann. Pro-Nutzer erhalten 5, Max 15, Team/Enterprise 25 Routines täglich.</p>
     </div>
 
     <!-- v2.1.108 | 14.04.2026 -->
