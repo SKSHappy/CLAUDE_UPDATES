@@ -152,9 +152,20 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 18. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 19. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.114 | 18.04.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.114</span>
+        <span class="entry-date">18. April 2026</span>
+        <div class="entry-title">Hotfix: Crash im Berechtigungs-Dialog bei Agent-Teams</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Behebt einen Absturz im Berechtigungs-Dialog, der auftrat, wenn ein Teammitglied in einer Agent-Teams-Session eine Tool-Permission anfragte. Betroffen waren Setups mit mehreren kooperierenden Agenten – der Dialog konnte nicht korrekt rendern und ließ die CLI abstürzen.</p>
+    </div>
 
     <!-- v2.1.113 | 17.04.2026 -->
     <div class="entry" data-cat="Sicherheit">
