@@ -152,7 +152,7 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 19. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 20. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
 
@@ -186,6 +186,36 @@
         <span class="badge badge-UI/UX">UI/UX</span>
       </div>
       <p class="entry-desc">Readline-kompatible Zeilennavigation (Home/End, Alt+F/Alt+B) funktioniert jetzt auch im Vollbild-Modus korrekt. Windows-Nutzer können mit <code>Ctrl+Backspace</code> wortweise löschen. Klickbare URLs in Bash-/MCP-Ausgaben bleiben auch dann anklickbar, wenn das Terminal sie über mehrere Zeilen umbricht – ein häufiger Frustrationspunkt in langen Befehls-Ausgaben ist damit beseitigt.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.113</span>
+        <span class="entry-date">17. April 2026</span>
+        <div class="entry-title">macOS Pfad-Härtung, Bash-Wrapper-Matching & Find-Kommando-Sicherheit</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc"><code>/private/{etc,var,tmp,home}</code>-Pfade gelten jetzt als gefährliche Löschziele unter <code>Bash(rm:*)</code>-Regeln. Deny-Regeln greifen nun auch bei in <code>env</code>/<code>sudo</code>/<code>watch</code>/<code>ionice</code> eingebetteten Befehlen – ein häufiger Bypass-Vektor ist damit geschlossen. <code>Bash(find:*)</code>-Allowlists genehmigen <code>find -exec</code>/<code>-delete</code> nicht mehr automatisch; Multi-Zeilen-Befehle mit Kommentar-Erstzeile zeigen im Transcript den vollständigen Befehl (Anti-UI-Spoofing).</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.113</span>
+        <span class="entry-date">17. April 2026</span>
+        <div class="entry-title">/loop Esc-Abbruch, Remote Control @-Autocomplete & Git-Permission-Opt</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>Esc</code> bricht jetzt ausstehende <code>/loop</code>-Wakeups ab; der Status wird als „Claude resuming /loop wakeup" angezeigt. Remote-Control-Clients unterstützen nun <code>/extra-usage</code> und können <code>@</code>-Datei-Autocomplete-Vorschläge abfragen. <code>cd &lt;aktuell&gt; && git …</code>-Kombis lösen keinen unnötigen Permission-Prompt mehr aus – häufige No-op-Muster werden jetzt korrekt erkannt.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.113</span>
+        <span class="entry-date">17. April 2026</span>
+        <div class="entry-title">Fix-Welle: MCP-Watchdog, Sandbox-Bypass, Markdown-Tables & Subagenten-UI</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">MCP-Concurrent-Timeout war fehlerhaft: Die Antwort eines Tools konnte den Watchdog eines anderen entwaffnen – jetzt isoliert. Der Sandbox-Bypass über <code>dangerouslyDisableSandbox</code> umging die Permission-Prüfung komplett. Außerdem: Markdown-Tabellen mit Code-Spans, Session-Recap-Auto-Trigger beim Tippen, <code>/copy</code>-Tabellenformatierung für GitHub/Notion/Slack, versteckte Subagenten-Nachrichten, Opus-4.7-400-Fehler auf Bedrock/Vertex und fehlender Cursor bei <code>NO_COLOR</code> behoben.</p>
     </div>
 
     <!-- v2.1.112 | 17.04.2026 -->
@@ -238,6 +268,36 @@
         <span class="badge badge-Sicherheit">Sicherheit</span>
       </div>
       <p class="entry-desc">Der neue Skill <code>/less-permission-prompts</code> scannt Sitzungstranskripte nach häufig genutzten, ungefährlichen Bash- und MCP-Tool-Aufrufen und schlägt eine priorisierte Allowlist für <code>.claude/settings.json</code> vor. Reduziert Berechtigungs-Popups gezielt ohne die Sicherheit zu kompromittieren.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">PowerShell Tool – neues Shell-Tool für Windows, Linux & macOS</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das neue <strong>PowerShell Tool</strong> ist in schrittweisem Rollout auf Windows verfügbar und kann mit <code>CLAUDE_CODE_USE_POWERSHELL_TOOL=1</code> opt-in oder opt-out gesteuert werden. Auf Linux/macOS ebenfalls verfügbar, wenn <code>pwsh</code> im PATH liegt. Damit lassen sich PowerShell-Skripte direkt in Claude-Workflows integrieren – besonders relevant für Windows-Enterprise-Umgebungen und Cross-Platform-DevOps.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Ctrl+U/Y/L Tastenkürzel, Plan-Benennung nach Prompt & Typo-Vorschläge</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>Ctrl+U</code> löscht den gesamten Input-Buffer auf einmal; <code>Ctrl+Y</code> stellt ihn sofort wieder her. <code>Ctrl+L</code> erzwingt zusätzlich einen vollständigen Screen-Redraw. Plan-Dateien erhalten jetzt sprechende Namen nach dem Prompt (z. B. <code>fix-auth-race-snug-otter.md</code>). Tipp-Fehler in Subkommandos werden erkannt: <code>claude udpate</code> → „Meinten Sie <code>claude update</code>?"</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.111</span>
+        <span class="entry-date">16. April 2026</span>
+        <div class="entry-title">Fix-Paket: iTerm2+tmux Tearing, LSP, /resume, /context, /clear & Windows</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Terminal-Display-Tearing in iTerm2+tmux mit aktivierten Terminal-Benachrichtigungen behoben. <code>@</code>-Dateivorschläge scannten das gesamte Projekt in Nicht-Git-Verzeichnissen – jetzt optimiert. <code>/resume</code>-Tab-Completion startete sofort eine zufällige Session; <code>/context</code>-Grid renderte mit Leerzeilen; <code>/clear</code> verlor den Session-Namen. Windows-Fixes: <code>CLAUDE_ENV_FILE</code>- und SessionStart-Hook-Env-Dateien werden jetzt korrekt angewendet; Drive-Letter-Pfade in Permission-Regeln korrekt verankert.</p>
     </div>
 
     <!-- v2.1.110 | 16.04.2026 -->
