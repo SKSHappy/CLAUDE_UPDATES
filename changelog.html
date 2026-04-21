@@ -152,9 +152,40 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 20. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 21. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.116 | 20.04.2026 -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.116</span>
+        <span class="entry-date">20. April 2026</span>
+        <div class="entry-title">/resume bis zu 67 % schneller bei großen Sessions & schnellerer MCP-Start</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc"><code>/resume</code> auf großen Sessions (40 MB+) ist jetzt bis zu 67 % schneller und verarbeitet Sessions mit vielen Dead-Fork-Einträgen effizienter. Außerdem wird der MCP-Startup bei mehreren Stdio-Servern beschleunigt: <code>resources/templates/list</code> wird erst beim ersten <code>@</code>-Mention abgerufen statt beim Start, was den Boot-Overhead bei umfangreichen MCP-Setups deutlich reduziert.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.116</span>
+        <span class="entry-date">20. April 2026</span>
+        <div class="entry-title">Thinking-Spinner inline, /config Wert-Suche & /doctor während Antwort öffenbar</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der Thinking-Spinner zeigt jetzt inline Fortschritts-Hinweise direkt im Text an („still thinking", „thinking more", „almost done thinking") – die separate Hinweis-Zeile entfällt. <code>/config</code> findet beim Suchen jetzt auch passende Option-Werte (z. B. „vim" findet die Editor-Mode-Einstellung). <code>/doctor</code> lässt sich jetzt öffnen, während Claude noch antwortet – kein Warten auf den nächsten Turn nötig.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.116</span>
+        <span class="entry-date">20. April 2026</span>
+        <div class="entry-title">Fix-Trio: iTerm2+tmux-Tearing, @-Datei-Rescan & LSP-Diagnose-Timing</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Terminal-Display-Tearing (zufällige Zeichen, driftende Eingabe) in iTerm2+tmux bei aktivierten Terminal-Benachrichtigungen wurde behoben. <code>@</code>-Dateivorschläge scannten das gesamte Projekt bei jedem Turn neu in Nicht-Git-Arbeitsverzeichnissen – jetzt gecacht. LSP-Diagnosen von vor einem Edit erschienen fälschlicherweise danach, was unnötiges erneutes Lesen der Datei auslöste.</p>
+    </div>
 
     <!-- v2.1.114 | 18.04.2026 -->
     <div class="entry" data-cat="Fix">
