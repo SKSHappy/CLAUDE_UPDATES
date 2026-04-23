@@ -152,9 +152,40 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 22. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 23. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.117 | 22.04.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.117</span>
+        <span class="entry-date">22. April 2026</span>
+        <div class="entry-title">Subagenten-Fork extern aktivierbar & paralleler MCP-Start</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Per <code>CLAUDE_CODE_FORK_SUBAGENT=1</code> lassen sich Subagenten-Forks jetzt auch in externen Builds aktivieren. Agent-Frontmatter-<code>mcpServers</code> werden für Haupt-Thread-Sessions via <code>--agent</code> geladen. Lokale und claude.ai-MCP-Server verbinden standardmäßig gleichzeitig – spürbar schnellerer Start bei gemischten Server-Setups.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.117</span>
+        <span class="entry-date">22. April 2026</span>
+        <div class="entry-title">/model-Auswahl bleibt über Neustarts & /resume mit Session-Zusammenfassung</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>/model</code>-Auswahl bleibt über Neustarts erhalten, auch wenn das Projekt ein anderes Modell pinnt – der Startbildschirm zeigt an, woher das aktive Modell stammt (Projekt-Pin, Managed Settings). <code>/resume</code> bietet bei veralteten großen Sessions an, diese vor dem Laden zusammenzufassen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.117</span>
+        <span class="entry-date">22. April 2026</span>
+        <div class="entry-title">Fix-Paket: --resume, Write/Edit außerhalb Root, OOM bei /feedback & --bare</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>--resume</code> schlug bei Sessions vor v2.1.85 fehl. Write/Edit/Read versagten bei Dateien außerhalb des Projekt-Roots (z. B. <code>~/.claude/CLAUDE.md</code>). <code>/feedback</code> konnte bei sehr langen Sessions zum OOM-Crash führen. <code>--bare</code> verwarf MCP-Tools in interaktiven Sessions; unnötige Config-Schreibvorgänge bei jeder Skill-Nutzung wurden eliminiert.</p>
+    </div>
 
     <!-- v2.1.116 | 20.04.2026 -->
     <div class="entry" data-cat="Performance">
