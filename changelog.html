@@ -152,9 +152,70 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 23. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 24. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.118 | 23.04.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.118</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Vim Visual Mode: v & V mit Operatoren-Unterstützung</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der Vim-Modus bekommt <code>v</code> (visual) und <code>V</code> (visual-line) zur Textauswahl mit visuellem Feedback. Ausgewählter Text lässt sich sofort per <code>d</code> (löschen), <code>y</code> (kopieren) oder <code>c</code> (ersetzen) bearbeiten. Prompt-Editierung erreicht damit ein neues Komfort-Level für Vim-Nutzer.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.118</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">/usage – /cost und /stats in einem Befehl vereint</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>/cost</code> und <code>/stats</code> wurden zu einem einzigen <code>/usage</code>-Befehl zusammengeführt; beide alten Kürzel öffnen weiterhin den jeweiligen Tab. Abonnement-Nutzer sehen zusätzlich eine Cache-Hit-Aufschlüsselung pro Modell – bessere Übersicht über tatsächlichen Ressourcenverbrauch.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.118</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Custom Themes: /theme-Picker, ~/.claude/themes/ & Plugin-Themes</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Eigene Farbschemata lassen sich über <code>/theme</code> erstellen und wechseln oder direkt als JSON in <code>~/.claude/themes/</code> ablegen. Plugins können Themes jetzt über ein <code>themes/</code>-Verzeichnis mitliefern. Die <code>/color</code>-Auswahl synchronisiert die Akzentfarbe live zu <code>claude.ai/code</code>, wenn Remote Control aktiv ist.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.118</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Hooks rufen MCP-Tools direkt auf via type: "mcp_tool"</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Hooks können jetzt mit <code>type: "mcp_tool"</code> MCP-Tools ohne Umweg über Shell-Befehle direkt aufrufen. Das ermöglicht vollständig deklarative Automatisierungspipelines, die MCP-Funktionen als native Hook-Aktionen nutzen – z. B. zum Posten von Slack-Nachrichten oder Auslösen von CI-Jobs bei bestimmten Events.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.118</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">DISABLE_UPDATES & WSL erbt Windows Managed Settings</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Die neue Umgebungsvariable <code>DISABLE_UPDATES</code> sperrt sämtliche Update-Pfade inklusive manuellem <code>claude update</code> – strenger als <code>DISABLE_AUTOUPDATER</code>, ideal für gesperrte Enterprise-Umgebungen. Per Policy-Schlüssel <code>wslInheritsWindowsSettings</code> kann WSL unter Windows die Windows-seitigen Managed Settings übernehmen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.118</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Fix-Paket: MCP-OAuth, /login, Credential-Crash & /model-Picker</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">MCP-Server mit <code>headersHelper</code> zeigen jetzt OAuth-Aktionen korrekt; HTTP/SSE-Server stecken nach transientem 401 nicht mehr fest; fehlendes <code>expires_in</code> im Token erzwingt keine stündliche Re-Auth mehr. <code>/login</code> in Sessions mit <code>CLAUDE_CODE_OAUTH_TOKEN</code> löscht den Env-Token korrekt. Credential-Speicher-Crash auf Linux/Windows (korrupte <code>~/.claude/.credentials.json</code>) behoben.</p>
+    </div>
 
     <!-- v2.1.117 | 22.04.2026 -->
     <div class="entry" data-cat="Produktivität">
