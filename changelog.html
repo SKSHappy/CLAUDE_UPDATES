@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 24. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 25. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.119 | 23.04.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.119</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">/config Persistenz, prUrlTemplate & CLAUDE_CODE_HIDE_CWD</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Settings aus <code>/config</code> werden jetzt dauerhaft in <code>~/.claude/settings.json</code> gespeichert (mit project/local/policy-Priorität). Über <code>prUrlTemplate</code> lassen sich Code-Review-URLs anpassen – wichtig für GitHub Enterprise, GitLab oder Bitbucket. <code>CLAUDE_CODE_HIDE_CWD</code> blendet das Arbeitsverzeichnis im Startup-Logo aus.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.119</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">--from-pr unterstützt jetzt GitLab, Bitbucket & GitHub Enterprise</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc"><code>--from-pr</code> akzeptiert jetzt MR-URLs von GitLab, PR-URLs von Bitbucket und GitHub Enterprise – nicht mehr nur github.com. <code>owner/repo#N</code>-Kurzlinks nutzen automatisch den Host des Git-Remotes. Damit funktioniert der PR-Import nahtlos in beliebigen Enterprise-Umgebungen.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.119</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Agent-Frontmatter: permissionMode & Tool-Filter in --print</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc"><code>--agent &lt;name&gt;</code> respektiert jetzt die <code>permissionMode</code>-Direktive aus dem Agent-Frontmatter – keine manuelle Berechtigungsübergabe mehr nötig. <code>--print</code>-Modus berücksichtigt <code>tools:</code> und <code>disallowedTools:</code> aus dem Frontmatter, sodass Nicht-interaktive Agenten sauber eingeschränkt laufen.</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.119</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Hooks mit duration_ms & parallele MCP-Rekonfiguration</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc"><code>PostToolUse</code>- und <code>PostToolUseFailure</code>-Hooks enthalten jetzt <code>duration_ms</code> – die tatsächliche Ausführungszeit jedes Tools. Subagenten und SDK-MCP-Server werden bei Rekonfiguration parallel neu verbunden statt seriell – deutlich schnellere Agenten-Initialisierung in großen Setups.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.119</span>
+        <span class="entry-date">23. April 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Paste, Glob/Grep, MCP-OAuth, Windows & mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">CRLF-Paste (Windows-Clipboard, Xcode) fügt keine Leerzeilen mehr ein; Multi-Line-Paste verliert keine Zeilenumbrüche in Kitty-Terminals mehr. Glob/Grep-Tools verschwinden nicht mehr bei verweigertem Bash-Tool. Behoben: MCP-OAuth-Fehler bei Non-JSON-Bodys, <code>/skills</code> Enter-Key-Bug, MCP-Server auf Windows mit unvollständigem Plugin-Cache sowie der streunende <code>p</code>-Buchstabe beim Start auf macOS Terminal.app.</p>
+    </div>
 
     <!-- v2.1.118 | 23.04.2026 -->
     <div class="entry" data-cat="UI/UX">
