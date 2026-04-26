@@ -152,9 +152,20 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 25. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 26. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.120 | 24.04.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.120</span>
+        <span class="entry-date">24. April 2026</span>
+        <div class="entry-title">Kritische Regression – Automatischer Rollback auf v2.1.119</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">v2.1.120 verursachte einen Crash beim Fortsetzen von Sessions via <code>--resume</code> und <code>--continue</code>. Anthropic löste automatisch ein Auto-Update-Rollback auf v2.1.119 aus. Weitere Regressionen: stiller Modellwechsel, WSL2-<code>/mcp</code>-Freeze, ignoriertes <code>CLAUDE.md</code>, gebrochenes <code>sandbox.excludedCommands</code> und ein macOS-Worktree-Hang. Manueller Downgrade: <code>claude install 2.1.119</code>.</p>
+    </div>
 
     <!-- v2.1.119 | 23.04.2026 -->
     <div class="entry" data-cat="Produktivität">
