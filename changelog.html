@@ -152,9 +152,20 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 26. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 27. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.121 | 26.04.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.121</span>
+        <span class="entry-date">26. April 2026</span>
+        <div class="entry-title">Hotfix-Paket: MCP Non-JSON, Headless-Auto-Titel & Remote Control</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Behebt eine seit v2.1.105 bestehende Regression: stdio-MCP-Server, die nicht-JSON-Zeilen auf stdout ausgeben, wurden nach der ersten ungültigen Zeile getrennt – stray lines werden jetzt ignoriert statt die Verbindung zu kappen. Headless-/SDK-Sessions lösen keinen zusätzlichen Haiku-Request für Auto-Titel mehr aus, wenn <code>CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</code> oder <code>CLAUDE_CODE_DISABLE_TERMINAL_TITLE</code> gesetzt ist. Außerdem: <code>/skills</code>-Menü scrollt korrekt im Fullscreen-Modus; Remote-Control-Sessions zeigen Re-Login-Prompt statt generischem Fehler; Titel-Umbenennungen von claude.ai werden lokal persistiert.</p>
+    </div>
 
     <!-- v2.1.120 | 24.04.2026 -->
     <div class="entry" data-cat="Fix">
@@ -308,6 +319,26 @@
         <span class="badge badge-Fix">Fix</span>
       </div>
       <p class="entry-desc"><code>--resume</code> schlug bei Sessions vor v2.1.85 fehl. Write/Edit/Read versagten bei Dateien außerhalb des Projekt-Roots (z. B. <code>~/.claude/CLAUDE.md</code>). <code>/feedback</code> konnte bei sehr langen Sessions zum OOM-Crash führen. <code>--bare</code> verwarf MCP-Tools in interaktiven Sessions; unnötige Config-Schreibvorgänge bei jeder Skill-Nutzung wurden eliminiert.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.117</span>
+        <span class="entry-date">22. April 2026</span>
+        <div class="entry-title">Native Glob/Grep via bfs & ugrep statt JavaScript</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Auf macOS und Linux ersetzen eingebettete native Binaries (<code>bfs</code> für Filesystem-Traversal, <code>ugrep</code> für Textsuche) die bisherige JavaScript-Implementierung der Glob- und Grep-Tools. Ergebnisse werden früher gestreamt und in sehr großen Repos deutlich schneller geliefert – ein spürbarer Geschwindigkeitsvorteil bei Code-Suchen über umfangreiche Codebasen.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.117</span>
+        <span class="entry-date">22. April 2026</span>
+        <div class="entry-title">Default Effort "high" für Pro/Max-Nutzer auf Opus 4.6 & Sonnet 4.6</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Pro- und Max-Abonnenten arbeiten jetzt standardmäßig mit <code>effort: high</code> auf Claude Opus 4.6 und Sonnet 4.6 – ohne manuelle Konfiguration. Das bedeutet tieferes Reasoning bei komplexen Aufgaben, ohne dass Nutzer explizit den Effort-Level setzen müssen. Bessere Ergebnisse werden damit zum Standard statt zur Opt-in-Option.</p>
     </div>
 
     <!-- v2.1.116 | 20.04.2026 -->
