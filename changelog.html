@@ -152,9 +152,81 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 27. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 28. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.121 | 28.04.2026 – Finale Release -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.121</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">MCP alwaysLoad, Plugin Prune & Skills-Suchfeld</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">MCP-Server-Konfiguration erhält eine neue <code>alwaysLoad</code>-Option — damit stehen alle Tools dieses Servers immer zur Verfügung, ohne Tool-Search-Deferral. Neuer Befehl <code>claude plugin prune</code> entfernt verwaiste Plugin-Abhängigkeiten; <code>plugin uninstall --prune</code> kaskadiert automatisch. Im <code>/skills</code>-Menü gibt es jetzt ein Filterfeld zum schnellen Auffinden von Skills in langen Listen.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.121</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Vertex AI mTLS, MCP Auto-Retry & PostToolUse Output-Replacement</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Vertex AI unterstützt jetzt X.509-zertifikatbasierte Workload Identity Federation (mTLS ADC) für sichere Enterprise-Authentifizierung. MCP-Server, die beim Start auf transiente Fehler stoßen, werden automatisch bis zu 3× neu verbunden statt verbunden zu bleiben. <code>PostToolUse</code>-Hooks können jetzt über <code>hookSpecificOutput.updatedToolOutput</code> die Tool-Ausgabe für alle Tools ersetzen — bisher nur für MCP-Tools möglich.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.121</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Fullscreen: Kein Scroll-Sprung beim Tippen, scrollbare Dialoge & URL-Klick</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Im Fullscreen-Modus springt der Scrollback beim Tippen nicht mehr nach unten, wenn man zuvor nach oben gescrollt hat. Dialoge, die den Terminal überlaufen, sind jetzt mit Pfeiltasten, PgUp/PgDn, Home/End und Mausrad scrollbar. Umbrochene URLs über mehrere Zeilen können jetzt komplett per Klick geöffnet werden.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.121</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Memory-Leaks, --resume-Crash & Scrollback-Duplikate behoben</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Mehrere kritische Memory-Leaks behoben: unbegrenztes RSS-Wachstum (multi-GB) bei vielen Bildern, ~2 GB Leak in <code>/usage</code> bei großen Transcript-Historien, Leak bei langlaufenden Tool-Fehlern. <code>--resume</code>-Crash und Korruption bei großen Sessions behoben. Scrollback-Duplikate in tmux, GNOME Terminal, Windows Terminal und Konsole beim Ctrl+L / Redraw eliminiert.</p>
+    </div>
+
+    <!-- v2.1.120 | 28.04.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.120</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Windows: Kein Git Bash mehr nötig + claude ultrareview CLI</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Windows-Nutzer brauchen Git for Windows (Git Bash) nicht mehr — wenn nicht vorhanden, nutzt Claude Code automatisch PowerShell als Shell-Tool. Neuer Subbefehl <code>claude ultrareview [target]</code> führt Code-Reviews nicht-interaktiv aus CI oder Skripten aus; Ergebnisse kommen auf stdout (<code>--json</code> für maschinenlesbares Format), Exit-Code 0 bei Erfolg, 1 bei Fehler.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.120</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Skills ${CLAUDE_EFFORT}, AI_AGENT Env-Variable & Auto-Compact-Anzeige</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Skills können jetzt den aktuellen Effort-Level über den Platzhalter <code>${CLAUDE_EFFORT}</code> referenzieren. Die Umgebungsvariable <code>AI_AGENT</code> wird automatisch für Subprozesse gesetzt, damit Tools wie <code>gh</code> Traffic korrekt Claude Code zuschreiben. Auto-Compact im Auto-Modus zeigt jetzt <code>auto</code> statt eines irreführenden Token-Zählwerts.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.120</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Fix-Paket: Esc-Crash, Scrollback-Duplikate & Telemetrie-Unterdrückung</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Esc während eines stdio-MCP-Tool-Calls schloss fälschlicherweise die gesamte Server-Verbindung (Regression seit 2.1.105) — jetzt behoben. <code>DISABLE_TELEMETRY</code> und <code>CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</code> unterdrücken jetzt zuverlässig Usage-Metriken auch für API- und Enterprise-Nutzer. Scrollback-Duplikate bei Terminal-Resize und langen Sessions behoben; <code>find</code>-Tool überschreitet keine File-Descriptor-Limits mehr.</p>
+    </div>
 
     <!-- v2.1.121 | 26.04.2026 -->
     <div class="entry" data-cat="Fix">
