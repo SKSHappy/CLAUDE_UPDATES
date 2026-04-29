@@ -152,9 +152,61 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 28. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 29. April 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.123 | 29.04.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.123</span>
+        <span class="entry-date">29. April 2026</span>
+        <div class="entry-title">Hotfix: OAuth 401-Retry-Loop bei CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Wenn <code>CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1</code> gesetzt war, schlug die OAuth-Authentifizierung mit einer endlosen 401-Retry-Schleife fehl. Der Fix behebt die Regression sofort — kein Workaround mehr nötig.</p>
+    </div>
+
+    <!-- v2.1.122 | 28.04.2026 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.122</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">ANTHROPIC_BEDROCK_SERVICE_TIER, /resume PR-URL-Suche & MCP-Duplikat-Hinweis</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Neue Umgebungsvariable <code>ANTHROPIC_BEDROCK_SERVICE_TIER</code> wählt den Bedrock-Service-Tier (<code>default</code>, <code>flex</code>, <code>priority</code>) via HTTP-Header. PR-URLs lassen sich jetzt direkt in die <code>/resume</code>-Suchbox einfügen — Claude Code findet automatisch die dazugehörige Session (GitHub, GHE, GitLab, Bitbucket). <code>/mcp</code> zeigt nun versteckte claude.ai-Connectors mit einem Hinweis, wenn ein manuell hinzugefügter Server dieselbe URL belegt.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.122</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">OpenTelemetry: Numerische Attribute & at-mention-Event</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Numerische Attribute auf <code>api_request</code>- und <code>api_error</code>-Log-Events werden jetzt korrekt als Zahlen statt Strings emittiert — bessere Kompatibilität mit OTEL-Backends. Neu: <code>claude_code.at_mention</code>-Log-Event für <code>@</code>-Mention-Auflösungen ermöglicht präziseres Tracing von Kontextreferenzen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.122</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Fix-Paket: /branch, /model, Vertex AI, Bilder & Remote-Control</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>/branch</code>-Forks schlugen mit "tool_use ids were found without tool_result blocks" fehl, wenn die Quell-Session umgeschriebene Zeitlinien enthielt. <code>/model</code> zeigte keine Effort-Option für Bedrock-ARNs und sendete kein <code>output_config.effort</code>. Vertex AI und Bedrock gaben <code>invalid_request_error: Extra inputs are not permitted</code> zurück; der <code>count_tokens</code>-Endpunkt lieferte 400-Fehler hinter Proxy-Gateways. Bilder wurden fälschlicherweise auf 2576px statt 2000px skaliert. Remote-Control-Sessions zeichneten den Idle-Status zweimal pro Sekunde neu, was tmux-CC-Pipes flutete.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.122</span>
+        <span class="entry-date">28. April 2026</span>
+        <div class="entry-title">Voice Mode: Caps-Lock-Warnung & fehlerhafte Einstellungsdatei tolerant</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Keybindings, die auf Caps Lock gebunden sind, zeigen jetzt einen klaren Fehler — Terminals liefern Caps Lock nicht als Key-Event. Ein fehlerhafter <code>hooks</code>-Eintrag in <code>settings.json</code> macht die gesamte Datei nicht mehr ungültig; der Rest der Einstellungen wird weiterhin geladen. Leere Assistant-Nachrichten in manchen Sessions durch veraltete View-Präferenz behoben.</p>
+    </div>
 
     <!-- v2.1.121 | 28.04.2026 – Finale Release -->
     <div class="entry" data-cat="Entwicklung">
