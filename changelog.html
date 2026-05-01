@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 29. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 1. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.126 | 01.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">claude project purge, OAuth-Code-Paste & Gateway-Modell-Picker</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Neuer Befehl <code>claude project purge [path]</code> löscht alle Claude-Code-Daten eines Projekts (Transcripts, Tasks, Dateihistorie, Konfig-Eintrag) mit Unterstützung für <code>--dry-run</code>, <code>--yes</code> und <code>--interactive</code>. <code>claude auth login</code> akzeptiert jetzt den OAuth-Code direkt im Terminal, wenn der Browser-Callback nicht erreichbar ist — ideal für WSL2, SSH und Container. Der <code>/model</code>-Picker listet automatisch Modelle vom <code>/v1/models</code>-Endpoint eines benutzerdefinierten Gateways (<code>ANTHROPIC_BASE_URL</code>).</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Sicherheitsfix: Sandbox-Policy-Bypass, Windows-Clipboard-Datenschutz & Permissions-Erweiterung</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Kritischer Fix: <code>allowManagedDomainsOnly</code> und <code>allowManagedReadPathsOnly</code> wurden ignoriert, wenn eine höher priorisierte Managed-Settings-Quelle keinen <code>sandbox</code>-Block enthielt. Auf Windows schreibt der Clipboard-Befehl nicht mehr in die Prozess-Kommandozeile — kopierte Inhalte sind damit für EDR/SIEM-Tools nicht mehr sichtbar; außerdem werden Selections über 22 KB jetzt korrekt in die Zwischenablage geschrieben. <code>--dangerously-skip-permissions</code> umgeht jetzt auch Schreibprompts für <code>.claude/</code>, <code>.git/</code>, <code>.vscode/</code> und Shell-Config-Dateien.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Roter Spinner bei Permission-Stall, Ctrl+L-Fix & CJK-Textrendering auf Windows</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Im Auto-Modus dreht sich der Spinner jetzt rot, wenn eine Permission-Abfrage wartet — statt wie ein laufendes Tool auszusehen. <code>Ctrl+L</code> erzwingt nur noch einen Screen-Redraw statt den Prompt-Inhalt zu löschen (entspricht readline-Verhalten). Japanische, koreanische und chinesische Zeichen wurden im Windows-No-Flicker-Modus als Kauderwelsch angezeigt — jetzt korrekt gerendert. Übermäßig schnelles Trackpad-Scrollen in den integrierten Terminals von Cursor und VS Code 1.92–1.104 ist behoben.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Windows: PowerShell 7 als primäre Shell & MCP-Connector-Fixes</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">PowerShell 7, installiert via Microsoft Store, MSI ohne PATH oder als .NET Global Tool, wird jetzt automatisch erkannt und als primäre Shell genutzt (statt Bash-Fallback). claude.ai MCP-Connectors wurden fälschlicherweise unterdrückt, wenn ein manuell hinzugefügter Server im „needs-auth"-Zustand feststeckte — jetzt behoben. Der Remote-Control-Retry zeigt jetzt bei jedem Versuch das Ergebnis statt dauerhaft „connecting…" anzuzeigen; initiale Verbindungsfehler werden direkt erkannt und klar gemeldet.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: Bilder-Crash, Stream-Timeout, Agent-SDK-Hang & OAuth-Race</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Einfügen eines Bildes über 2000px brach die Session — Bilder werden jetzt beim Paste automatisch skaliert und zu große Bilder in der History entfernt und der Request automatisch wiederholt. „Stream idle timeout" nach Mac-Sleep sowie bei langen Thinking-Pausen in Hintergrund- und Remote-Sessions behoben. Agent-SDK-Hänger bei fehlerhaftem Tool-Namen in parallelen Tool-Calls und der API-Retry-Countdown, der bei „0s" festhielt, sind ebenfalls gefixt. Eine seltene Race-Condition, die einen gültigen OAuth-Refresh-Token überschreiben konnte, wurde beseitigt.</p>
+    </div>
 
     <!-- v2.1.123 | 29.04.2026 -->
     <div class="entry" data-cat="Fix">
