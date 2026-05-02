@@ -152,9 +152,50 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 29. April 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 2. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.126 | 01.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">claude project purge & OAuth-Paste im Terminal</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Neuer Befehl <code>claude project purge [pfad]</code> löscht alle Claude-Code-Zustandsdaten eines Projekts (Transcripts, Tasks, Dateihistorie, Config) auf einmal. OAuth-Login akzeptiert jetzt einen direkt ins Terminal eingefügten Auth-Code — ideal für WSL2, SSH-Sessions und Container, wo der Browser-Callback nicht erreichbar ist.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Gateway-Modellpicker via /v1/models & Windows PowerShell als primäre Shell</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Der Modellpicker listet jetzt automatisch alle Modelle vom <code>/v1/models</code>-Endpunkt, wenn <code>ANTHROPIC_BASE_URL</code> auf ein kompatibles Gateway zeigt — kein manuelles Pflegen der Modellliste mehr nötig. Auf Windows wird PowerShell 7 (Store- und MSI-Installation) zuverlässiger erkannt und als primäre Shell eingesetzt, wenn kein Bash verfügbar ist.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Sicherheits-Fixes: allowManagedDomainsOnly & Clipboard-Datenleck</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Die Einstellung <code>allowManagedDomainsOnly</code> / <code>allowManagedReadPathsOnly</code> wurde ignoriert, wenn höherpriorisierte Quellen keine Sandbox-Konfiguration enthielten — jetzt korrekt durchgesetzt. Clipboard-Operationen auf Windows schreiben kopierten Inhalt nicht mehr als Prozessargument, was ihn in EDR/SIEM-Telemetrie exponierte.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: Bilder, OAuth-Timeouts, Stream-Idle & Subagenten</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Bilder &gt;2000 px werden beim Einfügen automatisch skaliert; zu große History-Bilder werden entfernt und Requests neu versucht. OAuth-Timeouts auf langsamen Verbindungen, IPv6-only-Umgebungen und bei nicht erreichbarem Localhost behoben. „Stream idle timeout"-Fehler nach Mac-Sleep-Wake gelöst. Deferred Tools stehen jetzt Subagenten mit <code>context: fork</code> zur Verfügung; Agent SDK hängt nicht mehr bei fehlerhaften parallelen Tool-Call-Batches.</p>
+    </div>
 
     <!-- v2.1.123 | 29.04.2026 -->
     <div class="entry" data-cat="Fix">
