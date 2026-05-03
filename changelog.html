@@ -152,7 +152,7 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 2. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 3. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
 
@@ -195,6 +195,17 @@
         <span class="badge badge-Fix">Fix</span>
       </div>
       <p class="entry-desc">Bilder &gt;2000 px werden beim Einfügen automatisch skaliert; zu große History-Bilder werden entfernt und Requests neu versucht. OAuth-Timeouts auf langsamen Verbindungen, IPv6-only-Umgebungen und bei nicht erreichbarem Localhost behoben. „Stream idle timeout"-Fehler nach Mac-Sleep-Wake gelöst. Deferred Tools stehen jetzt Subagenten mit <code>context: fork</code> zur Verfügung; Agent SDK hängt nicht mehr bei fehlerhaften parallelen Tool-Call-Batches.</p>
+    </div>
+
+    <!-- v2.1.126 | 01.05.2026 – zusätzlich -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.126</span>
+        <span class="entry-date">1. Mai 2026</span>
+        <div class="entry-title">--dangerously-skip-permissions erweitert & OTEL skill_activated-Event</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc"><code>--dangerously-skip-permissions</code> überspringt jetzt auch Schreib-Prompts für <code>.claude/skills/</code>, <code>.claude/agents/</code>, <code>.claude/commands/</code>, <code>.git/</code>, <code>.vscode/</code> und Shell-Konfigurationsdateien – kritische Löschbefehle fordern weiterhin Bestätigung. Neues OpenTelemetry-Event <code>claude_code.skill_activated</code> feuert bei jedem Skill-Aufruf mit dem Attribut <code>invocation_trigger</code> (<code>"user-slash"</code>, <code>"claude-proactive"</code> oder <code>"nested-skill"</code>) für präzises Tracing von Skill-Nutzungsmustern in Agentic-Pipelines.</p>
     </div>
 
     <!-- v2.1.123 | 29.04.2026 -->
