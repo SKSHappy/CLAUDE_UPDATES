@@ -152,9 +152,40 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 3. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 5. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.128 | 04.05.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.128</span>
+        <span class="entry-date">4. Mai 2026</span>
+        <div class="entry-title">/color Zufallsfarbe, /model-Picker aufgeräumt & Focus-Mode-Fixes</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>/color</code> ohne Argumente wählt jetzt eine zufällige Session-Farbe — praktisch für die schnelle visuelle Unterscheidung mehrerer Terminals. Der <code>/model</code>-Picker kollabiert duplizierte Opus-4.7-Einträge und zeigt das aktuelle Modell wieder einfach als „Opus". Außerdem: Focus-Mode dimmt nicht mehr kurz die vorherige Antwort beim Abschicken, und das störende „4;0;"-Desktop-Popup bei jedem <code>/exit</code> in Kitty-Terminals ist behoben.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.128</span>
+        <span class="entry-date">4. Mai 2026</span>
+        <div class="entry-title">/mcp Tool-Count, --plugin-dir ZIP-Support, --channels per API-Key & MCP workspace-Name reserviert</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc"><code>/mcp</code> zeigt jetzt die Anzahl geladener Tools pro Server und markiert Server, die mit 0 Tools verbunden haben — erleichtert die Fehlersuche bei MCP-Setups. <code>--plugin-dir</code> akzeptiert nun auch <code>.zip</code>-Archive statt nur Verzeichnisse. <code>--channels</code> funktioniert jetzt auch mit Console-/API-Key-Authentifizierung (opt-in via <code>channelsEnabled: true</code>). Der MCP-Servername <code>workspace</code> ist reserviert; bestehende Server mit diesem Namen werden mit einer Warnung übersprungen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.128</span>
+        <span class="entry-date">4. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: EnterWorktree-Branch, >10 MB stdin-Crash, parallele Shell-Calls & Sub-Agenten-Spam</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>EnterWorktree</code> erstellt den neuen Branch jetzt korrekt vom lokalen HEAD statt von <code>origin/&lt;default-branch&gt;</code> — nicht gepushte Commits gehen nicht mehr verloren. Crash-Schleife beim Pipen von >10 MB via <code>claude -p</code> stdin behoben. Fehlschlagende Read-only-Shell-Calls (grep, git diff, ls) brechen keine parallelen Geschwister-Calls mehr ab. Sub-Agenten-Zusammenfassungen feuern nicht mehr wiederholt, wenn der Transcript statisch bleibt — signifikante Token-Einsparung bei inaktiven Sub-Agenten. Subprozesse (Bash, Hooks, MCP) erben keine <code>OTEL_*</code>-Variablen mehr, was OTEL-instrumentierte Apps vor ungewollter Interferenz mit dem CLI-eigenen OTLP-Endpunkt schützt.</p>
+    </div>
 
     <!-- v2.1.126 | 01.05.2026 -->
     <div class="entry" data-cat="Produktivität">
