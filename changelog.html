@@ -152,9 +152,50 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 5. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 6. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.129 | 06.05.2026 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.129</span>
+        <span class="entry-date">6. Mai 2026</span>
+        <div class="entry-title">--plugin-url Flag, Plugin-Manifest experimental & Gateway-Discovery opt-in</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Mit <code>--plugin-url &lt;url&gt;</code> können Plugin-<code>.zip</code>-Archive jetzt direkt per URL für die aktuelle Session geladen werden — kein lokales Entpacken mehr nötig. Plugin-Manifeste deklarieren <code>themes</code> und <code>monitors</code> künftig unter <code>"experimental": { ... }</code> (Top-Level noch möglich, aber mit Warnung). Die automatische Gateway-Modell-Erkennung via <code>/v1/models</code> ist auf opt-in zurückgestellt (<code>CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1</code>), nachdem sie in 2.1.126–2.1.128 ungewollt aktiv war.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.129</span>
+        <span class="entry-date">6. Mai 2026</span>
+        <div class="entry-title">Ctrl+R projektübergreifend, Auto-Update via Paketmanager & skillOverrides</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>Ctrl+R</code> im History-Picker durchsucht wieder standardmäßig alle Projekte (Verhalten vor 2.1.124); mit <code>Ctrl+S</code> wird auf das aktuelle Projekt eingegrenzt. Neu: <code>CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</code> aktualisiert Claude Code auf Homebrew/WinGet automatisch im Hintergrund mit Neustart-Prompt. Die Einstellung <code>skillOverrides</code> ist jetzt funktionsfähig mit den Modi <code>off</code>, <code>user-invocable-only</code> und <code>name-only</code>.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.129</span>
+        <span class="entry-date">6. Mai 2026</span>
+        <div class="entry-title">FORCE_SYNC_OUTPUT für Emacs eat, OTel PR-Counter & sauberere Drittanbieter-Spinner</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Die neue Umgebungsvariable <code>CLAUDE_CODE_FORCE_SYNC_OUTPUT=1</code> erzwingt synchrone Terminal-Ausgabe für Terminals wie Emacs <code>eat</code>, bei denen die Auto-Erkennung versagt. OpenTelemetry zählt mit <code>claude_code.pull_request.count</code> jetzt auch PRs/MRs, die über MCP-Tools erstellt werden. Für Bedrock-, Vertex-, Foundry- und <code>ANTHROPIC_BASE_URL</code>-Deployments werden keine Spinner-Tipps mehr zu Anthropic-eigenen Oberflächen angezeigt.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.129</span>
+        <span class="entry-date">6. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: Context-Token-Waste, Prompt-Cache-TTL, OAuth-Race, VSCode /clear & mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>/context</code> verschwendete ~1.600 Tokens pro Aufruf — behoben. Der Prompt-Cache-TTL wurde fälschlicherweise von 1 Stunde auf 5 Minuten herabgestuft; außerdem werden nach <code>/clear</code> keine falschen Cache-Miss-Warnungen mehr angezeigt. Weitere Fixes: OAuth-Race-Condition nach Schlaf-Modus, <code>/clear</code> in VSCode löscht jetzt den Kontext korrekt, Emoji-Rendering im Fullscreen, <code>deniedMcpServers</code>-Wildcard-Patterns mit gemischter Groß-/Kleinschreibung, WebSocket-Warnung im Voice-Mode sowie diverse UI-Fixes (Session-Titel, Agent-Panel, Pfeil-Navigation in <code>/agents</code>).</p>
+    </div>
 
     <!-- v2.1.128 | 04.05.2026 -->
     <div class="entry" data-cat="UI/UX">
