@@ -152,9 +152,51 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 6. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 7. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.132 | 07.05.2026 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.132</span>
+        <span class="entry-date">7. Mai 2026</span>
+        <div class="entry-title">CLAUDE_CODE_SESSION_ID im Bash-Subprozess & Alternate-Screen deaktivierbar</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc"><code>CLAUDE_CODE_SESSION_ID</code> ist jetzt in der Bash-Subprozess-Umgebung verfügbar und entspricht der <code>session_id</code>, die an Hooks übergeben wird — nützlich für Shell-Skripte, die sessionspezifisch reagieren müssen. Mit <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code> kann der Fullscreen-Alternate-Screen-Renderer deaktiviert werden, sodass Konversationen im nativen Terminal-Scrollback verbleiben statt im separaten Vollbild.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.132</span>
+        <span class="entry-date">7. Mai 2026</span>
+        <div class="entry-title">UI-Verbesserungen: Paste-Hinweis, Autocomplete-Skalierung & Fullscreen-Banner</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Während Ctrl+V-Bilder aus der Zwischenablage gelesen werden, erscheint jetzt ein „Pasting…"-Hinweis in der Fußzeile. Die Slash-Command-Autocomplete-Liste skaliert mit der Terminalhöhe statt bei 3–5 Einträgen abzuschneiden. Das <code>/tui fullscreen</code>-Startbanner wurde aktualisiert und weist nun auch auf geringeren Speicherverbrauch, Mausunterstützung und Auto-Copy-on-Select hin.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.132</span>
+        <span class="entry-date">7. Mai 2026</span>
+        <div class="entry-title">Großes Fix-Paket: SIGINT-Shutdown, --resume, Unicode, Paste, Scrolling & MCP</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Externer SIGINT (IDE-Stop, <code>kill -INT</code>) führt jetzt graceful shutdown durch — Terminal-Modi werden wiederhergestellt und der <code>--resume</code>-Hinweis erscheint statt eines abrupten Abbruchs. <code>--resume</code> schlägt nicht mehr fehl, wenn ein Emoji durch Truncation beschädigt wurde. Weitere Fixes: Blanck-Screen nach Schlaf/Wake behoben, korrektes Cursor-Verhalten bei Indic-Zeichen/ZWJ-Emoji, Paste-Text mit <code>/</code> am Anfang wurde verschluckt, Mausrad in VS Code/Cursor und JetBrains 2025.2 korrigiert, unbegrenztes Speicherwachstum bei stdio-MCP-Servern behoben, Bedrock/Vertex-400-Fehler mit <code>ENABLE_PROMPT_CACHING_1H</code> behoben.</p>
+    </div>
+
+    <!-- v2.1.131 | 06.05.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.131</span>
+        <span class="entry-date">6. Mai 2026</span>
+        <div class="entry-title">Fix: VS Code Extension Windows-Crash & Mantle-Authentifizierung</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Die VS Code Extension scheiterte auf Windows beim Aktivieren wegen eines hartcodierten Build-Pfads im gebündelten SDK (<code>createRequire</code>-Polyfill-Bug) — jetzt behoben. Zusätzlich wurde die fehlschlagende Authentifizierung am Mantle-Endpoint durch einen fehlenden <code>x-api-key</code>-Header korrigiert.</p>
+    </div>
 
     <!-- v2.1.129 | 06.05.2026 -->
     <div class="entry" data-cat="Integration">
