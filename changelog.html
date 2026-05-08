@@ -152,9 +152,50 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 7. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 8. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.133 | 08.05.2026 -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.133</span>
+        <span class="entry-date">8. Mai 2026</span>
+        <div class="entry-title">worktree.baseRef, sandbox.bwrapPath/socatPath & parentSettingsBehavior für managed Policies</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Das neue Setting <code>worktree.baseRef</code> (<code>fresh</code> | <code>head</code>) steuert, von welchem Commit aus <code>--worktree</code>, <code>EnterWorktree</code> und Agent-Isolation-Worktrees abzweigen — entweder vom Remote-Default-Branch oder vom lokalen HEAD. Mit <code>sandbox.bwrapPath</code> und <code>sandbox.socatPath</code> können unter Linux/WSL benutzerdefinierte Pfade für die Bubblewrap- und Socat-Binaries hinterlegt werden. Der Admin-Tier-Key <code>parentSettingsBehavior</code> (<code>'first-wins'</code> | <code>'merge'</code>) regelt, wie SDK-<code>managedSettings</code>-Policies zusammengeführt werden.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.133</span>
+        <span class="entry-date">8. Mai 2026</span>
+        <div class="entry-title">Hooks erhalten Effort-Level & verbesserter Focus-Mode</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Hooks bekommen das aktuell gewählte Effort-Level jetzt als <code>effort.level</code>-Feld im JSON-Input und als Umgebungsvariable <code>$CLAUDE_EFFORT</code> — damit können Shell-Skripte ihr Verhalten dynamisch an den gesetzten Aufwandsmodus anpassen. Zusätzlich wurde das Focus-Mode-Verhalten verbessert, sodass Kontextwechsel zuverlässiger und ohne UI-Artefakte funktionieren.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.133</span>
+        <span class="entry-date">8. Mai 2026</span>
+        <div class="entry-title">Speicheroptimierung: Warm-Spare-Worker werden unter Speicherdruck freigegeben</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Claude Code hält im Hintergrund vorgewärmte Worker-Prozesse bereit, um neue Aufgaben schnell starten zu können. Ab v2.1.133 werden diese Warm-Spare-Worker bei Speicherdruck automatisch freigegeben, was den RAM-Verbrauch bei länger laufenden Sessions oder auf Systemen mit wenig Arbeitsspeicher spürbar senkt.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.133</span>
+        <span class="entry-date">8. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: Auth-Race 401, Drive-Permissions, MCP OAuth, Remote-Control & Subagenten</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Parallele Sessions enden nicht mehr in einer 401-Endlosschleife durch einen Refresh-Token-Race-Condition-Fix. <code>Edit</code>/<code>Write</code>-Allow-Rules auf Laufwerk-Root-Ebene matchen nun korrekt, und Lese-/Schreibzugriff auf gemappte Netzlaufwerke ist wieder zuverlässig. Weitere Fixes: MCP-OAuth-Flows bei Proxy/mTLS, Remote-Control-Unterbrechung bricht CLI-Sessions vollständig ab, <code>/effort</code> in einer Session beeinflusst parallele Sessions nicht mehr, Subagenten entdecken jetzt projekt-, nutzer- und plugin-seitige Skills, und das VSCode-<code>claudeCode.claudeProcessWrapper</code>-Setting schlägt auf nicht unterstützten Plattformen nicht mehr fehl.</p>
+    </div>
 
     <!-- v2.1.132 | 07.05.2026 -->
     <div class="entry" data-cat="Entwicklung">
