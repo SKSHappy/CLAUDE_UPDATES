@@ -152,7 +152,7 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 10. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 11. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
 
@@ -187,6 +187,28 @@
         <span class="badge badge-Fix">Fix</span>
       </div>
       <p class="entry-desc">MCP-Server aus <code>.mcp.json</code>, Plugins und claude.ai-Connectors verschwinden nicht mehr nach <code>/clear</code>. WSL2-Nutzer können Bilder aus der Windows-Zwischenablage via PowerShell-Fallback einfügen. Außerdem: Plan-Mode blockiert Datei-Schreibvorgänge bei <code>Edit(...)</code>-Allow-Rules korrekt, <code>--resume</code>/<code>--continue</code> findet Sessions mit Unterstrichen im Pfad, und API-Fehler 400 bei Extended-Thinking nach Tool-Calls sind behoben.</p>
+    </div>
+
+    <!-- v2.1.136 UI/UX | 08.05.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.136</span>
+        <span class="entry-date">8. Mai 2026</span>
+        <div class="entry-title">Umfangreiche UI-Verbesserungen: Dialoge, Shortcuts & Slash-Commands</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Visuelle Konsistenz in allen Slash-Command-Dialogen vereinheitlicht. Tastaturkürzel-Hinweise spiegeln jetzt in <code>keybindings.json</code> umgebundene Keys korrekt wider. Backspace/Ctrl+Backspace wurden nach <code>Ctrl+G</code> vertauscht — behoben. Weitere Fixes: <code>/usage</code> zeigte Uhrzeit statt Kalenderdatum beim Wochenreset; Willkommensbanner überlief auf CJK-Terminals; <code>Esc</code> schloss Dialoge in <code>/install-github-app</code>, <code>/desktop</code>, <code>/resume</code> und <code>/web-setup</code> nicht; <code>/settings</code>-Sprachänderung wurde nach Escape zurückgesetzt; Prompt-Vorschläge wurden fälschlich per Enter auto-submitted. Marketplace-Entfernen-Taste auf <code>d</code> geändert (war <code>r</code>, kollidierte mit Retry).</p>
+    </div>
+
+    <!-- v2.1.136 Entwicklung | 08.05.2026 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.136</span>
+        <span class="entry-date">8. Mai 2026</span>
+        <div class="entry-title">Plugin & Hooks Entwickler-Fixes: Skills-Dir, ENV-Stale, Bash-Diagnostics</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Ein <code>skills</code>-Eintrag in <code>plugin.json</code> verbarg das Standard-<code>skills/</code>-Verzeichnis des Plugins — behoben. IDE Shell-Integration Lock-Files ignorieren nun <code>CLAUDE_CONFIG_DIR</code> nicht mehr. Umgebungsvariablen aus <code>CLAUDE_ENV_FILE</code>-SessionStart-Hooks wurden nach <code>/resume</code> oder <code>/clear</code> veraltet — jetzt korrekt. Bash-Permission-Prompts zeigten interne Parser-Diagnose statt einer verständlichen Erklärung. Plugin-Slash-Commands mit Leerzeichen lösten nicht zur Namespace-Form auf; Plugin-Deinstallation und Enable/Disable ignorierte Groß-/Kleinschreibung im Slug. MCP-Tool-Ergebnisse blieben unsichtbar, wenn der Server Content-Blocks zurückgab — jetzt korrekt dargestellt.</p>
     </div>
 
     <!-- v2.1.133 | 08.05.2026 -->
