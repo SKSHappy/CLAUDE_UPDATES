@@ -152,9 +152,75 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 11. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 12. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.139 Agent View | 12.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.139</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">Agent View (Research Preview): Zentrales Dashboard aller Sessions</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der neue Befehl <code>claude agents</code> zeigt alle Claude Code Sessions in einer einheitlichen Übersicht — laufend, auf Eingabe wartend oder abgeschlossen. Damit lassen sich parallele Agenten-Workflows erstmals direkt aus dem Terminal heraus überwachen und steuern, ohne zwischen mehreren Terminalfenstern wechseln zu müssen.</p>
+    </div>
+
+    <!-- v2.1.139 /goal | 12.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.139</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">/goal – Zielgesteuertes autonomes Arbeiten über mehrere Turns</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>/goal</code> setzt eine Abbruchbedingung — Claude arbeitet sitzungsübergreifend autonom weiter, bis das definierte Ziel erfüllt ist. Funktioniert im interaktiven Modus, mit <code>-p</code> und Remote Control; ein Live-Overlay zeigt Elapsed-Time, Anzahl der Turns und Token-Verbrauch in Echtzeit.</p>
+    </div>
+
+    <!-- v2.1.139 UI-Features | 12.05.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.139</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">/scroll-speed, Plugin-Details & verbesserte Transcript-Navigation</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>/scroll-speed</code> reguliert die Mausrad-Scrollgeschwindigkeit mit Live-Vorschau. <code>claude plugin details &lt;n&gt;</code> zeigt die Komponentenübersicht eines Plugins und die projizierten Token-Kosten pro Session. Die Transcript-Ansicht unterstützt jetzt <code>?</code> für Tastaturkürzel-Hilfe, <code>{</code>/<code>}</code> zum Springen zwischen User-Prompts und <code>v</code> zum Umschalten des Shortcut-Panels.</p>
+    </div>
+
+    <!-- v2.1.139 Terminal-Fixes | 12.05.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.139</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">Terminal-Fixes: Kitty-Protokoll, Ctrl+Z-Hänger & 67% schnelleres /resume</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Kitty-Protokoll-Korrekturen: <code>Ctrl+-</code> (Undo) und <code>Cmd+Left/Right</code> (Zeilenanfang/-ende) funktionieren jetzt in iTerm2, Ghostty, kitty und WezTerm. <code>Ctrl+Z</code> hängt das Terminal nicht mehr, wenn Claude Code via npx oder bun gestartet wurde. Scrollback-Duplikation bei Terminal-Resize behoben. <code>/resume</code> ist bei großen Sessions 67% schneller. Devanagari und andere indische Schriften werden ohne Spaltenversatz gerendert.</p>
+    </div>
+
+    <!-- v2.1.139 Sicherheit | 12.05.2026 -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.139</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">Kritische Sandbox-Sicherheitslücken geschlossen (rm-Bypass & mehr)</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Sandbox-Auto-Allow umging bisher die Gefahrenprüfung für <code>rm</code>/<code>rmdir</code> auf <code>/</code>, <code>$HOME</code> und anderen kritischen Verzeichnissen — jetzt geschlossen. <code>dangerouslyDisableSandbox</code> führte Befehle außerhalb der Sandbox ohne Bestätigungsprompt aus — behoben. <code>allowManagedDomainsOnly</code>/<code>allowManagedReadPathsOnly</code> wurden ignoriert, wenn ein höherrangiger Managed-Settings-Eintrag keinen Sandbox-Block enthielt.</p>
+    </div>
+
+    <!-- v2.1.139 Hook exec-Form | 12.05.2026 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.139</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">Hooks: string[]-exec-Form für sicheres Spawnen ohne Shell</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Hook-Args unterstützen jetzt ein <code>string[]</code>-Feld (exec-Form), das den Befehl direkt ohne Shell-Instanz startet. Path-Platzhalter müssen dadurch nicht mehr gequotet werden, was Hook-Definitionen sicherer und übersichtlicher macht — besonders relevant bei Pfaden mit Leerzeichen oder Sonderzeichen.</p>
+    </div>
 
     <!-- v2.1.137/138 | 09.05.2026 -->
     <div class="entry" data-cat="Fix">
