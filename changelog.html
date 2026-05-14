@@ -152,9 +152,81 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 12. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 14. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.141 | 13.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.141</span>
+        <span class="entry-date">13. Mai 2026</span>
+        <div class="entry-title">claude agents --cwd & „Summarize up to here" im Rewind-Menü</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>claude agents --cwd &lt;pfad&gt;</code> filtert die Session-Übersicht auf ein bestimmtes Verzeichnis, was Multi-Repo-Setups deutlich übersichtlicher macht. Das neue Rewind-Menü-Item „Summarize up to here" komprimiert den bisherigen Gesprächsverlauf zu einer Zusammenfassung und spart so Kontext-Token für lange Sessions.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.141</span>
+        <span class="entry-date">13. Mai 2026</span>
+        <div class="entry-title">terminalSequence-Hook-Feld, CLAUDE_CODE_PLUGIN_PREFER_HTTPS & ANTHROPIC_WORKSPACE_ID</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das neue <code>terminalSequence</code>-Feld in Hook-JSON-Ausgaben ermöglicht Desktop-Notifications, Fenstertitel und Bells auch ohne kontrollierende Terminal-Sitzung. <code>CLAUDE_CODE_PLUGIN_PREFER_HTTPS</code> erzwingt HTTPS statt SSH beim Klonen von GitHub-Plugins; <code>ANTHROPIC_WORKSPACE_ID</code> ermöglicht Workload-Identity-Federation für Enterprise-Setups.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.141</span>
+        <span class="entry-date">13. Mai 2026</span>
+        <div class="entry-title">Auto-Modus-Dialog erklärt Berechtigungsregeln & IDE-Diff-Option wiederhergestellt</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der Auto-Modus-Berechtigungsdialog zeigt jetzt explizit an, welche <code>permissions.ask</code>-Regel eine Bestätigung ausgelöst hat — das verbessert die Nachvollziehbarkeit erheblich. Die Option „Diff im IDE anzeigen" bei Datei-Bearbeitungs-Dialogen wurde wiederhergestellt, ebenso die verbesserte Plugin-Menü-Navigation mit Tab-Wechsel per <kbd>→</kbd>/<kbd>Tab</kbd>.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.141</span>
+        <span class="entry-date">13. Mai 2026</span>
+        <div class="entry-title">Background-Agents behalten Berechtigungsmodus & verbessertes Spinner-Feedback</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Via <code>/bg</code> oder <kbd>←←</kbd> gestartete Hintergrund-Agenten übernehmen jetzt den aktuellen Berechtigungsmodus statt auf den Standard zurückzufallen. Der Spinner wechselt nach 10 Sekunden zu Bernstein-Farbe als visuelles Signal für längere Denkphasen; <code>/feedback</code> kann nun Sessions der letzten 24 Stunden oder 7 Tage einschließen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.141</span>
+        <span class="entry-date">13. Mai 2026</span>
+        <div class="entry-title">Großes Fix-Paket: 50+ Korrekturen für MCP, Remote Control, Plugins & Terminal</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Über 50 Fixes in v2.1.141 betreffen u. a.: falsches Haiku-Modell-ID bei Drittanbieter-Plattformen, <code>claude daemon status</code> unter Windows, MCP HTTP/SSE 403-Fehler als „needs auth" statt „failed", Remote Control 401-Token-Rotation, <code>claude --model</code> in einer Session hat nicht mehr den Autocompact-Schwellwert anderer Sessions geändert, sowie diverse Terminal-, Keybinding- und Voice-Mode-Fixes.</p>
+    </div>
+
+    <!-- v2.1.140 | 12.05.2026 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.140</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">Agent-Tool: subagent_type case-insensitiv & neue Agenten-Farbpalette</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das <code>subagent_type</code>-Feld des Agent-Tools akzeptiert jetzt Werte unabhängig von Groß-/Kleinschreibung und Trennzeichen — z. B. wird <code>"Code Reviewer"</code> korrekt zu <code>code-reviewer</code> aufgelöst, was Tool-Match-Fehler bei LLM-Ausgaben deutlich reduziert. Gleichzeitig wurde die visuelle Farbpalette für Agenten aktualisiert.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.140</span>
+        <span class="entry-date">12. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: /goal-Hänger, Hot-Reload, --bg-Verbindungsfehler & Windows-Event-Loop</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>/goal</code> hängt sich nicht mehr auf, wenn <code>disableAllHooks</code> oder <code>allowManagedHooksOnly</code> gesetzt ist, sondern zeigt eine klare Fehlermeldung. Weitere Fixes: Settings-Hot-Reload mit Symlinks, <code>claude --bg</code>-Verbindungsabbrüche beim Service-Idle, Windows-Event-Loop-Stalls durch fehlende Executables, sowie das Read-Tool mit Leerzeichen-gepaddeten Offset-Strings.</p>
+    </div>
 
     <!-- v2.1.139 Agent View | 12.05.2026 -->
     <div class="entry" data-cat="Produktivität">
