@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 14. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 15. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.142 | 14.05.2026 -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.142</span>
+        <span class="entry-date">14. Mai 2026</span>
+        <div class="entry-title">Fast Mode nutzt jetzt Opus 4.7 als Standard-Modell</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Der Fast Mode wechselt von Opus 4.6 auf <strong>Opus 4.7</strong> als Standard — schnellere Ausgabe bei gleichzeitig gesteigerter Modellqualität. Wer bei Opus 4.6 bleiben möchte, setzt <code>CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE=1</code>.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.142</span>
+        <span class="entry-date">14. Mai 2026</span>
+        <div class="entry-title">claude agents: 8 neue Konfigurationsflags für Background-Sessions</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>claude agents</code> erhält die Flags <code>--add-dir</code>, <code>--settings</code>, <code>--mcp-config</code>, <code>--plugin-dir</code>, <code>--permission-mode</code>, <code>--model</code>, <code>--effort</code> und <code>--dangerously-skip-permissions</code>, mit denen dispatchte Hintergrund-Sessions vollständig konfigurierbar sind — ohne manuelle Env-Variablen oder separate Configs.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.142</span>
+        <span class="entry-date">14. Mai 2026</span>
+        <div class="entry-title">Plugin-Verbesserungen: SKILL.md-Auto-Erkennung, LSP-Server-Details & /web-setup-Schutz</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Plugins mit einer Root-Level <code>SKILL.md</code> ohne <code>skills/</code>-Unterordner werden jetzt automatisch als Skill erkannt. Das <code>/plugin</code>-Detailpanel sowie <code>claude plugin details</code> zeigen nun alle vom Plugin bereitgestellten LSP-Server an. <code>/web-setup</code> warnt jetzt vor dem Überschreiben einer bestehenden GitHub-App-Verbindung.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.142</span>
+        <span class="entry-date">14. Mai 2026</span>
+        <div class="entry-title">MCP_TOOL_TIMEOUT hebt 60-Sekunden-Cap auf & Compaction-Effizienz verbessert</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>MCP_TOOL_TIMEOUT</code> erhöht jetzt auch den per-Request-Fetch-Timeout für remote HTTP/SSE-MCP-Server — bisher war dieser auf 60 Sekunden begrenzt, unabhängig vom gesetzten Wert. Zudem startet die reaktive Kompaktierung mit der ursprünglichen Overflow-Größe statt sich beim ersten Versuch zu verschwenden.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.142</span>
+        <span class="entry-date">14. Mai 2026</span>
+        <div class="entry-title">Fix-Paket: macOS-Sleep-Deadlock, Daemon-Upgrade-Crash & Windows-Worktree-Hänger</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Background-Sessions erkennen jetzt vorhandene Git-Worktrees korrekt (statt den Edit-Zugriff zu blockieren). Der Daemon überlebt macOS-Sleep-/Wake-Zyklen ohne Deadlock, indem er Uhr-Sprünge erkennt. Zudem behoben: Daemon-Crash-Loop nach Binary-Upgrade, Windows-Deadlock bei Netzlaufwerk-Workdirs sowie fehlendes <code>$EDITOR</code>/<code>$VISUAL</code> in <code>claude agents</code>.</p>
+    </div>
 
     <!-- v2.1.141 | 13.05.2026 -->
     <div class="entry" data-cat="Produktivität">
