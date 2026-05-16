@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 15. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 16. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.143 | 15.05.2026 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.143</span>
+        <span class="entry-date">15. Mai 2026</span>
+        <div class="entry-title">Plugin-Abhängigkeitsverwaltung & Kontext-Kostenanzeige im Marketplace</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc"><code>claude plugin disable</code> verweigert nun das Deaktivieren, wenn ein anderes aktives Plugin davon abhängt — inkl. kopierbarem Deaktivierungs-Hinweis. <code>claude plugin enable</code> aktiviert transitive Abhängigkeiten automatisch mit. Neu: das <code>/plugin</code>-Marketplace-Browsepanel zeigt geschätzte Kontext-Kosten pro Turn und Invokation.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.143</span>
+        <span class="entry-date">15. Mai 2026</span>
+        <div class="entry-title">claude agents: Dashboard-Flags --add-dir, --settings, --mcp-config & mehr</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>claude agents</code> akzeptiert jetzt <code>--add-dir</code>, <code>--settings</code>, <code>--mcp-config</code>, <code>--plugin-dir</code>, <code>--permission-mode</code>, <code>--model</code>, <code>--effort</code> und <code>--dangerously-skip-permissions</code> — Flags gelten für das Dashboard selbst und für alle daraus gestarteten Hintergrund-Sessions. <code>/bg</code> und <code>←</code>-Detach übernehmen diese Einstellungen nun vollständig.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.143</span>
+        <span class="entry-date">15. Mai 2026</span>
+        <div class="entry-title">Background-Sessions: Modell & Effort nach Idle-Wakeup erhalten + Auto-Modus per Shift+Tab</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Hintergrund-Sessions merken sich das eingestellte Modell und den Effort-Level auch nach einem Idle-Wakeup — kein manuelles Neusetzen mehr nötig. In angehängten Agent-Sessions ist der Auto-Modus jetzt über <code>Shift+Tab</code> in den Berechtigungs-Zyklus integriert.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.143</span>
+        <span class="entry-date">15. Mai 2026</span>
+        <div class="entry-title">worktree.bgIsolation: "none" & PowerShell -ExecutionPolicy Bypass</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Neues Setting <code>worktree.bgIsolation: "none"</code> erlaubt Hintergrund-Sessions, direkt im Working Copy zu editieren — ideal für Repos, in denen Git-Worktrees unpraktisch sind. Das PowerShell-Tool übergibt ab sofort automatisch <code>-ExecutionPolicy Bypass</code> (opt-out: <code>CLAUDE_CODE_POWERSHELL_RESPECT_EXECUTION_POLICY=1</code>) und ist auf Windows für Bedrock/Vertex/Foundry standardmäßig aktiviert.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.143</span>
+        <span class="entry-date">15. Mai 2026</span>
+        <div class="entry-title">Fix-Paket v2.1.143: Startup-Hänger, SSE-Memory-Leak & 20+ weitere Korrekturen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Korrupte <code>.credentials.json</code> (non-array scopes) hängt CLI nicht mehr beim Start. HTTP/SSE-MCP-Server-Streams sind auf 16 MB/Frame begrenzt (kein unbegrenztes Speicherwachstum). Weitere Fixes: <code>/goal</code>-Evaluator feuert nicht mehr während laufender Subagents, Stop-Hooks mit wiederholten Blocks brechen nach 8 Iterationen ab, Worktree-Cleanup löscht keine ignorierten Dateien mehr via <code>rm -rf</code>.</p>
+    </div>
 
     <!-- v2.1.142 | 14.05.2026 -->
     <div class="entry" data-cat="Performance">

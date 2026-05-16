@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-05-15** — 177 Einträge (v2.1.83–v2.1.142, KW 14–20, März–Mai 2026)
+**2026-05-16** — 182 Einträge (v2.1.83–v2.1.143, KW 14–20, März–Mai 2026)
 
 ## Quellen
 
