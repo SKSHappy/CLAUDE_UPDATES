@@ -152,9 +152,60 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 20. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 21. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.146 | 21.05.2026 -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.146</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">/simplify umbenannt in /code-review mit optionalem Effort-Level</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der Slash-Command <code>/simplify</code> heißt jetzt <code>/code-review</code> und akzeptiert ein optionales Effort-Level (z.B. <code>/code-review high</code>) für gezielt tiefere Analysen. Außerdem unterdrückt der Auto-Modus <code>AskUserQuestion</code> nicht mehr, wenn ein Skill oder der Nutzer explizit darauf angewiesen ist — der Dialog erscheint jetzt zuverlässig.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.146</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">Windows PowerShell-Fehler + Background-Session-Fixes + NTFS-Junction-Schutz</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Der „command line is invalid"-Fehler bei <code>pwsh</code>-Installationen über winget oder den Microsoft Store (Regression seit v2.1.124) ist behoben. Beim Entfernen eines Background-Worktrees werden NTFS-Junctions nicht mehr fälschlicherweise in das Haupt-Repository verfolgt. Zusätzlich: <code>/background</code> verweigert keine Sessions mehr, deren einziger Eingabe ein Skill- oder Custom-Slash-Command war, und neu-erteilte „Nicht mehr fragen"-Berechtigungen bleiben nach dem Hintergrundlegen erhalten.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.146</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">MCP-Paginierung vollständig + Auto-Updater mit Retry-Logik</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">MCP-Endpunkte <code>resources/list</code>, <code>resources/templates/list</code> und <code>prompts/list</code> haben auf paginierenden Servern ab Seite 2 Einträge verloren — jetzt werden alle Seiten vollständig geladen. Der Auto-Updater wiederholt native Versionsabfragen und Downloads bei kurzzeitigen Netzwerkfehlern automatisch, statt sofort abzubrechen, und zeigt bei fehlgeschlagenen Updates die aktuelle Version korrekt an.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.146</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">Managed-Settings-Policies forceLoginOrgUUID & forceLoginMethod jetzt korrekt durchgesetzt</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Die Managed-Settings-Policies <code>forceLoginOrgUUID</code> und <code>forceLoginMethod</code> wurden bisher bei Third-Party-Provider- und API-Key-Sessions nicht konsequent erzwungen. Der Fix stellt sicher, dass Organisations-Login-Anforderungen in allen Session-Typen greifen — wichtig für Unternehmensumgebungen mit zentraler Zugriffskontrolle.</p>
+    </div>
+
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.146</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">Diff-Rendering-Performance für große Datei-Edits verbessert + Strobing-Fix auf Windows Terminal</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Das Rendering von Diffs bei umfangreichen Dateiänderungen wurde beschleunigt, was den Editor-Workflow bei großen Refactorings spürbar flüssiger macht. Zudem wurde das Vollbild-Strobing in angehängten Background-Sessions unter Windows Terminal während des Streamings behoben — die Anzeige bleibt jetzt stabil.</p>
+    </div>
 
     <!-- v2.1.145 | 19.05.2026 -->
     <div class="entry" data-cat="Entwicklung">
