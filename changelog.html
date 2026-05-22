@@ -152,9 +152,41 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 21. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 22. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.148 | 22.05.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.148</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">Hotfix: Bash-Tool gab auf allen Befehlen Exit-Code 127 zurück</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Kritische Regression aus v2.1.147 behoben: Das Bash-Tool lieferte für einige Nutzer bei jedem Befehl exit code 127 (Befehl nicht gefunden), was alle Shell-Aktionen blockierte. Der Fix stellt den korrekten Befehlsaufruf wieder her.</p>
+    </div>
+
+    <!-- v2.1.147 | 21.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.147</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">Angeheftete Background-Sessions (Ctrl+T) – bleiben idle am Leben</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Mit <code>Ctrl+T</code> im <code>claude agents</code>-Dashboard können Sessions jetzt angepinnt werden: Sie bleiben im Idle-Zustand aktiv, starten bei Updates direkt neu und werden erst unter Speicherdruck nach nicht-gepinnten Sessions beendet. Ideal für dauerhaft laufende Hintergrundprozesse.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.147</span>
+        <span class="entry-date">21. Mai 2026</span>
+        <div class="entry-title">40+ Bugfixes: Plugin-Agents, Hook-Bedingungen, CJK-Darstellung & mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Umfangreiches Fix-Paket für v2.1.147: Plugin-Agents mit mehreren <code>Agent(...)</code>-Typen behielten nur den letzten Eintrag (jetzt alle korrekt), Hook-<code>if</code>-Bedingungen wie <code>PowerShell(git push*)</code> matchten nie (behoben), eingefügter Text erschien als unlesbarer <code>[Pasted text #N]</code>-Platzhalter (behoben), doppelte Zeilen in der Agent-Ansicht auf Windows mit CJK-Zeichen sowie Layout-Fehler in <code>/plugin</code>, <code>/status</code> und <code>/permissions</code> wurden korrigiert.</p>
+    </div>
 
     <!-- v2.1.146 | 21.05.2026 -->
     <div class="entry" data-cat="UI/UX">
