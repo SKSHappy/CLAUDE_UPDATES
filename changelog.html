@@ -152,9 +152,81 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 22. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 23. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.150 | 23.05.2026 -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.150</span>
+        <span class="entry-date">23. Mai 2026</span>
+        <div class="entry-title">Interne Infrastruktur-Verbesserungen (keine sichtbaren Änderungen)</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Rein interne Verbesserungen an der Infrastruktur ohne nutzerseitige Änderungen. Stabilitäts- und Grundlagenarbeit für zukünftige Features.</p>
+    </div>
+
+    <!-- v2.1.149 | 22.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.149</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">/usage zeigt Aufschlüsselung nach Kategorien (Skills, Subagenten, Plugins, MCP)</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der <code>/usage</code>-Befehl zeigt jetzt eine detaillierte Aufschlüsselung der Nutzungslimits nach Kategorien: Skills, Subagenten, Plugins und MCP-Server. Damit lässt sich auf einen Blick erkennen, wo das Budget verbraucht wird.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.149</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">/diff scrollbar mit Tastatur (j/k, PgUp/PgDn, Space, Home/End)</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Die <code>/diff</code>-Detailansicht unterstützt jetzt vollständige Tastaturnavigation: Pfeiltasten, <code>j</code>/<code>k</code>, <code>PgUp</code>/<code>PgDn</code>, <code>Space</code>, <code>Home</code>/<code>End</code>. Große Diffs lassen sich damit komfortabel ohne Maus durchscrollen.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.149</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">GFM-Checkboxen in Markdown-Ausgabe gerendert (- [ ] / - [x])</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Markdown-Output rendert jetzt GitHub Flavored Markdown Task-List-Checkboxen korrekt als visuelle Checkboxen (<code>- [ ] offen</code> / <code>- [x] erledigt</code>). Nützlich für To-do-Listen und Statusberichte direkt im Terminal.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.149</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">Enterprise: allowAllClaudeAiMcps – Cloud-MCP-Konnektoren neben managed-mcp.json laden</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Neues Enterprise-Managed-Setting <code>allowAllClaudeAiMcps</code>: Admins können damit erlauben, dass alle claude.ai Cloud-MCP-Konnektoren zusätzlich zur <code>managed-mcp.json</code> geladen werden – ohne jeden Konnektor einzeln freischalten zu müssen.</p>
+    </div>
+
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.149</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">Sicherheitsfixes: PowerShell cd-Bypass, Sandbox-Worktree-Lücke & PWD-Variable-Tracking</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Drei Berechtigungs-Lücken geschlossen: (1) PowerShell-internes <code>cd</code> konnte Arbeitsverzeichnis unbemerkt ändern, (2) Sandbox-Write-Allowlist in Git-Worktrees deckte versehentlich das gesamte Haupt-Repo ab, (3) stale Variable-Tracking für <code>PWD</code>/<code>OLDPWD</code>/<code>DIRSTACK</code> ermöglichte Permission-Bypässe.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.149</span>
+        <span class="entry-date">22. Mai 2026</span>
+        <div class="entry-title">find im Bash-Tool crashte macOS (Vnode-Table-Erschöpfung) + 8 weitere UI-Fixes</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>find</code>-Aufrufe im Bash-Tool konnten auf macOS die System-File-/Vnode-Tabelle erschöpfen und den Host zum Absturz bringen – behoben. Außerdem: Managed-Settings-Dialog fror Terminal ein, <code>/ultraplan</code> schlug bei Remote-Sessions fehl, Thinking-Spinner blieb amber, Bash-Output zeigte falsche Zeilenzählung.</p>
+    </div>
 
     <!-- v2.1.148 | 22.05.2026 -->
     <div class="entry" data-cat="Fix">
