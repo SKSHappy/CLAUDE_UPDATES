@@ -152,9 +152,80 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 23. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 27. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.152 | 27.05.2026 -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">/code-review --fix & /simplify: Review-Ergebnisse direkt auf Working Tree anwenden</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc"><code>/code-review --fix</code> wendet alle Review-Vorschläge (Vereinfachungen, Wiederverwendung, Effizienz) automatisch auf den Working Tree an. <code>/simplify</code> ist jetzt ein direkter Alias für <code>/code-review --fix</code>. Damit entfällt das manuelle Übertragen von Review-Findings.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">Skill-Management: disallowed-tools im Frontmatter + /reload-skills + SessionStart-Titel</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Skills und Slash-Commands können im Frontmatter <code>disallowed-tools</code> definieren, um bestimmte Tools während des Skills zu deaktivieren. Neuer Befehl <code>/reload-skills</code> scannt Skill-Verzeichnisse ohne CLI-Neustart neu. <code>SessionStart</code>-Hooks können <code>reloadSkills: true</code> zurückgeben und den Session-Titel über <code>hookSpecificOutput.sessionTitle</code> setzen.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">MessageDisplay-Hook + pluginSuggestionMarketplaces + marketplace remove --scope</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Neues <code>MessageDisplay</code>-Hook-Event ermöglicht das Transformieren oder Ausblenden von Assistentennachrichten vor der Darstellung. Admins können mit dem neuen Managed-Setting <code>pluginSuggestionMarketplaces</code> org-spezifische Plugin-Marktplätze freischalten. <code>claude plugin marketplace remove</code> unterstützt jetzt <code>--scope user|project|local</code>.</p>
+    </div>
+
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">Auto-Modus ohne Opt-In-Pflicht + automatisches Fallback-Modell</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Der Auto-Modus erfordert keine explizite Einverständniserklärung mehr – er startet direkt. Ist das primäre Modell nicht verfügbar, wechselt Claude Code nahtlos zum konfigurierten <code>--fallback-model</code> für die verbleibende Session, ohne die Arbeit zu unterbrechen.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">Vim-Modus: / öffnet Rückwärts-Verlaufssuche + Thinking-Summaries & Live-Timer</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Im Vim-NORMAL-Modus öffnet <code>/</code> jetzt die Rückwärts-Verlaufssuche (wie <code>Ctrl+R</code>). Thinking-Zusammenfassungen in kollabierten Gruppen bleiben ≥3 Sekunden lesbar, werden als Markdown gerendert und auf 10 Zeilen begrenzt. Fullscreen-Modus zeigt einen live hochzählenden „Thinking for Ns"-Indikator; nach Antworten erscheint „Waiting for N background agents/workflows to finish".</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">OpenTelemetry: Session-Entrypoint als opt-in Metrik-Attribut</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc">Der Session-Entrypoint (CLI, Web, IDE, etc.) wird als neues OTEL-Metrik-Attribut <code>app.entrypoint</code> exportiert – opt-in via <code>OTEL_METRICS_INCLUDE_ENTRYPOINT=true</code>. Damit lassen sich CLI- vs. Web-Sessions in Observability-Stacks gezielt auswerten und vergleichen.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.152</span>
+        <span class="entry-date">27. Mai 2026</span>
+        <div class="entry-title">15+ Bugfixes: Markdown-Tabellen, Terminal-Styling, Plugin-MCPs, Thinking-Signaturen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Terminal-Styling-Degradierung in sehr langen Sessions behoben. Markdown-Tabellen rendern jetzt korrekt (Zellenränder, Fortsetzungszeilen, leere Header). Plugin-MCP-Server mit gleichem Befehl aber unterschiedlichen Env-Vars wurden fälschlich dedupliziert. <code>cache_creation_input_tokens</code> wurde als 0 gemeldet. Sessions konnten mit veralteten Thinking-Block-Signaturen hängen bleiben. Außerdem: Sandbox-Warning im Condensed-Modus, Focus-Mode Nachrichtenzähler, Link-Klicks in erweiterten Tool-Ergebnissen.</p>
+    </div>
 
     <!-- v2.1.150 | 23.05.2026 -->
     <div class="entry" data-cat="Performance">
