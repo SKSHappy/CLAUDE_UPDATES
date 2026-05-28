@@ -156,6 +156,37 @@
 
   <div id="entries">
 
+    <!-- v2.1.153 | 28.05.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.153</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">Background-Sessions: Windows-Strobing, NTFS-Junctions & /background mit Skill-Eingaben gefixt</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Fullscreen-Strobing in angehängten Hintergrund-Sessions unter Windows Terminal während Claude streamt ist behoben. Beim Entfernen eines Background-Job-Worktrees auf Windows werden NTFS-Junctions nicht mehr in das Haupt-Repo verfolgt. Außerdem lehnt <code>/background</code> keine Sessions mehr ab, deren einzige Eingabe ein Skill oder benutzerdefinierter Slash-Command war.</p>
+    </div>
+
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.153</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">MCP-Tool-Paginierung repariert + /model-Picker für Bedrock/Vertex (Opus 1M) wieder verfügbar</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">MCP-Server mit paginierten <code>tools/list</code>-Antworten lieferten bisher nur die erste Seite — alle weiteren Tools wurden stillschweigend übergangen. Behoben. Außerdem können Bedrock- und Vertex-Nutzer jetzt wieder „Opus (1M Context)" im <code>/model</code>-Picker auswählen (Regression seit v2.1.129).</p>
+    </div>
+
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.153</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">OTEL-Spans: agent_id & parent_agent_id für korrektes Subagenten-Tracing</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc"><code>claude_code.tool</code>-OTEL-Spans enthalten jetzt <code>agent_id</code> und <code>parent_agent_id</code> als Attribute — inklusive korrekter Trace-Parent-Zuordnung für Hintergrund-Subagenten. Damit lassen sich Multi-Agent-Workflows in Observability-Stacks (Jaeger, Honeycomb, Grafana Tempo) lückenlos nachverfolgen.</p>
+    </div>
+
     <!-- v2.1.152 | 27.05.2026 -->
     <div class="entry" data-cat="Entwicklung">
       <div class="entry-header">
