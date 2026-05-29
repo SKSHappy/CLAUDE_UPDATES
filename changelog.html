@@ -152,9 +152,61 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 27. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 29. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.156 | 29.05.2026 -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.156</span>
+        <span class="entry-date">29. Mai 2026</span>
+        <div class="entry-title">Opus 4.8 Thinking-Blocks Fix: API-Fehler bei modifizierten Denkblöcken behoben</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Behebt einen kritischen Fehler in Opus 4.8, bei dem intern modifizierte Thinking-Blocks zu API-Fehlern führten und die Session abbrachen. Nach diesem Fix verarbeitet Claude Code Thinking-Blocks korrekt, ohne sie unzulässig zu verändern — besonders wichtig für den neuen <code>/effort xhigh</code>-Modus.</p>
+    </div>
+
+    <!-- v2.1.154 | 28.05.2026 -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.154</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">Opus 4.8 ist da: Dynamic Workflows, /effort xhigh & Fast Mode 2×</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Claude Opus 4.8 ist jetzt Standard-Modell und bringt Dynamic Workflows: Claude orchestriert automatisch 10–100 Agenten im Hintergrund für komplexe Aufgaben. Der neue Modus <code>/effort xhigh</code> aktiviert maximale Denktiefe. Fast Mode auf Opus 4.8 läuft mit 2× Standard-Rate bei 2,5× Geschwindigkeit.</p>
+    </div>
+
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.154</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">Hintergrund-Shell-Befehle: ! &lt;command&gt; für detachable Background Sessions</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Mit <code>! &lt;command&gt;</code> oder <code>claude --bg --exec '&lt;command&gt;'</code> lassen sich Shell-Befehle in einer abgetrennten Hintergrund-Session starten. Die Session läuft weiter, auch wenn das Terminal geschlossen wird. Perfekt für lang laufende Build- oder Testprozesse.</p>
+    </div>
+
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.154</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">Lean System Prompt als Standard + /effort Slider umbenannt + /chrome Browser-Auswahl</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der schlanke System-Prompt ist jetzt für alle neuen Modelle (ab Opus 4.8) Standard. Der <code>/effort</code>-Slider zeigt nun „Faster" / „Smarter" statt „Speed" / „Intelligence". Über <code>/chrome</code> → „Browser auswählen…" lässt sich der Standard-Browser für Web-Sessions festlegen.</p>
+    </div>
+
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.154</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">Plugin defaultEnabled: false + Streaming Tool Execution immer aktiv</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Plugins können im <code>plugin.json</code>-Marketplace nun <code>defaultEnabled: false</code> setzen, um nicht automatisch aktiviert zu werden — nützlich für optionale Enterprise-Plugins. Streaming Tool Execution ist jetzt für alle Nutzer ohne Feature-Flag aktiviert, was die wahrgenommene Reaktionszeit deutlich verbessert.</p>
+    </div>
 
     <!-- v2.1.153 | 28.05.2026 -->
     <div class="entry" data-cat="Fix">
