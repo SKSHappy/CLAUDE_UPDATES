@@ -152,9 +152,64 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 29. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 30. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.158 | 30.05.2026 -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.158</span>
+        <span class="entry-date">30. Mai 2026</span>
+        <div class="entry-title">Auto-Modus jetzt auf Bedrock, Vertex &amp; Foundry verfügbar (Opus 4.7/4.8)</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Der Auto-Modus ist ab sofort auch für AWS Bedrock, Google Vertex und Azure Foundry verfügbar — jeweils mit Opus 4.7 und Opus 4.8. Aktivierung über die Umgebungsvariable <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>. Damit entfällt das manuelle Modell-Switching in Enterprise-Deployments.</p>
+    </div>
+
+    <!-- v2.1.157 | 29.05.2026 – Plugin & Skills -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.157</span>
+        <span class="entry-date">29. Mai 2026</span>
+        <div class="entry-title">Plugins in <code>.claude/skills</code> automatisch laden + <code>claude plugin init</code> + Autocomplete</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Plugins in lokalen <code>.claude/skills</code>-Verzeichnissen werden jetzt ohne Marketplace-Zugang automatisch geladen. Neuer Befehl <code>claude plugin init &lt;name&gt;</code> scaffoldet ein neues Plugin direkt im Projekt. Zusätzlich gibt es Autocomplete für <code>/plugin</code>-Argumente: Subcommands, installierte Plugin-Namen und bekannte Marketplace-Plugins.</p>
+    </div>
+
+    <!-- v2.1.157 | 29.05.2026 – Agents & Worktrees -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.157</span>
+        <span class="entry-date">29. Mai 2026</span>
+        <div class="entry-title">claude agents: agent-Feld in settings.json + EnterWorktree wechselt zwischen Worktrees</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Das <code>agent</code>-Feld in <code>settings.json</code> wird jetzt für dispatched Sessions berücksichtigt; per <code>--agent &lt;name&gt;</code> kann es überschrieben werden. <code>EnterWorktree</code> kann nun mid-Session zwischen Claude-verwalteten Worktrees wechseln — fertige Worktrees werden entsperrt, damit <code>git worktree remove/prune</code> sie aufräumen kann.</p>
+    </div>
+
+    <!-- v2.1.157 | 29.05.2026 – Telemetrie -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.157</span>
+        <span class="entry-date">29. Mai 2026</span>
+        <div class="entry-title">OTEL: tool_decision-Events mit tool_parameters (Bash-Befehle, MCP/Skill-Namen)</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc"><code>tool_decision</code>-Telemetrie-Events enthalten jetzt <code>tool_parameters</code> (ausgeführte Bash-Befehle, MCP- und Skill-Namen), wenn <code>OTEL_LOG_TOOL_DETAILS=1</code> gesetzt ist. Damit wird das Tracing von Tool-Nutzung in Observability-Pipelines deutlich detaillierter und auswertbarer.</p>
+    </div>
+
+    <!-- v2.1.157 | 29.05.2026 – Bugfixes -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.157</span>
+        <span class="entry-date">29. Mai 2026</span>
+        <div class="entry-title">Bugfixes: korrupte Bilder, Background-Sessions nach Schlaf, WSL-Verbesserungen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Unverarbeitbare Bilder (0-Byte, korrupt) führen nicht mehr zum Absturz, sondern werden als Text-Platzhalter eingefügt. Background-Sessions melden nach Sleep/Wake wieder das korrekte Datum. Weitere Fixes: Copy-on-Select in tmux, <code>--resume</code> zeigt Background-Subagenten, WSL-Bildpaste und Windows-Explorer-Drag-and-Drop. Performance-Verbesserungen bei langen Konversationen durch eliminiertes redundantes Message-Rendering.</p>
+    </div>
 
     <!-- v2.1.156 | 29.05.2026 -->
     <div class="entry" data-cat="Fix">
