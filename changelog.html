@@ -152,7 +152,7 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 30. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 31. Mai 2026 · <span id="count"></span></p>
 
   <div id="entries">
 
@@ -211,6 +211,17 @@
       <p class="entry-desc">Unverarbeitbare Bilder (0-Byte, korrupt) führen nicht mehr zum Absturz, sondern werden als Text-Platzhalter eingefügt. Background-Sessions melden nach Sleep/Wake wieder das korrekte Datum. Weitere Fixes: Copy-on-Select in tmux, <code>--resume</code> zeigt Background-Subagenten, WSL-Bildpaste und Windows-Explorer-Drag-and-Drop. Performance-Verbesserungen bei langen Konversationen durch eliminiertes redundantes Message-Rendering.</p>
     </div>
 
+    <!-- v2.1.157 | 29.05.2026 – Sicherheit & IDE -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.157</span>
+        <span class="entry-date">29. Mai 2026</span>
+        <div class="entry-title">Sandbox-Permissions-Fix, IDE Stop-Button &amp; GPU-Beschleunigung deaktiviert in VS Code</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Sandbox-Netzwerk-Permission-Dialoge erscheinen nicht mehr fälschlicherweise im Auto- und Bypass-Permissions-Modus (Desktop, IDE-Extensions, SDK). Der IDE-Stop-Button stoppt jetzt tatsächlich laufende Background-Subagenten. <code>/terminal-setup</code> deaktiviert GPU-Beschleunigung in VS Code, Cursor und Windsurf, um Darstellungsfehler zu verhindern. Neues <code>Workflow keyword trigger</code>-Setting in <code>/config</code> verhindert ungewollte Workflow-Trigger durch das Wort „workflow" im Prompt.</p>
+    </div>
+
     <!-- v2.1.156 | 29.05.2026 -->
     <div class="entry" data-cat="Fix">
       <div class="entry-header">
@@ -263,6 +274,17 @@
       <p class="entry-desc">Plugins können im <code>plugin.json</code>-Marketplace nun <code>defaultEnabled: false</code> setzen, um nicht automatisch aktiviert zu werden — nützlich für optionale Enterprise-Plugins. Streaming Tool Execution ist jetzt für alle Nutzer ohne Feature-Flag aktiviert, was die wahrgenommene Reaktionszeit deutlich verbessert.</p>
     </div>
 
+    <!-- v2.1.154 | 28.05.2026 – MCP Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.154</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">MCP-Sicherheit: .mcp.json-Server als ⏸ Pending approval + rm -rf $HOME Fix</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc"><code>claude mcp list/get</code> zeigt nicht-genehmigte <code>.mcp.json</code>-Server nun als <code>⏸ Pending approval</code> statt sie automatisch freizuschalten. Stdio MCP-Server-Subprozesse erhalten <code>CLAUDE_CODE_SESSION_ID</code> und <code>CLAUDECODE=1</code> als Umgebungsvariablen. Verbesserte Erkennung von Datenexfiltration im Auto-Modus (insb. Bulk-Repository-Transfers). Fix: <code>rm -rf $HOME</code> wird jetzt auch blockiert, wenn <code>$HOME</code> einen abschließenden Slash hat.</p>
+    </div>
+
     <!-- v2.1.153 | 28.05.2026 -->
     <div class="entry" data-cat="Fix">
       <div class="entry-header">
@@ -292,6 +314,17 @@
         <span class="badge badge-DevOps">DevOps</span>
       </div>
       <p class="entry-desc"><code>claude_code.tool</code>-OTEL-Spans enthalten jetzt <code>agent_id</code> und <code>parent_agent_id</code> als Attribute — inklusive korrekter Trace-Parent-Zuordnung für Hintergrund-Subagenten. Damit lassen sich Multi-Agent-Workflows in Observability-Stacks (Jaeger, Honeycomb, Grafana Tempo) lückenlos nachverfolgen.</p>
+    </div>
+
+    <!-- v2.1.153 | 28.05.2026 – CLI & macOS -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.153</span>
+        <span class="entry-date">28. Mai 2026</span>
+        <div class="entry-title">claude doctor: letztes Update-Ergebnis + macOS Privacy &amp; Security + Statusline COLUMNS/LINES</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc"><code>claude doctor</code> zeigt jetzt das Ergebnis des letzten Update-Versuchs an — ideal zur Diagnose von Update-Fehlern. Auf macOS erscheinen Background-Agents nun als „Claude Code" in den Datenschutz- &amp; Sicherheitseinstellungen. Status-Line-Skripte erhalten <code>COLUMNS</code> und <code>LINES</code> als Umgebungsvariablen. <code>claude agents</code>-Autocomplete umfasst jetzt native Slash-Commands und bundled Skills. Neu: <code>skipLfs</code>-Option für <code>github</code>/<code>git</code>-Plugin-Marketplace-Quellen.</p>
     </div>
 
     <!-- v2.1.152 | 27.05.2026 -->
