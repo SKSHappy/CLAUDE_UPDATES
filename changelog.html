@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 31. Mai 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 2. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.160 | 02.06.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.160</span>
+        <span class="entry-date">2. Juni 2026</span>
+        <div class="entry-title">Bestätigung vor Schreiben in Shell-Startup-Dateien &amp; Build-Tool-Configs</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Vor dem Schreiben in Shell-Startup-Dateien (<code>.zshenv</code>, <code>.zlogin</code>, <code>.bash_login</code>) und <code>~/.config/git/</code> erscheint jetzt immer eine explizite Bestätigungsabfrage. Im <code>acceptEdits</code>-Modus ist ebenfalls eine Bestätigung erforderlich, bevor Build-Tool-Konfigurationsdateien modifiziert werden, die Code-Ausführung erlauben (<code>.npmrc</code>, <code>.yarnrc*</code>, <code>bunfig.toml</code>, <code>.bazelrc</code>, <code>.pre-commit-config.yaml</code>, <code>.devcontainer/</code>, u.a.).</p>
+    </div>
+
+    <!-- v2.1.160 | 02.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.160</span>
+        <span class="entry-date">2. Juni 2026</span>
+        <div class="entry-title">Dynamic-Workflow-Trigger heißt jetzt „ultracode" + /effort ultracode + Single-file-grep</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das Trigger-Keyword für Dynamic Workflows wurde von <code>workflow</code> in <code>ultracode</code> umbenannt — damit wird unbeabsichtigtes Auslösen durch das alltägliche Wort „workflow" vermieden. Passend dazu wurde auch <code>/effort ultracode</code> eingeführt, mit verbesserter Fehlermeldung wenn das Modell diesen Modus nicht unterstützt. Zusätzlich: Single-file-<code>grep</code>-Befehle erfüllen jetzt die read-before-edit-Anforderung, ohne dass ein separater Read-Aufruf nötig ist.</p>
+    </div>
+
+    <!-- v2.1.160 | 02.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.160</span>
+        <span class="entry-date">2. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: WSL-Clipboard, Chat-Verlauf, Windows-Terminal &amp; CJK-IME</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Copy-on-Select auf Windows WSL verwendet jetzt PowerShell-Interop statt OSC 52. Abgeschlossene Sessions, die über <code>--resume</code> neu gestartet wurden, verlieren ihren Chat-Verlauf nicht mehr. Weitere Fixes: Sync-Output-Marker nicht mehr an inkompatible Terminals (Apple Terminal, tmux), Mausrad scrollt beim Session-Öffnen nicht mehr die Prompt-History, CJK-IME-Kompositions-Positionierung in der Agenten-Ansicht korrigiert, <code>file:///C:/</code>-Links auf Windows nicht mehr als broken Path gerendert, Agents-Liste fror durch Auto-Updater-Neuchecks ein, Eingabe auf Windows bei Background-Session-Attach reaktionsfähiger.</p>
+    </div>
+
+    <!-- v2.1.159 | 31.05.2026 -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.159</span>
+        <span class="entry-date">31. Mai 2026</span>
+        <div class="entry-title">Interne Infrastruktur-Verbesserungen (keine sichtbaren Änderungen)</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Rein interne Verbesserungen an der Infrastruktur ohne nutzerseitige Änderungen. Stabilitäts- und Grundlagenarbeit für zukünftige Features.</p>
+    </div>
 
     <!-- v2.1.158 | 30.05.2026 -->
     <div class="entry" data-cat="Integration">
