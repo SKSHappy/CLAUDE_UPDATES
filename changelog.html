@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 2. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 3. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.161 | 02.06.2026 – DevOps -->
+    <div class="entry" data-cat="DevOps">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.161</span>
+        <span class="entry-date">2. Juni 2026</span>
+        <div class="entry-title">OTEL Resource Attributes als Metric-Labels + Agenten-Ansicht zeigt done/total</div>
+        <span class="badge badge-DevOps">DevOps</span>
+      </div>
+      <p class="entry-desc"><code>OTEL_RESOURCE_ATTRIBUTES</code>-Werte werden jetzt als Labels auf Metric-Datenpunkten übernommen — damit lassen sich Nutzungsmetriken nach Team, Repo oder beliebiger Custom-Dimension aufschlüsseln. In der <code>claude agents</code>-Ansicht zeigen Zeilen nun <code>done/total</code> für laufende Agenten; der Peek-View hebt das am längsten laufende Item hervor. <code>/mcp</code> klappt ungenutzte claude.ai-Konnektoren hinter eine „Unused connectors"-Zeile zusammen.</p>
+    </div>
+
+    <!-- v2.1.161 | 02.06.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.161</span>
+        <span class="entry-date">2. Juni 2026</span>
+        <div class="entry-title">Parallele Tool-Aufrufe: Bash-Fehler blockieren andere Calls nicht mehr + Linux-Clipboard</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Schlägt ein Bash-Befehl innerhalb eines parallelen Tool-Batches fehl, werden die anderen Aufrufe nicht mehr abgebrochen — jeder Call gibt sein Ergebnis unabhängig zurück. Unter Linux werden jetzt <code>wl-copy</code>, <code>xclip</code> und <code>xsel</code> genutzt (falls vorhanden); es wird in Clipboard und PRIMARY-Selektion kopiert, sodass Middle-Click-Paste funktioniert. Das Terminal-Rendering profitiert von einem stabilisierten JIT-Kompilierungsprofil des Layout-Engines.</p>
+    </div>
+
+    <!-- v2.1.161 | 02.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.161</span>
+        <span class="entry-date">2. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: MCP-Secrets, forceLogin-Regression, /autofix-pr, Background-Sessions & mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>claude mcp list/get/add</code> druckte Secrets und expandierte <code>${VAR}</code>-Referenzen — behoben, Credential-Header werden jetzt redigiert. Die <code>forceLoginOrgUUID</code>/<code>forceLoginMethod</code>-Managed-Settings-Policy blockierte irrtümlich Drittanbieter-Sessions (Bedrock, Vertex, Foundry). Außerdem: <code>/autofix-pr</code> scheiterte im Git-Worktree, Background-Subagenten schrieben fälschlicherweise auf <code>claude -p</code>-stdout, <code>/usage-credits</code> startete Re-Login statt auf Org-Settings zu verweisen, Workflow-Agents mit <code>isolation: "worktree"</code> konnten Dateien in ihrem Worktree nicht bearbeiten, und fertige Subagenten blieben als „laufend" stecken.</p>
+    </div>
 
     <!-- v2.1.160 | 02.06.2026 – Sicherheit -->
     <div class="entry" data-cat="Sicherheit">
