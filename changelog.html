@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 3. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 4. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.162 | 03.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.162</span>
+        <span class="entry-date">3. Juni 2026</span>
+        <div class="entry-title">Remote Control als Footer-Pill + Devin Desktop + Startup-Meldungen komplett überarbeitet</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Remote Control wird nun als permanente Footer-Pill mit Session-Link angezeigt statt als einmalige Startup-Meldung — der Link bleibt jederzeit sichtbar. Windsurf wurde in <strong>Devin Desktop</strong> umbenannt (im <code>/ide</code>-Menü und verwandten Befehlen). Slash-Commands im Autocomplete-Menü füllen sich jetzt in den Prompt ein, statt sofort auszuführen. Startup-Hinweise wurden zu einer gruppierten Ansicht zusammengefasst, Warnungen kürzer und klarer formuliert, Launch-Prompt-Warnungen bleiben unter dem Input angeheftet, und fehlgeschlagene Turns zeigen eine kompakte Warnung statt einem mehrzeiligen roten Fehlerblock. Die Startup-Meldungen für „Claude in Chrome enabled" und „marketplace installed" wurden entfernt.</p>
+    </div>
+
+    <!-- v2.1.162 | 03.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.162</span>
+        <span class="entry-date">3. Juni 2026</span>
+        <div class="entry-title">claude agents --json zeigt waitingFor + --tools mit Grep/Glob + /effort-Default-Bestätigung</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc"><code>claude agents --json</code> enthält jetzt das Feld <code>waitingFor</code>, das anzeigt, worauf eine wartende Session blockiert ist — ideal für externes Monitoring und Scripting. Das <code>--tools</code>-Flag stellt bei expliziter Nennung von <code>Grep</code>/<code>Glob</code> dedizierte Such-Tools auf nativen Builds bereit. <code>/effort</code> bestätigt jetzt, wenn das gewählte Level als neuer Standard für künftige Sessions gespeichert wird.</p>
+    </div>
+
+    <!-- v2.1.162 | 03.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.162</span>
+        <span class="entry-date">3. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Startup-Hänger, Permissions, Agents-UI & Session-Messaging</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Behebt einen stillen Startup-Hänger bei schreibgeschütztem Config-Verzeichnis. WebFetch-Permission-Rules greifen jetzt auch für vorgenehmigte Domains. Windows-Permission-Rules matchten nie bei Backslashes oder Groß-/Kleinschreibungs-Varianten — behoben. Weitere Fixes: Esc-Interrupt zu Turnbeginn wurde in <code>stream-json</code>/SDK-Sessions ignoriert, API-400-Fehler bei Classifier-Queries mit Emoji nahe der Trunkierungsgrenze, MCP-<code>timeout</code>-Werte unter 1000 ms wurden auf 1 Sekunde gedeckelt, LSP-<code>workspaceSymbol</code> lieferte keine Ergebnisse. Agents-UI: Status-Text auf breiten Terminals abgeschnitten (60–120 Spalten), Session-Namen auf 40 Zeichen gestutzt, Attach sprang gelegentlich zur Session-Liste zurück, Ctrl+V-Bildpaste blieb wirkungslos. Session-Messaging: <code>←</code>-Hintergrundlegen verlor Konversation bei Service-Fehler, nicht gesendete Antworten gingen verloren statt in die Queue, Cross-Session-Messaging brach bei tiefem <code>CLAUDE_CODE_TMPDIR</code>/<code>$TMPDIR</code> zusammen, das Öffnen einer laufenden Background-Session hängte 5 Sekunden vor dem Attach.</p>
+    </div>
 
     <!-- v2.1.161 | 02.06.2026 – DevOps -->
     <div class="entry" data-cat="DevOps">
