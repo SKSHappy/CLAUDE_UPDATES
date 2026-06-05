@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 4. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 5. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.165 | 05.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.165</span>
+        <span class="entry-date">5. Juni 2026</span>
+        <div class="entry-title">Allgemeine Bugfixes & Zuverlässigkeitsverbesserungen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Stabilitäts- und Zuverlässigkeitsfixes ohne spezifische sichtbare Feature-Änderungen. Behebt interne Regressionsfehler, die im Zuge der v2.1.163/164-Releases aufgetreten sind, und verbessert die Gesamtzuverlässigkeit von Tool-Ausführung und Session-Handling.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">Managed Settings: Versionskontrolle mit requiredMinimumVersion / requiredMaximumVersion</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Managed Settings unterstützen jetzt die Felder <code>requiredMinimumVersion</code> und <code>requiredMaximumVersion</code>, mit denen Teams genau steuern können, für welche Claude-Code-Versionen eine Konfiguration gilt. Ideal für Enterprise-Deployments, bei denen rollende Rollouts oder versionsspezifische Policies gefordert sind — ältere Clients ignorieren inkompatible Settings automatisch.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">Stop- & SubagentStop-Hooks können additionalContext zurückgeben + Escape-Syntax für $</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc"><code>Stop</code>- und <code>SubagentStop</code>-Hooks können jetzt über <code>hookSpecificOutput.additionalContext</code> zusätzlichen Kontext an die nächste Session oder den Orchestrator zurückgeben — nützlich für Post-Processing, Logging oder das Weitergeben von State zwischen Agenten-Runs. Außerdem: Literal-Dollar-Zeichen vor Ziffern in Hook-Befehlen werden mit der neuen Escape-Syntax <code>\$</code> korrekt behandelt.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">/btw: Taste „c" kopiert Raw-Markdown in die Zwischenablage</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Im <code>/btw</code>-Overlay lässt sich der angezeigte Inhalt jetzt mit der Taste <kbd>c</kbd> als Raw-Markdown in die Zwischenablage kopieren. Damit entfällt das manuelle Markieren und Kopieren — besonders praktisch, um Context-Snippets direkt in andere Tools oder Dokumente einzufügen.</p>
+    </div>
 
     <!-- v2.1.162 | 03.06.2026 – UI/UX -->
     <div class="entry" data-cat="UI/UX">
