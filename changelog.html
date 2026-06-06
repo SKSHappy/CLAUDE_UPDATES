@@ -152,9 +152,64 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 5. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 6. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.167 | 06.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.167</span>
+        <span class="entry-date">6. Juni 2026</span>
+        <div class="entry-title">Allgemeine Bugfixes & Zuverlässigkeitsverbesserungen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Stabilitäts- und Zuverlässigkeitsfixes ohne spezifische sichtbare Feature-Änderungen. Behebt interne Regressionsfehler aus dem v2.1.166-Release und verbessert die Gesamtstabilität von Tool-Ausführung und Session-Handling.</p>
+    </div>
+
+    <!-- v2.1.166 | 06.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.166</span>
+        <span class="entry-date">6. Juni 2026</span>
+        <div class="entry-title">JetBrains-Flackern (2026.1+), PowerShell-Hang, Voice-Mode-Login & weitere Fixes</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Behebt Flackern in JetBrains-IDEs (IntelliJ, PyCharm, WebStorm) ab Version 2026.1+. Weitere Fixes: PowerShell-Befehlsvalidierung hing unter Windows, Voice-Mode erforderte nach <code>/voice</code>-Toggle erneut <code>/login</code>, fehlerhafte „Image could not be processed"-Fehlermeldungen mit Extra-Tokenverbrauch, sowie Remote-Sessions, die bei Backend-Störungen hingen. Shift+Nicht-ASCII-Zeichen werden im Kitty-Keyboard-Protokoll (WezTerm, Ghostty) nicht mehr gedroppt.</p>
+    </div>
+
+    <!-- v2.1.166 | 06.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.166</span>
+        <span class="entry-date">6. Juni 2026</span>
+        <div class="entry-title">Extended Thinking deaktivierbar via MAX_THINKING_TOKENS=0 & --thinking disabled</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Extended Thinking lässt sich nun über <code>MAX_THINKING_TOKENS=0</code>, das Flag <code>--thinking disabled</code> oder per-Modell-Toggle für Modelle deaktivieren, die standardmäßig denken (z.B. Opus 4.8). Claude Code wiederholt fehlgeschlagene Turns bei bestimmten nicht-retry-fähigen API-Fehlern automatisch auf dem Fallback-Modell. <code>claude update</code> kündigt die Zielversion jetzt vor dem Download an.</p>
+    </div>
+
+    <!-- v2.1.166 | 06.06.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.166</span>
+        <span class="entry-date">6. Juni 2026</span>
+        <div class="entry-title">Deny-Rules mit Glob-Patterns + Cross-Session-Messaging gehärtet</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Deny-Rules in Berechtigungsregeln unterstützen jetzt Glob-Patterns – mit <code>"*"</code> lassen sich alle Tools auf einmal sperren. Cross-Session-Messaging wurde gehärtet: weitergeleitete Nachrichten tragen keine Nutzer-Autorität mehr, und Berechtigungsanfragen anderer Claude-Sessions werden von Empfängern automatisch abgelehnt.</p>
+    </div>
+
+    <!-- v2.1.166 | 06.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.166</span>
+        <span class="entry-date">6. Juni 2026</span>
+        <div class="entry-title">fallbackModel: Bis zu 3 Fallback-Modelle konfigurierbar + --fallback-model für interaktive Sessions</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Das neue <code>fallbackModel</code>-Setting erlaubt bis zu drei Backup-Modelle, die automatisch aktiviert werden, wenn das primäre Modell überlastet oder nicht verfügbar ist. <code>--fallback-model</code> gilt jetzt auch für interaktive Sessions. In <code>claude agents</code> lässt sich per URL-Eingabe direkt zur Session filtern, deren erster Prompt diese URL enthielt.</p>
+    </div>
 
     <!-- v2.1.165 | 05.06.2026 – Fix -->
     <div class="entry" data-cat="Fix">
