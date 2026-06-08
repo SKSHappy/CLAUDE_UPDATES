@@ -152,7 +152,7 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 7. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 8. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
 
@@ -264,6 +264,50 @@
         <span class="badge badge-UI/UX">UI/UX</span>
       </div>
       <p class="entry-desc">Im <code>/btw</code>-Overlay lässt sich der angezeigte Inhalt jetzt mit der Taste <kbd>c</kbd> als Raw-Markdown in die Zwischenablage kopieren. Damit entfällt das manuelle Markieren und Kopieren — besonders praktisch, um Context-Snippets direkt in andere Tools oder Dokumente einzufügen.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">/plugin list: Installierte Plugins auflisten mit --enabled/--disabled-Filter</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Neuer Befehl <code>/plugin list</code> zeigt alle installierten Plugins auf einen Blick. Mit den Flags <code>--enabled</code> und <code>--disabled</code> lässt sich die Ausgabe filtern — ideal für Teams mit vielen Plugins oder zum schnellen Prüfen des Plugin-Status in automatisierten Setups.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">stdio-MCP-Server erhalten CLAUDE_CODE_SESSION_ID bei --resume + Skills \$-Escape</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">stdio-basierte MCP-Server erhalten bei <code>--resume</code>-Sessions nun die gleiche <code>CLAUDE_CODE_SESSION_ID</code> wie Hooks und Bash — das ermöglicht konsistentes Session-Tracking in integrierten Pipelines. Neu: In Skill-Befehlskörpern erlaubt die <code>\$</code>-Escape-Syntax ein literales Dollarzeichen vor einer Ziffer, was Kollisionen mit Shell-Variablen verhindert.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">Background-Agents updaten sich automatisch + Agents-Dispatch aus gruppierter Ansicht</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Hintergrund-Agenten-Sessions spielen Claude Code-Updates jetzt automatisch ein, ohne beim nächsten Öffnen einen Cold-Restart abwarten zu müssen. <code>claude agents</code> erlaubt Dispatching direkt aus der statusgruppierten Ansicht heraus und startet die Session im Verzeichnis, aus dem die Agents-Ansicht geöffnet wurde.</p>
+    </div>
+
+    <!-- v2.1.163 | 04.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.163</span>
+        <span class="entry-date">4. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: claude -p, Bedrock/Vertex, Bazel, Windows, Permissions & mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Behebt <code>claude -p</code>-Hänger nach Abschluss bei endlosem Hintergrundprozess (5s-Timeout nach stdin-Close). Behebt „ANTHROPIC_API_KEY required" auf Bedrock/Vertex/Foundry bei <code>CI=true</code>. Bash-Befehle funktionierten nicht unter Bazel- und EDR-geschützten Go-Workflows (<code>$TMPDIR</code>-Regression). Windows-Fix: „EEXIST" bei OneDrive-Pfaden. Org-managed Permissions greifen jetzt von Beginn an. Hintergrundtasks überleben Claude Code-Updates. Klemm-Tastatur nach Paste-Vorgang behoben. <code>if: "Bash(...)"</code>-Hook-Bedingungen feuerten fälschlich auf alle Bash-Befehle mit <code>$()</code>. Deny-Rules auf Homedir-Pfade (z. B. <code>~/Desktop/**</code>) blockieren jetzt auch <code>$HOME</code>-Varianten.</p>
     </div>
 
     <!-- v2.1.162 | 03.06.2026 – UI/UX -->
