@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 8. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 9. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.169 | 08.06.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.169</span>
+        <span class="entry-date">8. Juni 2026</span>
+        <div class="entry-title">--safe-mode zum Deaktivieren aller Anpassungen + /cd zum Wechseln des Arbeitsverzeichnisses</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Neues Flag <code>--safe-mode</code> (bzw. Umgebungsvariable <code>CLAUDE_CODE_SAFE_MODE</code>) startet Claude Code ohne CLAUDE.md, Plugins, Skills, Hooks und MCP-Server — ideal zur Fehlersuche bei unerwartetem Verhalten. Der neue <code>/cd</code>-Befehl wechselt das Arbeitsverzeichnis einer laufenden Session, ohne den Prompt-Cache zu invalidieren. Mit <code>disableBundledSkills</code>-Setting bzw. <code>CLAUDE_CODE_DISABLE_BUNDLED_SKILLS</code> lassen sich mitgelieferte Skills und Built-in-Slash-Commands vollständig ausblenden.</p>
+    </div>
+
+    <!-- v2.1.169 | 08.06.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.169</span>
+        <span class="entry-date">8. Juni 2026</span>
+        <div class="entry-title">Geringerer CPU-Verbrauch beim Streaming + Vertex/Foundry Idle-Timeout wiederhergestellt</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Der CPU-Verbrauch während Response-Streaming und Spinner-Animationen wurde deutlich reduziert. Auf Vertex und Foundry gilt wieder ein Standard-Idle-Timeout von 5 Minuten, damit hängende Streams automatisch abgebrochen werden — abschaltbar via <code>API_FORCE_IDLE_TIMEOUT=0</code>. Auf macOS mit claude.ai-Credentials entfällt ein UI-Stall von ~30–50 ms zu Beginn jedes Turns.</p>
+    </div>
+
+    <!-- v2.1.169 | 08.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.169</span>
+        <span class="entry-date">8. Juni 2026</span>
+        <div class="entry-title">claude agents --json erweitert + Enterprise-MCP-Policies + Background-Session-Flags persistent</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc"><code>claude agents --json</code> enthält jetzt geblockte und gerade gestartete Background-Sessions sowie neue Felder <code>id</code> und <code>state</code> für externes Monitoring. Enterprise-Managed-MCP-Policies werden jetzt auch bei Reconnect und IDE-typed-Configs korrekt erzwungen. Background-Sessions behalten <code>--ide</code>, <code>--chrome</code>, <code>--bare</code>, <code>--remote-control</code> und weitere Flags über Retire→Wake-Zyklen hinweg. <code>/workflows</code> öffnet jetzt sofort, auch während ein Turn läuft.</p>
+    </div>
+
+    <!-- v2.1.169 | 08.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.169</span>
+        <span class="entry-date">8. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Pfeiltasten-Navigation, Remote Control, Windows-Startprobleme & mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Pfeiltasten sprangen in der Befehlshistorie über umgebrochene Zeilen langer Eingaben hinweg — behoben. Remote Control hängte nach OAuth-Token-Refresh auf „reconnecting" — behoben. Windows: Git Credential Manager zeigte beim Start fälschlicherweise den „Connect to GitHub"-Dialog. <code>claude -p</code> war unter Windows langsam durch Skill-Scan beim Start. Nicht vertrauenswürdige Projekt-Settings konnten OTEL-Client-Zertifikatspfade ohne Bestätigung setzen. Weitere Fixes: Background-Agents ignorierten projektweite <code>env</code>-Werte, WSL-Agents-Ansicht hinterließ veralteten Frame nach Navigation, Plugin-<code>.in_use</code>-PID-Locks häuften sich unbegrenzt an, MCPB-Plugin-Cache wurde auf Windows grundlos invalidiert.</p>
+    </div>
 
     <!-- v2.1.168 | 06.06.2026 – Fix -->
     <div class="entry" data-cat="Fix">

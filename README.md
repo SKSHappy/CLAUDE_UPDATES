@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-08** — 250 Einträge (v2.1.83–v2.1.168, KW 14–23, März–Juni 2026) — +4 neue Einträge zu v2.1.163 (fehlende Features: /plugin list, MCP Session-ID, Background-Agent-Auto-Update, Fix-Paket)
+**2026-06-09** — 254 Einträge (v2.1.83–v2.1.169, KW 14–23, März–Juni 2026) — +4 neue Einträge zu v2.1.169 (--safe-mode, /cd, Performance, Fix-Paket)
 
 ## Quellen
 
