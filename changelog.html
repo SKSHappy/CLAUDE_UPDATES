@@ -152,9 +152,31 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 9. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 10. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.170 | 09.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.170</span>
+        <span class="entry-date">9. Juni 2026</span>
+        <div class="entry-title">Claude Fable 5 jetzt verfügbar — Mythos-Klasse-Modell für den allgemeinen Einsatz</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Claude Fable 5 ist ein Modell der Mythos-Klasse, das nun für den breiten Einsatz freigegeben wurde und in Fähigkeiten jedes bisher allgemein verfügbare Modell übertrifft. Ab <code>v2.1.170</code> steht Fable 5 direkt in Claude Code zur Verfügung — einfach <code>claude update</code> ausführen, um Zugang zu erhalten.</p>
+    </div>
+
+    <!-- v2.1.170 | 09.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.170</span>
+        <span class="entry-date">9. Juni 2026</span>
+        <div class="entry-title">VS Code-Terminal: Transkripte wurden nicht gespeichert und fehlten bei --resume</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Sessions, die aus dem VS Code Integrated Terminal (oder einer Shell, die Claude Code-Umgebungsvariablen geerbt hat) gestartet wurden, speicherten keine Transkripte und tauchten daher nicht in <code>--resume</code> auf. Der Fix stellt sicher, dass alle Session-Transkripte zuverlässig geschrieben werden, unabhängig von der Shell-Umgebung.</p>
+    </div>
 
     <!-- v2.1.169 | 08.06.2026 – Produktivität -->
     <div class="entry" data-cat="Produktivität">
