@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 10. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 11. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.173 | 11.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.173</span>
+        <span class="entry-date">11. Juni 2026</span>
+        <div class="entry-title">Fable-5-Modellnamen normalisiert &amp; Windows-Sandbox-Warnung behoben</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Fable-5-Modell-IDs mit dem Suffix <code>[1m]</code> wurden nicht normalisiert — da Fable 5 standardmäßig 1M Kontext enthält, wird das Suffix jetzt automatisch entfernt. Außerdem erschien beim Windows-Start eine fehlerhafte „Sandbox-Abhängigkeiten fehlen"-Warnung, wenn Sandbox in den Settings aktiviert war — behoben.</p>
+    </div>
+
+    <!-- v2.1.172 | 10.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.172</span>
+        <span class="entry-date">10. Juni 2026</span>
+        <div class="entry-title">Verschachtelte Sub-Agenten: bis zu 5 Ebenen tief möglich</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Sub-Agenten können jetzt eigene Sub-Agenten spawnen — bis zu 5 Verschachtelungsebenen tief. Das ermöglicht echte hierarchische Multi-Agent-Workflows, bei denen spezialisierte Agenten wiederum Teams von weiteren Agenten koordinieren können.</p>
+    </div>
+
+    <!-- v2.1.172 | 10.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.172</span>
+        <span class="entry-date">10. Juni 2026</span>
+        <div class="entry-title">Bedrock liest AWS-Region aus ~/.aws + /plugin-Suchleiste + OTEL model-Attribut</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Amazon Bedrock liest die AWS-Region jetzt aus <code>~/.aws</code>-Konfigurationsdateien, wenn <code>AWS_REGION</code> nicht gesetzt ist — gemäß AWS SDK Precedence; <code>/status</code> zeigt an, woher die Region stammt. Im <code>/plugin</code>-Marketplace gibt es jetzt eine Suchleiste beim Durchsuchen von Plugins. Das OTEL-Metrik <code>claude_code.lines_of_code.count</code> enthält jetzt ein <code>model</code>-Attribut für genauere Nutzungsauswertungen.</p>
+    </div>
+
+    <!-- v2.1.172 | 10.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.172</span>
+        <span class="entry-date">10. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: 1M-Kontext-Stuck, Background-Agents, VSCode PowerShell &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Sessions mit 1M-Kontext ohne Usage-Credits hingen sich permanent auf — behoben. Weiteres: Wiederholte „Bild konnte nicht verarbeitet werden"-Fehler, Agents-View hielt Sessions bis zu 30 Sekunden als „Working" fest, Background-Agents lasen Project-Settings ggf. aus dem falschen Verzeichnis, Background-Session-Attach scheiterte mit EAUTH, Sub-Agent blieb als „aktiv" im Panel stecken, <code>/model</code>-Vorschläge und Model-Picker-Probleme, WebFetch-Berechtigungsregeln matchten nicht korrekt, Pfeil-hoch-Verlauf in Subagent-Sessions, Team-Memory-Stores in Remote-Sessions nicht gefunden. [VSCode] PowerShell-Tool-Calls und ANSI-Escape-Code-Handling korrigiert.</p>
+    </div>
 
     <!-- v2.1.170 | 09.06.2026 – Integration -->
     <div class="entry" data-cat="Integration">
