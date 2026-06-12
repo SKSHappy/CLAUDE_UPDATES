@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-11** — 260 Einträge (v2.1.83–v2.1.173, KW 14–24, März–Juni 2026) — +4 neue Einträge zu v2.1.172 (Verschachtelte Sub-Agenten, Bedrock AWS-Region-Fix, /plugin-Suche) und v2.1.173 (Fable-5-Normalisierung, Windows-Sandbox-Fix)
+**2026-06-12** — 263 Einträge (v2.1.83–v2.1.175, KW 14–24, März–Juni 2026) — +3 neue Einträge zu v2.1.174 (VSCode Usage-Dialog, Bedrock GovCloud-Fix, /model-Picker, Background-Session-Env-Fix) und v2.1.175 (enforceAvailableModels Sicherheits-Setting)
 
 ## Quellen
 

@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 11. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 12. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.175 | 12.06.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.175</span>
+        <span class="entry-date">12. Juni 2026</span>
+        <div class="entry-title">enforceAvailableModels: Modell-Allowlist gilt auch für Default-Modell + kein User-Override</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Das neue Managed-Setting <code>enforceAvailableModels</code> bindet auch das Default-Modell an die <code>availableModels</code>-Allowlist — löst das Default auf ein nicht erlaubtes Modell auf, greift automatisch das erste erlaubte Modell. User- und Projekt-Settings können eine org-verwaltete <code>availableModels</code>-Liste nicht mehr erweitern, was Compliance-Anforderungen in Enterprise-Umgebungen zuverlässig durchsetzt.</p>
+    </div>
+
+    <!-- v2.1.174 | 12.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.174</span>
+        <span class="entry-date">12. Juni 2026</span>
+        <div class="entry-title">wheelScrollAccelerationEnabled + VSCode Nutzungsaufschlüsselung im Account-Dialog</div>
+        <span class="badge badge-UI/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Neues Setting <code>wheelScrollAccelerationEnabled</code> deaktiviert die Mausrad-Scroll-Beschleunigung im Fullscreen-Modus für präziseres Navigieren. Der VSCode Account &amp; Usage-Dialog (<code>/usage</code>) zeigt jetzt eine vollständige Aufschlüsselung nach Cache-Misses, Long-Context, Subagenten sowie per Skill/Agent/Plugin/MCP — mit Zeitraum-Auswahl (letzte 24h oder 7 Tage).</p>
+    </div>
+
+    <!-- v2.1.174 | 12.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.174</span>
+        <span class="entry-date">12. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: /model-Picker, Bedrock GovCloud, Background-Sessions, Co-Author &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Der <code>/model</code>-Picker zeigt jetzt korrekt, auf welches Modell „Default" auflöst (Opus auf Max/Enterprise, Sonnet auf Pro). Das „Fable 5 verbraucht Credits"-Banner erscheint nicht mehr fälschlicherweise bei Enterprise-Accounts. Bedrock GovCloud-Regionen (<code>us-gov-*</code>) leiteten Inferenz-Profile-Prefix falsch ab — behoben. Background-Sessions erbten Provider-Umgebungsvariablen (<code>ANTHROPIC_*</code>) der startenden Shell — behoben. Weitere Fixes: 1–2s Exit-Pause nach unterbrochenem Shell-Befehl (macOS/Linux), falscher Modellname in Git-Co-Author-Attribution, <code>/advisor</code>-Dialog wählte blockiertes Modell vor, Workflow-Skill-Hot-Reload sendete alle Skills statt nur geänderte, pre-warmed Background-Worker schlugen mit Auth-Fehler fehl.</p>
+    </div>
 
     <!-- v2.1.173 | 11.06.2026 – Fix -->
     <div class="entry" data-cat="Fix">
