@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-12** — 263 Einträge (v2.1.83–v2.1.175, KW 14–24, März–Juni 2026) — +3 neue Einträge zu v2.1.174 (VSCode Usage-Dialog, Bedrock GovCloud-Fix, /model-Picker, Background-Session-Env-Fix) und v2.1.175 (enforceAvailableModels Sicherheits-Setting)
+**2026-06-13** — 266 Einträge (v2.1.83–v2.1.176, KW 14–24, März–Juni 2026) — +3 neue Einträge zu v2.1.176: Session-Titel in Gesprächssprache, footerLinksRegexes, Bedrock Credential-Caching, availableModels-Allowlist-Härtung (/fast-Fix), großes Fix-Paket (Auto-Modus Fable 5, Hooks, Remote Control, Background-Sessions, Windows)
 
 ## Quellen
 
