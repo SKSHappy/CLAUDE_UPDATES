@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-13** — 266 Einträge (v2.1.83–v2.1.176, KW 14–24, März–Juni 2026) — +3 neue Einträge zu v2.1.176: Session-Titel in Gesprächssprache, footerLinksRegexes, Bedrock Credential-Caching, availableModels-Allowlist-Härtung (/fast-Fix), großes Fix-Paket (Auto-Modus Fable 5, Hooks, Remote Control, Background-Sessions, Windows)
+**2026-06-14** — 268 Einträge (v2.1.83–v2.1.177, KW 14–24, März–Juni 2026) — +2 neue Einträge zu v2.1.177: Fable 5 & Mythos 5 weltweit durch US-Exportkontrolldirektive gesperrt (automatischer Fallback auf Opus 4.8), Stabilisierungs-Paket für Background-Sessions, Remote Control & Modell-Steuerung
 
 ## Quellen
 
