@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 14. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 16. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.178 | 15.06.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.178</span>
+        <span class="entry-date">15. Juni 2026</span>
+        <div class="entry-title">Tool(param:value) Syntax für Berechtigungsregeln — Wildcard-Matching auf Tool-Parameter</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Berechtigungsregeln unterstützen jetzt die Syntax <code>Tool(param:value)</code>, um auf die Eingabeparameter eines Tools zu matchen — mit <code>*</code>-Wildcard. Beispiel: <code>Agent(model:opus)</code> blockiert alle Subagenten, die Opus verwenden. Damit lassen sich feingranulare Policies definieren, die nicht nur den Tool-Typ, sondern auch konkrete Parameterwerte einschränken.</p>
+    </div>
+
+    <!-- v2.1.178 | 15.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.178</span>
+        <span class="entry-date">15. Juni 2026</span>
+        <div class="entry-title">Verschachtelte .claude/-Verzeichnisse: Skills, Workflows &amp; Agent-Kontext kontextlokal auflösen</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Skills in verschachtelten <code>.claude/skills</code>-Verzeichnissen werden beim Arbeiten in diesem Unterverzeichnis automatisch geladen — bei Namenskollision erscheinen sie als <code>&lt;dir&gt;:&lt;name&gt;</code>. Für Agent, Workflow und Output-Style gilt das nächstgelegene <code>.claude/</code>-Verzeichnis; gespeicherte Workflows landen automatisch im nächsten vorhandenen <code>.claude/workflows/</code>. Der Auto-Modus bewertet Subagenten-Spawns jetzt durch den Classifier vor dem Launch für präzisere Entscheidungen.</p>
+    </div>
+
+    <!-- v2.1.178 | 15.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.178</span>
+        <span class="entry-date">15. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Out-of-Memory, Chrome-OAuth, Subagenten-Transcripts, Background-Sessions &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Out-of-Memory-Crash durch veraltete WebSocket-/OAuth-Dateideskriptor-Umgebungsvariablen behoben. Claude in Chrome schlug bei abweichendem OAuth-Account still fehl — behoben. Verschachtelte <code>.claude/skills</code> wurden in nicht-interaktiven Runs blockiert. Subagenten-Transcript-Anzeige, Live-Progress und Nachrichten-Handling korrigiert. Weitere Fixes: <code>claude agents</code>-Worker mit 401-Fehler bei Custom-API-Gateways, Compaction ignorierte <code>--fallback-model</code>, gecachte Request-Konfiguration nach Credential-Refresh veraltet, Background-Sessions hingen nach <code>/bg</code> auf „Working", MCP-Server-Level-Specs in <code>disallowedTools</code> von Subagenten ignoriert, Vim-Undo-Verhalten, Statusline-Links mit Custom-URI-Schema öffneten nicht in <code>claude agents</code>. Verbessert: <code>/doctor</code> mit flachem Baum-Layout und klareren Status-Icons, Remote Control zeigt persistentes rotes „/rc failed" bei Fehlern, <code>/bug</code> erfordert nun eine Beschreibung vor dem Einreichen.</p>
+    </div>
 
     <!-- v2.1.177 | 13.06.2026 – Sicherheit -->
     <div class="entry" data-cat="Sicherheit">

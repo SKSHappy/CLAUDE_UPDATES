@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-14** — 268 Einträge (v2.1.83–v2.1.177, KW 14–24, März–Juni 2026) — +2 neue Einträge zu v2.1.177: Fable 5 & Mythos 5 weltweit durch US-Exportkontrolldirektive gesperrt (automatischer Fallback auf Opus 4.8), Stabilisierungs-Paket für Background-Sessions, Remote Control & Modell-Steuerung
+**2026-06-16** — 271 Einträge (v2.1.83–v2.1.178, KW 14–25, März–Juni 2026) — +3 neue Einträge zu v2.1.178: `Tool(param:value)`-Syntax für feingranulare Berechtigungsregeln mit Wildcard-Support, verschachtelte `.claude/`-Verzeichnisse lösen Skills & Workflows kontextlokal auf, großes Fix-Paket (Out-of-Memory, Chrome-OAuth, Subagenten, Background-Sessions)
 
 ## Quellen
 
