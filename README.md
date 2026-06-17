@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-16** — 271 Einträge (v2.1.83–v2.1.178, KW 14–25, März–Juni 2026) — +3 neue Einträge zu v2.1.178: `Tool(param:value)`-Syntax für feingranulare Berechtigungsregeln mit Wildcard-Support, verschachtelte `.claude/`-Verzeichnisse lösen Skills & Workflows kontextlokal auf, großes Fix-Paket (Out-of-Memory, Chrome-OAuth, Subagenten, Background-Sessions)
+**2026-06-17** — 273 Einträge (v2.1.83–v2.1.179, KW 14–25, März–Juni 2026) — +2 neue Einträge zu v2.1.179: Fix-Paket (Stream-Verbindungsabbrüche, WSL2-Scroll-Regression, Sandbox-Glob-Bug, Subagenten-UI), verbesserte Plugin-Ladezeit in Remote-Sessions
 
 ## Quellen
 

@@ -152,9 +152,31 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 16. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 17. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.179 | 16.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.179</span>
+        <span class="entry-date">16. Juni 2026</span>
+        <div class="entry-title">Fix-Paket: Verbindungsabbrüche, WSL2-Scroll, Sandbox-Glob, Subagenten-UI &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Verbindungsabbrüche mitten im Stream bewahren jetzt die bisherige Teilantwort statt einen Rohfehler anzuzeigen — der Spinner hängt nicht mehr auf „running tool". Mausrad-Scrolling in WSL2 unter Windows Terminal und VS Code (Regression seit v2.1.172) ist behoben. Sandbox: <code>denyRead</code>/<code>allowRead</code>-Glob über große Verzeichnisbäume blähte die Bash-Tool-Description nicht mehr auf. Weitere Fixes: Feedback-Survey registrierte einstellige Antworten direkt nach einem Turn als Session-Rating, Welcome-Screen zeigt maximal ein Promo-Banner pro Session. UI: Ctrl+O öffnet Subagenten-Transcript korrekt, Klick auf Prompt-Input gibt Focus zurück, Remote Background-Tasks bleiben nicht mehr fälschlich als „still running" stecken.</p>
+    </div>
+
+    <!-- v2.1.179 | 16.06.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.179</span>
+        <span class="entry-date">16. Juni 2026</span>
+        <div class="entry-title">Plugin-Ladezeit in Remote-Sessions deutlich verbessert</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Das Laden von Plugins in Remote-Sessions wurde spürbar beschleunigt. Besonders profitieren Nutzer mit vielen installierten Plugins sowie Enterprise-Deployments mit Remote-Control-Sessions, bei denen Plugin-Initialisierung bisher einen merklichen Overhead erzeugte.</p>
+    </div>
 
     <!-- v2.1.178 | 15.06.2026 – Sicherheit -->
     <div class="entry" data-cat="Sicherheit">
