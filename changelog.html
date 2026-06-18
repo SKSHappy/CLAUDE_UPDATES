@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 17. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 18. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.181 | 17.06.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.181</span>
+        <span class="entry-date">17. Juni 2026</span>
+        <div class="entry-title">/config key=value: Jede Einstellung direkt aus dem Prompt setzen</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Die neue Syntax <code>/config key=value</code> erlaubt es, beliebige Einstellungen direkt im Prompt zu setzen — z.B. <code>/config thinking=false</code> oder <code>/config model=sonnet</code>. Außerdem: Langer-Text-Streaming zeigt Absätze jetzt Zeile für Zeile statt als Block, und das Subagenten-Panel blendet inaktive Agenten nach 30 Sekunden automatisch aus und begrenzt die Listenansicht auf 5 Zeilen.</p>
+    </div>
+
+    <!-- v2.1.181 | 17.06.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.181</span>
+        <span class="entry-date">17. Juni 2026</span>
+        <div class="entry-title">Bun 1.4 + 120ms Startup-Delay eliminiert + Auto-Retry bei API-Drops während Thinking</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Das eingebettete Bun-Runtime wurde auf Version 1.4 aktualisiert. Der 120ms Startup-Verzögerung beim Start ohne MCP-Server wurde beseitigt. API-Verbindungsabbrüche während Extended Thinking werden jetzt automatisch wiederholt, statt die Session abzubrechen.</p>
+    </div>
+
+    <!-- v2.1.181 | 17.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.181</span>
+        <span class="entry-date">17. Juni 2026</span>
+        <div class="entry-title">CLAUDE_CLIENT_PRESENCE_FILE unterdrückt Mobile-Push-Benachrichtigungen + MCP OAuth verbessert</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Die neue Umgebungsvariable <code>CLAUDE_CLIENT_PRESENCE_FILE</code> signalisiert, dass ein Desktop-Client aktiv ist — damit werden mobile Push-Benachrichtigungen unterdrückt, wenn man bereits am Rechner arbeitet. Das MCP-OAuth-Browser-Fenster schließt sich nach erfolgreicher Authentifizierung automatisch und erhielt ein überarbeitetes Styling. <code>sandbox.allowAppleEvents</code> ist ein neues Opt-in-Setting für macOS-Sandbox-Zugriff auf Apple Events.</p>
+    </div>
+
+    <!-- v2.1.181 | 17.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.181</span>
+        <span class="entry-date">17. Juni 2026</span>
+        <div class="entry-title">Fix-Paket: Network-Drive-Truncation, Prompt-Caching, macOS-TUI-Freeze &amp; URL-Öffnen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Schreiben/Bearbeiten von Dateien auf Cloud-Sync-Laufwerken (OneDrive, iCloud Drive) erzeugte abgeschnittene Dateien — behoben. Prompt-Caching funktioniert jetzt auch bei benutzerdefinierter <code>ANTHROPIC_BASE_URL</code> und Azure Foundry. Weitere Fixes: TUI-Freeze auf macOS, Apple-Events-Entitlement-Problem, Startup-Regressionen. Im Fullscreen-Modus erfordert das Öffnen von URLs jetzt Cmd+Klick (macOS) bzw. Ctrl+Klick, um versehentliches Öffnen zu vermeiden.</p>
+    </div>
 
     <!-- v2.1.179 | 16.06.2026 – Fix -->
     <div class="entry" data-cat="Fix">
