@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-18** — 277 Einträge (v2.1.83–v2.1.181, KW 14–25, März–Juni 2026) — +4 neue Einträge zu v2.1.181: `/config key=value`-Syntax, Bun 1.4 + Startup-Performance, CLAUDE_CLIENT_PRESENCE_FILE + MCP OAuth, Fix-Paket (Network-Drive-Truncation, Prompt-Caching, macOS-TUI-Freeze)
+**2026-06-19** — 281 Einträge (v2.1.83–v2.1.183, KW 14–25, März–Juni 2026) — +4 neue Einträge zu v2.1.183: Destruktive Befehle blockiert (git reset --hard, terraform destroy), `/config --help` + `attribution.sessionUrl`, Startup-Cleanup (Setup-Issues-Zeile entfernt), Fix-Paket (Subagenten-WebSearch, Windows-TUI, Vim-Cursor, Thinking-Only-Re-Prompt)
 
 ## Quellen
 
