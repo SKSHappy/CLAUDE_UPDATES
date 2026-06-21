@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-19** — 281 Einträge (v2.1.83–v2.1.183, KW 14–25, März–Juni 2026) — +4 neue Einträge zu v2.1.183: Destruktive Befehle blockiert (git reset --hard, terraform destroy), `/config --help` + `attribution.sessionUrl`, Startup-Cleanup (Setup-Issues-Zeile entfernt), Fix-Paket (Subagenten-WebSearch, Windows-TUI, Vim-Cursor, Thinking-Only-Re-Prompt)
+**2026-06-21** — 282 Einträge (v2.1.83–v2.1.185, KW 14–25, März–Juni 2026) — +1 neuer Eintrag zu v2.1.185: Stream-Stall-Hinweis überarbeitet (klarerer Text, Timeout von 10s auf 20s erhöht)
 
 ## Quellen
 

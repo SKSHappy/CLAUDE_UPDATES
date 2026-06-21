@@ -152,9 +152,20 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 19. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 21. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.185 | 20.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.185</span>
+        <span class="entry-date">20. Juni 2026</span>
+        <div class="entry-title">Stream-Stall-Hinweis überarbeitet: klarerer Text &amp; längeres Timeout</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Der Hinweis bei ausbleibender API-Antwort lautet jetzt <em>„Waiting for API response · will retry in …"</em> statt des alarmierenden <em>„No response from API · Retrying in …"</em>. Zusätzlich löst der Hinweis erst nach 20 Sekunden Stille aus (zuvor 10 s), um bei temporären Latenzen unnötige Warnungen zu vermeiden.</p>
+    </div>
 
     <!-- v2.1.183 | 19.06.2026 – Sicherheit -->
     <div class="entry" data-cat="Sicherheit">
