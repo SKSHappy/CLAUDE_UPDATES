@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-21** — 282 Einträge (v2.1.83–v2.1.185, KW 14–25, März–Juni 2026) — +1 neuer Eintrag zu v2.1.185: Stream-Stall-Hinweis überarbeitet (klarerer Text, Timeout von 10s auf 20s erhöht)
+**2026-06-23** — 286 Einträge (v2.1.83–v2.1.186, KW 14–25, März–Juni 2026) — +4 neue Einträge zu v2.1.186: MCP CLI-Auth (login/logout), !-Bash-Auto-Response, Background-Subagenten-Permission-Prompts, Skill-Frontmatter-Verbesserungen, /review-Engine-Update, großes Fix-Paket
 
 ## Quellen
 

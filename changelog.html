@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 21. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 23. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.186 | 22.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.186</span>
+        <span class="entry-date">22. Juni 2026</span>
+        <div class="entry-title">claude mcp login/logout: MCP-Server direkt aus der CLI authentifizieren + AWS-Refresh & SSH-Support</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Neue Befehle <code>claude mcp login &lt;name&gt;</code> und <code>claude mcp logout &lt;name&gt;</code> ermöglichen MCP-Server-Authentifizierung direkt aus der CLI — ohne das interaktive <code>/mcp</code>-Menü öffnen zu müssen. Mit <code>--no-browser</code> und stdin-Redirect funktioniert der OAuth-Flow auch über SSH. Neu in <code>/login</code>: Option „Claude Platform on AWS – refresh credentials", wenn <code>awsAuthRefresh</code> konfiguriert ist. <code>claude mcp get</code> und <code>claude mcp remove</code> schlagen bei Tippfehler jetzt den nächstähnlichen Servernamen vor und kürzen lange Listen ab.</p>
+    </div>
+
+    <!-- v2.1.186 | 22.06.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.186</span>
+        <span class="entry-date">22. Juni 2026</span>
+        <div class="entry-title">!-Bash-Befehle triggern Claude automatisch + Background-Subagenten zeigen Permission-Prompts in Hauptsession</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>!</code>-Bash-Befehle lösen jetzt automatisch eine Claude-Antwort auf die Ausgabe aus — das bisherige Verhalten (nur Kontext hinzufügen) lässt sich mit <code>"respondToBashCommands": false</code> in <code>settings.json</code> wiederherstellen. Background-Subagenten zeigen Berechtigungsabfragen nun in der Hauptsession statt sie automatisch abzulehnen — inkl. Hinweis, welcher Agent fragt; Esc lehnt nur dieses Tool ab. <code>CLAUDE_CODE_MAX_RETRIES</code> ist jetzt auf 15 begrenzt; für unbeaufsichtigte Sessions steht <code>CLAUDE_CODE_RETRY_WATCHDOG</code> zur Verfügung. Außerdem: Status-Filter (<kbd>f</kbd>) in der <code>/workflows</code>-Agenten-Detailansicht und „Skills"-Abschnitt im <code>/plugin</code>-Installed-Tab. Ein Erinnerungshinweis erscheint, wenn <code>MEMORY.md</code> die Größenbeschränkung fast erreicht.</p>
+    </div>
+
+    <!-- v2.1.186 | 22.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.186</span>
+        <span class="entry-date">22. Juni 2026</span>
+        <div class="entry-title">Skill-Frontmatter akzeptiert kebab-case/snake_case/camelCase + /review nutzt /code-review-Engine</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Skill-Frontmatter-Schlüssel wie <code>display-name</code>, <code>default-enabled</code>, <code>fallback</code> und <code>metadata.*</code> akzeptieren jetzt kebab-case, snake_case und camelCase — bestehende Skills bleiben kompatibel. Fehlerhafte YAML-Frontmatter in <code>SKILL.md</code>-Dateien führt nicht mehr zu stillem Fehlschlagen, sondern lädt den Skill-Body mit leeren Metadaten. <code>/review &lt;pr&gt;</code> verwendet jetzt dieselbe Engine wie <code>/code-review medium</code> für konsistentere Review-Qualität. <code>teammateMode: "iterm2"</code> ist ein neues Setting mit Warnung, wenn der <code>it2</code>-CLI nicht gefunden wird.</p>
+    </div>
+
+    <!-- v2.1.186 | 22.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.186</span>
+        <span class="entry-date">22. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Streaming nach Sleep, Background-Sessions, Agent-Panel, Chrome-Isolation &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Streaming-Requests schlugen nach dem Aufwachen aus dem Schlafmodus mit „Content block not found" oder JSON-Parse-Fehlern fehl — behoben. Weitere Fixes: Subagent-Transcript-Scrollposition übertrug sich auf das Haupt-Transcript; Background-Task-Previews zeigten kurz rohe Tool-Namen vor dem Plan; Chrome-Tab-Gruppen-Isolation griff nicht bei gleichzeitigen CLI-Sessions; Session-Recaps wurden doppelt angezeigt; Öffnen einer Background-Session aus <code>claude agents</code> ließ den vorherigen Screen durchscheinen. <code>Agent(type)</code>-Deny-Rules und <code>Agent(x,y)</code>-Beschränkungen galten nicht für benannte Subagenten — behoben. Esc und Ctrl+C reagierten nicht mehr, während Background-Agents noch liefen — behoben. Weitere Fixes: Misalignment bei Permission-Prompts mit langem Text, <code>x</code> schloss fertige Subagenten im Agent-Panel nicht, irreführende „MCP server disconnected"-Meldung beim Resuming, <code>~~durchstreichen~~</code> zeigte Tilde-Literale statt Formatierung, Session-Kosten für Enterprise- und Team-Abonnenten fehlten, Agent-Teams: Teammates übernehmen jetzt den <code>--effort</code>-Level des Leaders, Workflow-<code>agent({schema})</code>-Subagenten liefen endlos bei wiederholten Schema-Validierungsfehlern statt nach 5 Versuchen abzubrechen.</p>
+    </div>
 
     <!-- v2.1.185 | 20.06.2026 – UI/UX -->
     <div class="entry" data-cat="UI/UX">
