@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 23. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 24. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.187 | 23.06.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.187</span>
+        <span class="entry-date">23. Juni 2026</span>
+        <div class="entry-title">sandbox.credentials: Credential-Dateien &amp; Secrets aus Sandbox-Befehlen blockieren + Org-Modell-Beschränkungen im Picker</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Das neue Setting <code>sandbox.credentials</code> verhindert, dass Sandbox-Befehle Credential-Dateien und geheime Umgebungsvariablen lesen können — wichtiger Schutz vor Secret-Leaks in automatisierten Workflows. Org-konfigurierte Modellbeschränkungen greifen jetzt in Model-Picker, <code>--model</code>, <code>/model</code> und <code>ANTHROPIC_MODEL</code>; bei Auswahl eines gesperrten Modells erscheint die Meldung „restricted by your organization's settings".</p>
+    </div>
+
+    <!-- v2.1.187 | 23.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.187</span>
+        <span class="entry-date">23. Juni 2026</span>
+        <div class="entry-title">Mausklick in Fullscreen-Menüs + /btw ←/→-Navigation + Koreanisch/CJK-Paste-Fix &amp; /plugin-Cleanup</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Auswahlmenüs im Fullscreen-Modus (Permission-Prompts, <code>/model</code>, <code>/config</code> etc.) reagieren jetzt auf Mausklicks. Das <code>/btw</code>-Overlay unterstützt ←/→-Pfeiltasten zum Durchblättern früherer Antworten. Koreanischer/CJK-Text wurde in Terminals mit byteweiser Paste-Verarbeitung zu Mojibake — behoben. <code>/plugin</code> zeigt jetzt auch lange nicht genutzte Plugins an, um gezieltes Aufräumen zu erleichtern.</p>
+    </div>
+
+    <!-- v2.1.187 | 23.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.187</span>
+        <span class="entry-date">23. Juni 2026</span>
+        <div class="entry-title">/install-github-app: Workflow-Setup jetzt optional — nur App installieren ohne Workflow/Secret-Schritte</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Der <code>/install-github-app</code>-Befehl erlaubt es jetzt, nur die GitHub App zu installieren und den Workflow/Secret-Einrichtungsschritt zu überspringen — ideal, wenn der GitHub Actions-Workflow bereits vorhanden oder separat verwaltet wird. Das macht den Onboarding-Prozess für Teams flexibler.</p>
+    </div>
+
+    <!-- v2.1.187 | 23.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.187</span>
+        <span class="entry-date">23. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: --resume, Structured Output, Remote MCP Timeout, Remote-Startzeit &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>--resume</code> schlug mit „No conversation found" fehl, wenn der ursprüngliche <code>-p</code>-Run keine Modell-Turns erzeugt hatte — behoben. <code>--json-schema</code> und Workflow-<code>agent({schema})</code> riefen Structured Output endlos auf statt nach 5 Versuchen abzubrechen — behoben. Remote MCP-Tool-Calls hingen unbegrenzt; jetzt Timeout nach 5 Minuten (konfigurierbar via <code>CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT</code>). Claude Code Remote Sessions starteten ~2,7 s zu langsam — behoben. Weitere Fixes: Hintergrundjobs blieben permanent auf „working" stecken, Channel-Verbindungen unterbrachen nach Navigation und Hintergrundbefehlen, Subagent-Tiefenverfolgung bei Resume/Fork, Worktree-Registrierungen wurden nicht aufgeräumt, VSCode-Extension wurde bei großen Session-Resumptions unresponsive, Cmd+Klick URL-Öffnen im Fullscreen-Modus (Ghostty/macOS), Esc/Ctrl-C/Ctrl-D reagierten nicht während <code>/share</code>-Uploads.</p>
+    </div>
 
     <!-- v2.1.186 | 22.06.2026 – Integration -->
     <div class="entry" data-cat="Integration">
