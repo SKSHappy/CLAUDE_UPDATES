@@ -152,9 +152,64 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 24. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 25. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.191 | 24.06.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.191</span>
+        <span class="entry-date">24. Juni 2026</span>
+        <div class="entry-title">37% CPU-Reduktion beim Streaming durch Text-Update-Koaleszierung</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Durch das Zusammenfassen mehrerer kleiner Text-Updates zu einem einzigen Render-Pass (Koaleszierung) sinkt die CPU-Last während des Streamings um ~37 %. Besonders bei langen Antworten oder parallelen Agenten-Sessions macht sich das durch flüssigeres Rendering und geringeren Akkuverbrauch bemerkbar.</p>
+    </div>
+
+    <!-- v2.1.191 | 24.06.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.191</span>
+        <span class="entry-date">24. Juni 2026</span>
+        <div class="entry-title">/rewind nach /clear: Conversation ab vor dem Clear-Befehl wiederaufnehmen</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>/rewind</code> unterstützt jetzt die Wiederherstellung von Conversations, die durch <code>/clear</code> beendet wurden — man kann den Gesprächsverlauf zu einem Punkt vor dem Clear zurückspulen. Das verhindert versehentlichen Kontextverlust und macht das Ausprobieren von Alternativen ohne Angst vor Datenverlust möglich.</p>
+    </div>
+
+    <!-- v2.1.191 | 24.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.191</span>
+        <span class="entry-date">24. Juni 2026</span>
+        <div class="entry-title">MCP-Server-Zuverlässigkeit: Automatische Wiederholung bei transienten Fehlern + Sandbox-Netzwerk-Hostmerkung</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">MCP-Server-Aufrufe werden bei transienten Fehlern (Netzwerkprobleme, kurze Ausfälle) automatisch wiederholt, statt die Verbindung sofort als fehlgeschlagen zu markieren. Der Sandbox-Netzwerk-Berechtigungsdialog merkt sich freigegebene Hosts jetzt für die gesamte Session, sodass man nicht bei jedem Request erneut bestätigen muss.</p>
+    </div>
+
+    <!-- v2.1.191 | 24.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.191</span>
+        <span class="entry-date">24. Juni 2026</span>
+        <div class="entry-title">Fix-Paket: Background-Agenten "resurrect" nicht mehr + Scroll-Sprünge beim Streaming behoben</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Gestoppte Background-Agenten wurden nach einem Resume fälschlicherweise wieder aktiviert ("resurrect") — behoben. Die Scrollposition sprang während laufender Streaming-Antworten unerwartet — ebenfalls behoben. Beide Fixes stabilisieren das Arbeiten mit parallelen Agenten-Sessions erheblich.</p>
+    </div>
+
+    <!-- v2.1.190 | 24.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.190</span>
+        <span class="entry-date">24. Juni 2026</span>
+        <div class="entry-title">Stabilitäts-Release: Allgemeine Bug-Fixes &amp; Zuverlässigkeitsverbesserungen</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Zwischenrelease mit gezielten Stabilitätsverbesserungen und allgemeinen Bug-Fixes als Vorbereitung für v2.1.191. Kein Breaking Change — Update empfohlen.</p>
+    </div>
 
     <!-- v2.1.187 | 23.06.2026 – Sicherheit -->
     <div class="entry" data-cat="Sicherheit">

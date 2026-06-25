@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-24** — 290 Einträge (v2.1.83–v2.1.187, KW 14–26, März–Juni 2026) — +4 neue Einträge zu v2.1.187: sandbox.credentials (Secret-Schutz), Org-Modell-Beschränkungen im Picker, Mausklick in Fullscreen-Menüs, /btw ←/→-Navigation, CJK-Paste-Fix, /install-github-app optional, großes Fix-Paket (--resume, Structured Output, Remote MCP Timeout)
+**2026-06-25** — 295 Einträge (v2.1.83–v2.1.191, KW 14–26, März–Juni 2026) — +5 neue Einträge zu v2.1.190–191: 37% CPU-Reduktion beim Streaming, /rewind nach /clear, MCP transiente Fehler-Retries, Sandbox-Netzwerk-Hostmerkung, Background-Agenten resurrect-Fix, Scroll-Sprung-Fix
 
 ## Quellen
 
