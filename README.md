@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-25** — 295 Einträge (v2.1.83–v2.1.191, KW 14–26, März–Juni 2026) — +5 neue Einträge zu v2.1.190–191: 37% CPU-Reduktion beim Streaming, /rewind nach /clear, MCP transiente Fehler-Retries, Sandbox-Netzwerk-Hostmerkung, Background-Agenten resurrect-Fix, Scroll-Sprung-Fix
+**2026-06-26** — 298 Einträge (v2.1.83–v2.1.193, KW 14–26, März–Juni 2026) — +3 neue Einträge zu v2.1.193: autoMode.classifyAllShell, Live-Bash-Autocomplete, OpenTelemetry-Antwort-Event, Memory-Pressure-Reaping für Background-Shells, MCP-Auth-Hinweis beim Start, Auto-Denial-Protokollierung, Background-Agent-Phantom-Fix, Agent-Panel-Fix, MCP-headersHelper-Auth-Retry, Plugin-Auto-Rename
 
 ## Quellen
 

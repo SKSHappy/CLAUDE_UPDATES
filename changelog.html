@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 25. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 26. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.193 | 25.06.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.193</span>
+        <span class="entry-date">25. Juni 2026</span>
+        <div class="entry-title">autoMode.classifyAllShell + Live-Bash-Autocomplete + OpenTelemetry-Antwort-Event</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Das neue Setting <code>autoMode.classifyAllShell</code> routet alle Bash/PowerShell-Befehle durch den Auto-Modus-Classifier — damit greifen Auto-Modus-Ablehnungen jetzt auch bei Shell-Befehlen, die bisher unkontrolliert liefen. Im Bash-Modus (<code>!</code>) zeigt Claude Code jetzt Live-Dateinamen-Autocomplete direkt im Terminal. Das neue OpenTelemetry-Event <code>claude_code.assistant_response</code> enthält den vollständigen Modell-Antworttext für strukturiertes Logging in Monitoring-Setups.</p>
+    </div>
+
+    <!-- v2.1.193 | 25.06.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.193</span>
+        <span class="entry-date">25. Juni 2026</span>
+        <div class="entry-title">Memory-Pressure-Reaping für inaktive Background-Shells + MCP-Auth-Hinweis beim Start + Auto-Denial-Protokollierung</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Inaktive Background-Shell-Prozesse werden automatisch beendet, wenn Speicherdruck erkannt wird (abschaltbar via <code>CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1</code>). Beim Start erscheint nun ein Hinweis, wenn MCP-Server noch eine Anmeldung benötigen — mit direktem Link zu <code>/mcp</code>. Auto-Modus-Ablehnungen werden im Transcript, im Ablehnungs-Toast und unter <code>/permissions → Letzte Ablehnungen</code> protokolliert, sodass nachvollzogen werden kann, warum ein Befehl abgelehnt wurde.</p>
+    </div>
+
+    <!-- v2.1.193 | 25.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.193</span>
+        <span class="entry-date">25. Juni 2026</span>
+        <div class="entry-title">Fix-Paket: Background-Agent-Phantom, Agent-Panel-Verstecken, MCP-Auth-Retry &amp; Plugin-Auto-Rename</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Mehrere Background-Agent-Fehler behoben: falsche „N background tasks would be abandoned"-Meldung beim Hintergrundlegen; Phantom-Subagent „general-purpose (resumed)" beim Hintergrundlegen des Hauptturns; erneutes „Continue from where you left off"-Prompt nach Auto-Updates bei angehefteten Agenten; Agent-Panel versteckte Geschwister-Agenten beim Öffnen eines Subagenten-Transcripts. MCP <code>headersHelper</code>-Auth führt den Helper bei 401/403-Antworten automatisch erneut aus und reconnectet. Plugin-Auto-Umbenennung folgt jetzt Marketplace-<code>renames</code>-Maps automatisch. <code>/model</code> und andere UI-Elemente zeigten nach <code>/login</code> veralteten oder leeren Zustand — behoben.</p>
+    </div>
 
     <!-- v2.1.191 | 24.06.2026 – Performance -->
     <div class="entry" data-cat="Performance">
