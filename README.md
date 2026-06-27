@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-26** — 298 Einträge (v2.1.83–v2.1.193, KW 14–26, März–Juni 2026) — +3 neue Einträge zu v2.1.193: autoMode.classifyAllShell, Live-Bash-Autocomplete, OpenTelemetry-Antwort-Event, Memory-Pressure-Reaping für Background-Shells, MCP-Auth-Hinweis beim Start, Auto-Denial-Protokollierung, Background-Agent-Phantom-Fix, Agent-Panel-Fix, MCP-headersHelper-Auth-Retry, Plugin-Auto-Rename
+**2026-06-27** — 300 Einträge (v2.1.83–v2.1.195, KW 14–26, März–Juni 2026) — +2 neue Einträge zu v2.1.195: CLAUDE_CODE_DISABLE_MOUSE_CLICKS, Remote-Provisioning-Checkliste, Agents-Listenverbesserungen, Hook-Matcher Substring-Fix, Voice-Dictation macOS/CJK-Fix, Plugin-Enable-Fix, Background-Agent-Abstürze behoben
 
 ## Quellen
 

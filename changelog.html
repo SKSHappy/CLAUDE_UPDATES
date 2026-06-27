@@ -152,9 +152,31 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 26. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 27. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.195 | 26.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.195</span>
+        <span class="entry-date">26. Juni 2026</span>
+        <div class="entry-title">CLAUDE_CODE_DISABLE_MOUSE_CLICKS + Remote-Provisioning-Checkliste + Verbesserte Agents-Listenansicht</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Die neue Umgebungsvariable <code>CLAUDE_CODE_DISABLE_MOUSE_CLICKS</code> deaktiviert Mausklick/Drag/Hover im Fullscreen-Modus — Mausrad-Scroll bleibt weiterhin aktiv und damit nutzbar. Remote-Sessions zeigen beim Container-Start jetzt eine Provisioning-Checkliste, die den Fortschritt des Starts visualisiert. Die <code>claude agents</code>-Liste für abgeschlossene Sessions füllt nun den verfügbaren vertikalen Platz aus; auf kleinen Terminals komprimiert sich der Header automatisch, damit laufende Sessions immer sichtbar bleiben.</p>
+    </div>
+
+    <!-- v2.1.195 | 26.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.195</span>
+        <span class="entry-date">26. Juni 2026</span>
+        <div class="entry-title">Fix-Paket: Hook-Matcher Substring-Bug, Voice-Dictation macOS/CJK, Plugin-Enable/Disable &amp; Background-Agent-Abstürze</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Hook-Matcher mit Bindestrichen (z.B. <code>code-reviewer</code>, <code>mcp__brave-search</code>) machten versehentlich Substring-Matching statt Exact-Match — behoben. Für alle Tools eines hyphenateten MCP-Servers nutze jetzt <code>mcp__brave-search__.*</code>. Voice-Dictation auf macOS erfasste in langen Sessions Stille, wenn das Standard-Eingabegerät wechselte — behoben. Auto-Submit für Sprachen ohne Wortlücken (Japanisch, Chinesisch, Thai) feuerte nie — behoben. Voice-Modus auf Linux unterscheidet jetzt korrekt zwischen „kein Mikrofon" und „SoX nicht installiert". Externe Plugins, die nur per Projekt-<code>.claude/settings.json</code> aktiviert sind, forderten nicht immer explizite Installationszustimmung — behoben. <code>/plugin</code>-Enable/Disable funktionierte nicht, wenn der <code>name</code> in <code>plugin.json</code> vom Marketplace-Namen abweicht — behoben. Background-Jobs verschwanden aus <code>claude agents</code> oder verloren Daten, wenn sie von einer neueren Claude Code-Version geschrieben wurden — behoben. Ein abgestürzter Background-Task zeigte beim Wiederöffnen bis zu 5 Sekunden einen leeren Bildschirm — behoben. Background-Agent-Daemons wurden unerreichbar, wenn der Control-Socket nicht startete und blockierten Neustarts — behoben.</p>
+    </div>
 
     <!-- v2.1.193 | 25.06.2026 – Entwicklung -->
     <div class="entry" data-cat="Entwicklung">
