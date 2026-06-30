@@ -152,9 +152,64 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 27. Juni 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 30. Juni 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.196 | 29.06.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.196</span>
+        <span class="entry-date">29. Juni 2026</span>
+        <div class="entry-title">MCP-Sicherheit: Untrusted-Workspace-Server gesperrt + Remote Control nur für Anthropic-Hosts</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc"><code>claude mcp list</code>/<code>get</code> starten keine <code>.mcp.json</code>-Server mehr aus nicht vertrauenswürdigen Workspaces, die sich selbst über eine committete <code>.claude/settings.json</code> freigegeben haben — solche Server erscheinen als <em>„⏸ Pending approval"</em> und erfordern explizite Bestätigung. Remote Control wird automatisch deaktiviert, wenn <code>ANTHROPIC_BASE_URL</code> auf einen Nicht-Anthropic-Host zeigt, analog zum bestehenden Verhalten unter Bedrock/Vertex/Foundry.</p>
+    </div>
+
+    <!-- v2.1.196 | 29.06.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.196</span>
+        <span class="entry-date">29. Juni 2026</span>
+        <div class="entry-title">Org-Default-Modelle + MCP-OAuth-Fix für GitLab/Enterprise-IdPs + Background-Sessions überleben Prozess-Restart</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Org-Admins können im Konsole Default-Modelle setzen; in <code>/model</code> erscheinen diese als „Org default" oder „Role default". MCP-OAuth forderte bisher den vollständigen <code>scopes_supported</code>-Katalog des Authorization-Servers an, wenn kein Scope angegeben war — das verursachte <code>invalid_scope</code>-Fehler auf GitLab Self-Hosted und anderen Enterprise-IdPs; behoben. Long-running Commands und Workflows überleben jetzt Prozess-Stopps und Daemon-Restarts — Background-Agents werden beim nächsten Öffnen der Agents-Ansicht automatisch dort fortgesetzt, wo sie unterbrochen wurden.</p>
+    </div>
+
+    <!-- v2.1.196 | 29.06.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.196</span>
+        <span class="entry-date">29. Juni 2026</span>
+        <div class="entry-title">Lesbare Session-Namen + Klickbare Datei-Anhänge + Agents-Navigation mit einem ←-Tastendruck</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc">Sessions erhalten beim Start lesbare Standardnamen, was das Identifizieren und Anschreiben einzelner Sessions deutlich erleichtert. Dateianhänge im Chat lassen sich per <kbd>Cmd/Ctrl+Klick</kbd> direkt im Finder/Explorer öffnen. Die Agents-Ansicht öffnet sich aus einer Foreground-Session jetzt mit einem einzigen <kbd>←</kbd> statt zwei Tastendrücken. Agent-Status verbessert: abgeschlossene Zeilen wechseln nicht mehr zwischen „Done" und „Needs your input"; steckengebliebene Agenten heißen jetzt „Needs attention"; Ergebnisse mit PR-Verweis zeigen einen klickbaren Link.</p>
+    </div>
+
+    <!-- v2.1.196 | 29.06.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.196</span>
+        <span class="entry-date">29. Juni 2026</span>
+        <div class="entry-title">/code-review: 25% weniger Token-Verbrauch + Stream-Watchdog standardmäßig aktiv + Terminal-Rendering-Optimierung</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Der <code>/code-review</code>-Workflow fasst fünf Cleanup-Finder zu einem zusammen und reduziert so den Token-Verbrauch um rund 25 %. Der Streaming-Idle-Watchdog ist jetzt für alle Provider standardmäßig aktiv: Er bricht hängende Response-Streams nach 5 Minuten ohne Events ab (deaktivierbar via <code>CLAUDE_ENABLE_STREAM_WATCHDOG=0</code>). Zudem werden beim Streaming leere Subtree-Walks übersprungen, was den per-Frame-Renderaufwand im Terminal-UI spürbar senkt.</p>
+    </div>
+
+    <!-- v2.1.196 | 29.06.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.196</span>
+        <span class="entry-date">29. Juni 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Background-Jobs, PowerShell, Agents-Panel, Crash-Recovery, /context, /deep-research &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Background-Jobs: Aufwachen eines Jobs löschte fälschlich die Conversation und re-playede den Original-Prompt — behoben. Rate-Limit-Warnung flackerte bei parallelen Requests — behoben. Doppelte Recap-Zeilen nach Background-Turns durch abgelehnte StructuredOutput-Versuche — behoben. PowerShell: <code>git diff</code>/<code>git grep</code>, <code>egrep</code>/<code>fgrep</code> und gequotete Suchmuster mit <code>|</code> wurden fälschlich als Fehler gemeldet — behoben. Agents-Panel: Keyboard-Focus steckte beim Öffnen; Jobs verloren Subagent-Typen; falsche Status während aktiver Sessions — behoben. <code>--dangerously-skip-permissions</code> in <code>claude agents</code> fiel still auf Auto-Modus zurück — behoben. Remote-Crash-Recovery: durch Server-Restart unterbrochene Sessions werden jetzt automatisch auf dem nächsten Worker fortgesetzt. <code>/context</code> zeigte 0 Token auf Bedrock — behoben. <code>/deep-research</code> meldete Verifier-Fehler fälschlich als „all claims refuted" — behoben. <kbd>Esc Esc</kbd> öffnete das Rewind-Menü nicht mehr — behoben. Plugin-Dependency-Version-Pins wurden bei lokalen git-basierten Marketplace-Pfaden nicht eingehalten — behoben. Voice-Dictation schluckte Leerzeichen und startete fälschlich bei schnellem Tippen — behoben.</p>
+    </div>
 
     <!-- v2.1.195 | 26.06.2026 – UI/UX -->
     <div class="entry" data-cat="UI/UX">

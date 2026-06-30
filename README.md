@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-27** — 300 Einträge (v2.1.83–v2.1.195, KW 14–26, März–Juni 2026) — +2 neue Einträge zu v2.1.195: CLAUDE_CODE_DISABLE_MOUSE_CLICKS, Remote-Provisioning-Checkliste, Agents-Listenverbesserungen, Hook-Matcher Substring-Fix, Voice-Dictation macOS/CJK-Fix, Plugin-Enable-Fix, Background-Agent-Abstürze behoben
+**2026-06-30** — 305 Einträge (v2.1.83–v2.1.196, KW 14–26, März–Juni 2026) — +5 neue Einträge zu v2.1.196: MCP-Untrusted-Workspace-Sicherheit, Org-Default-Modelle, MCP-OAuth-Fix für GitLab/Enterprise-IdPs, lesbare Session-Namen, klickbare Dateianhänge, /code-review 25% Token-Reduktion, Stream-Watchdog standardmäßig aktiv, Background-Session Crash-Recovery, großes Fix-Paket
 
 ## Quellen
 
