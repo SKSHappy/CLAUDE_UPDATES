@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-06-30** — 305 Einträge (v2.1.83–v2.1.196, KW 14–26, März–Juni 2026) — +5 neue Einträge zu v2.1.196: MCP-Untrusted-Workspace-Sicherheit, Org-Default-Modelle, MCP-OAuth-Fix für GitLab/Enterprise-IdPs, lesbare Session-Namen, klickbare Dateianhänge, /code-review 25% Token-Reduktion, Stream-Watchdog standardmäßig aktiv, Background-Session Crash-Recovery, großes Fix-Paket
+**2026-07-01** — 306 Einträge (v2.1.83–v2.1.197, KW 14–27, März–Juli 2026) — +1 neuer Eintrag: Claude Sonnet 5 ist neues Standard-Modell in Claude Code (v2.1.197): natives 1M-Token-Kontextfenster, Terminal-Bench 80,4 %, Einführungspreise $2/$10 bis 31. August 2026
 
 ## Quellen
 
