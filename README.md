@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-07-01** — 306 Einträge (v2.1.83–v2.1.197, KW 14–27, März–Juli 2026) — +1 neuer Eintrag: Claude Sonnet 5 ist neues Standard-Modell in Claude Code (v2.1.197): natives 1M-Token-Kontextfenster, Terminal-Bench 80,4 %, Einführungspreise $2/$10 bis 31. August 2026
+**2026-07-02** — 309 Einträge (v2.1.83–v2.1.198, KW 14–27, März–Juli 2026) — +3 neue Einträge: v2.1.198: Claude in Chrome GA, Background-Agent Auto-PR, /dataviz-Skill, Background-Notifications-Hook, Extended-Thinking-Vererbung, AWS Gateway-Provider + großes Fix-Paket
 
 ## Quellen
 

@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 1. Juli 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 2. Juli 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.198 | 01.07.2026 – Integration -->
+    <div class="entry" data-cat="Integration">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.198</span>
+        <span class="entry-date">1. Juli 2026</span>
+        <div class="entry-title">Claude in Chrome GA + AWS als Gateway-Provider + Background-Agents öffnen automatisch Draft-PRs</div>
+        <span class="badge badge-Integration">Integration</span>
+      </div>
+      <p class="entry-desc">Claude in Chrome ist jetzt allgemein verfügbar. Die Claude Platform on AWS (<code>anthropicAws</code>) wurde als neuer Upstream-Provider im Gateway hinzugefügt; „Model not found"-Antworten rücken künftig automatisch in der Failover-Kette vor. Background-Agents, die aus <code>claude agents</code> in einem Worktree Code-Arbeit erledigen, commiten, pushen und öffnen jetzt eigenständig einen Draft-PR — ohne manuellen Eingriff.</p>
+    </div>
+
+    <!-- v2.1.198 | 01.07.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.198</span>
+        <span class="entry-date">1. Juli 2026</span>
+        <div class="entry-title">Background-Agent-Notifications + /dataviz-Skill + Extended-Thinking-Vererbung + Explore-Agent-Modell</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Der <code>Notification</code>-Hook feuert jetzt mit den neuen Events <code>agent_needs_input</code> und <code>agent_completed</code>, sobald eine Background-Session Eingabe benötigt oder abgeschlossen ist — ideal für externe Alerting-Systeme. Der neue <code>/dataviz</code>-Skill liefert Chart- und Dashboard-Design-Guidance inklusive ausführbarem Farbpaletten-Validator. Extended-Thinking-Einstellungen werden automatisch an Subagents und Kontext-Kompaktierung vererbt. Der eingebaute Explore-Agent erbt jetzt das Modell der Hauptsession (max. Opus) statt immer auf Haiku zu laufen.</p>
+    </div>
+
+    <!-- v2.1.198 | 01.07.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.198</span>
+        <span class="entry-date">1. Juli 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Netzwerk-Resilienz, Background-Tasks, macOS-Berechtigungen, Syntax-Highlighting &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Netzwerkabbrüche (ECONNRESET) werden jetzt mit Backoff wiederholt statt den Request zu beenden. Background-Tasks in Web-, Desktop- und VS-Code-Panels blieben nach Abschluss auf „Running" stecken — behoben. Markdown-Tabellen liefen im Fullscreen-Modus über — behoben. AWS/Mantle-Sessions mit abgelaufenen STS-Tokens führen <code>awsAuthRefresh</code> jetzt automatisch aus. macOS erhält Local-Network-Entitlements für Background-Agent-Sessions, sodass lokale Hosts erreichbar bleiben. <code>/desktop</code> scheiterte nach Worktree-Exit mit „Cannot determine working directory" — behoben. <code>/branch</code> leitete den Fork-Namen fälschlicherweise aus der Kompaktierungszusammenfassung statt dem ersten echten Prompt ab — behoben. Syntax-Highlighting auf highlight.js v11 aktualisiert (verbesserte Genauigkeit für Code-Blöcke, Diffs und Datei-Vorschauen). Der <code>/agents</code>-Wizard wurde entfernt — Subagenten werden künftig über Claude oder direkt via <code>.claude/agents/</code> angelegt.</p>
+    </div>
 
     <!-- v2.1.197 | 30.06.2026 – Produktivität -->
     <div class="entry" data-cat="Produktivität">
