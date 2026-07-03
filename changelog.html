@@ -152,9 +152,31 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 2. Juli 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 3. Juli 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.199 | 02.07.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.199</span>
+        <span class="entry-date">2. Juli 2026</span>
+        <div class="entry-title">Gestapelte Skill-Aufrufe + Automatisches Retry bei 429-Fehlern + RETRY_WATCHDOG-Limit aufgehoben</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Gestapelte Slash-Skill-Aufrufe wie <code>/skill-a /skill-b do XYZ</code> laden jetzt alle führenden Skills (bis zu 5) auf einmal statt nur den ersten. Transiente 429-Server-Ratenlimit-Fehler (unrelated to usage limits) werden für Abonnenten automatisch mit Backoff wiederholt, statt den Turn zu beenden. <code>CLAUDE_CODE_RETRY_WATCHDOG</code> erhöht den Standard-Retry-Count für nicht-kapazitätsbedingte Fehler auf 300 und hebt das bisherige Cap von 15 auf <code>CLAUDE_CODE_MAX_RETRIES</code> auf. PR-Links in <code>claude agents</code>-Zeilen zeigen jetzt nur noch <code>#N</code> ohne das redundante „PR"-Label.</p>
+    </div>
+
+    <!-- v2.1.199 | 02.07.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.199</span>
+        <span class="entry-date">2. Juli 2026</span>
+        <div class="entry-title">Großes Fix-Paket: SSL-Zertifikate, Streaming-Abbrüche, Background-Daemon-Absturz (Linux) &amp; über 15 weitere Fixes</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">SSL-Zertifikatsfehler (TLS-Proxies, fehlende <code>NODE_EXTRA_CA_CERTS</code>) brennen nicht mehr Retry-Versuche, sondern zeigen sofort einen umsetzbaren Hinweis. Streaming-Antworten werden bei mid-stream „overloaded"-Fehler nicht mehr verworfen — der bisherige Teil bleibt mit einer „Unvollständige Antwort"-Meldung erhalten. Subagenten, die durch ein Ratelimit oder Server-Fehler abgeschnitten werden, liefern jetzt ihren Teilfortschritt an den Parent-Agenten zurück statt still zu scheitern. Background-Daemon auf Linux tötete sich selbst (und alle laufenden Agenten) alle ~50 Sekunden nach einem unsauberen Shutdown — behoben. Background-Agents konnten über SSH auf macOS nicht kalt starten („Could not switch to audit session") — behoben. <code>claude stop</code> wurde durch eine rennende Agent-Respawn-Operation still rückgängig gemacht — behoben. Weitere Fixes: <code>SessionStart</code>/<code>Setup</code>/<code>SubagentStart</code>-Hooks verheimlichten Stderr bei Exit-Code 2; <code>--dangerously-skip-permissions daemon &lt;subcommand&gt;</code> wurde als Chat-Prompt statt als Subcommand behandelt; <code>SendMessage</code> routete falsch wenn ein re-gespawnter Agent den Namen eines alten Agenten wiederverwendete; Session-Neuöffnung ohne neue Nachrichten ließ Transkript-Dateien unnötig wachsen; Plan-Modus fragte bei zustandsändernden Browser-Tool-Calls nicht nach Bestätigung.</p>
+    </div>
 
     <!-- v2.1.198 | 01.07.2026 – Integration -->
     <div class="entry" data-cat="Integration">
