@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 3. Juli 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 4. Juli 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.201 | 03.07.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.201</span>
+        <span class="entry-date">3. Juli 2026</span>
+        <div class="entry-title">Claude Sonnet 5: Keine Mid-Conversation System-Role mehr für Harness-Erinnerungen</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Claude Sonnet 5-Sessions verzichten ab sofort auf die Mid-Conversation System-Role für interne Harness-Erinnerungen. Das führt zu konsistenterem Modellverhalten in langen Konversationen und reduziert unerwartete Verhaltensänderungen durch Harness-Injektionen mitten im Gespräch.</p>
+    </div>
+
+    <!-- v2.1.200 | 03.07.2026 – UI/UX -->
+    <div class="entry" data-cat="UI/UX">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.200</span>
+        <span class="entry-date">3. Juli 2026</span>
+        <div class="entry-title">AskUserQuestion auto-continue deaktiviert + Permission-Modus „Manual" + Accessibility-Verbesserungen + tmux-Fix</div>
+        <span class="badge badge-UI\/UX">UI/UX</span>
+      </div>
+      <p class="entry-desc"><code>AskUserQuestion</code>-Dialoge setzen die Ausführung nicht mehr automatisch nach einem Timeout fort — das Idle-Timeout-Verhalten muss nun explizit per <code>/config</code> aktiviert werden. Der bisherige Permission-Modus „default" heißt jetzt überall (CLI, <code>--help</code>, VS Code, JetBrains) <strong>„Manual"</strong>. Screen-Reader-Output verbessert: dekorative Glyphen werden ausgeblendet, Transkript-Symbole erhalten kurze Labels. Ein Rendering-Flicker unter tmux 3.4+ wurde durch synchronized terminal output behoben.</p>
+    </div>
+
+    <!-- v2.1.200 | 03.07.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.200</span>
+        <span class="entry-date">3. Juli 2026</span>
+        <div class="entry-title">Fix-Paket: Background-Session-Crashes, Daemon-Lock, Subagent-Fehler, Plugin-Loading &amp; Voice-Dictation</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Background-Sessions stoppten nach Schlafmodus/Aufwachen oder beim Wiederöffnen einer blockierten Session still — behoben. Background-Agents starteten nach einem Crash mit veralteter <code>daemon.lock</code> nie wieder — behoben; Build-Verwaltung prüft nun anhand des eingebetteten Versions-Zeitstempels, welcher Build der aktuellere ist. Subagents, die durch ein Ratelimit abgeschnitten wurden, bevor sie Text ausgaben, lieferten leeres Ergebnis statt sauber zu scheitern — behoben. Projekt-Plugins luden aus Git-Worktrees nicht korrekt — behoben. Crash beim Start, wenn <code>disabledMcpServers</code>/<code>enabledMcpServers</code> in <code>.claude.json</code> kein Array war — behoben. Voice-Dictation zeigte „Voice connection failed" bei leerem Audio — behoben.</p>
+    </div>
 
     <!-- v2.1.199 | 02.07.2026 – Produktivität -->
     <div class="entry" data-cat="Produktivität">

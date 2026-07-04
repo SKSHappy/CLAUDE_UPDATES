@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-07-03** — 311 Einträge (v2.1.83–v2.1.199, KW 14–27, März–Juli 2026) — +2 neue Einträge: v2.1.199: Gestapelte Skill-Aufrufe, Auto-Retry bei 429-Fehlern, RETRY_WATCHDOG-Limit aufgehoben + großes Fix-Paket (SSL-Zertifikate, Streaming-Abbrüche, Background-Daemon-Absturz Linux)
+**2026-07-04** — 314 Einträge (v2.1.83–v2.1.201, KW 14–27, März–Juli 2026) — +3 neue Einträge: v2.1.201: Sonnet 5 ohne Mid-Conversation System-Role; v2.1.200: AskUserQuestion-Auto-Continue deaktiviert, Permission-Modus „Manual" umbenannt, Accessibility + tmux-Fix; v2.1.200-Fix: Background-Session-Crashes, Daemon-Lock, Subagent-Fehler, Plugin-Loading
 
 ## Quellen
 
