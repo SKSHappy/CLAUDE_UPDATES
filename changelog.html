@@ -152,9 +152,42 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 4. Juli 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 7. Juli 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.202 | 06.07.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.202</span>
+        <span class="entry-date">6. Juli 2026</span>
+        <div class="entry-title">Dynamische Workflow-Größe konfigurierbar + /review zurück zu schnellem Einzel-Durchlauf</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc">Das neue Setting „Dynamic workflow size" in <code>/config</code> steuert, wie groß Claude dynamische Workflows generiert (small/medium/large Agent-Anzahl) — ein Richtwert, kein hartes Cap. <code>/review &lt;pr&gt;</code> kehrt zum schnellen Einzel-Durchlauf zurück; für Multi-Agenten-Reviews steht weiterhin <code>/code-review &lt;level&gt; &lt;pr#&gt;</code> zur Verfügung.</p>
+    </div>
+
+    <!-- v2.1.202 | 06.07.2026 – Entwicklung -->
+    <div class="entry" data-cat="Entwicklung">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.202</span>
+        <span class="entry-date">6. Juli 2026</span>
+        <div class="entry-title">OpenTelemetry: workflow.run_id &amp; workflow.name Attribute für Workflow-Agenten</div>
+        <span class="badge badge-Entwicklung">Entwicklung</span>
+      </div>
+      <p class="entry-desc">Workflow-gespawnte Agenten emittieren jetzt <code>workflow.run_id</code> und <code>workflow.name</code> als OpenTelemetry-Attribute — damit lässt sich die gesamte Aktivität eines Workflow-Runs aus den OTel-Daten lückenlos rekonstruieren. Ideal für strukturiertes Monitoring und Observability in CI/CD-Pipelines mit mehreren parallelen Subagenten.</p>
+    </div>
+
+    <!-- v2.1.202 | 06.07.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.202</span>
+        <span class="entry-date">6. Juli 2026</span>
+        <div class="entry-title">Großes Fix-Paket: Ctrl+R-Crash, Session-Rename, mTLS, Remote-Control-Befehle, Voice-Dictation &amp; mehr</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc">Crash in der Inline-Verlaufssuche (<kbd>Ctrl+R</kbd>) beim Akzeptieren/Abbrechen während des Scannens der History-Datei — behoben. <code>/rename</code> auf Background-Sessions wurde beim Job-Neustart rückgängig gemacht — behoben. Transiente mTLS-Handshake-Fehler bei laufender Zertifikatsrotation — behoben. Befehle vom Remote Control (Mobil/Web) in interaktiven Sessions schlugen mit „Unknown command" fehl — behoben. Bilder und Dateien ohne Caption vom Remote Control wurden still verworfen — behoben. Sign-in-URL aus <code>claude auth login</code>/<code>claude mcp login --no-browser</code> war über SSH nicht zuverlässig klickbar — behoben. Chat-Öffnen aus <code>claude agents</code> scheiterte gelegentlich mit „currently running as a background agent" — behoben. Workflow-Skripte mit Unicode-Anführungszeichen wurden vor dem Parsen korrumpiert — behoben. Voice-Dictation lief bei Mikrofon-/Audio-Recorder-Fehler in einer unbegrenzten Retry-Schleife — behoben. <code>/remote-control</code>-Sessions zeigten falschen Permission-Modus — behoben. Session-Resume per Name brauchte Minuten und hohen Speicherverbrauch in Repos mit vielen Git-Worktrees — behoben. Installer/Updater-Downloads schlugen bei Netzwerkabbrüchen mitten im Download fehl — behoben. Erneutes Aufrufen geladener Skills fügte doppelte Anweisungen in den Kontext ein — behoben.</p>
+    </div>
 
     <!-- v2.1.201 | 03.07.2026 – Entwicklung -->
     <div class="entry" data-cat="Entwicklung">
