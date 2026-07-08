@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-07-07** — 317 Einträge (v2.1.83–v2.1.202, KW 14–28, März–Juli 2026) — +3 neue Einträge: v2.1.202: Dynamische Workflow-Größe in /config, OpenTelemetry workflow.run_id/workflow.name-Attribute, Großes Fix-Paket (Ctrl+R-Crash, Session-Rename, mTLS, Remote-Control, Voice-Dictation &amp; mehr)
+**2026-07-08** — 322 Einträge (v2.1.83–v2.1.204, KW 14–28, März–Juli 2026) — +5 neue Einträge: v2.1.204: SessionStart-Hook-Streaming-Fix für Headless-Sessionen; v2.1.203: Login-Ablauf-Warnungen, manueller Modus-Badge (⏸), MCP roots/list-Erweiterung, Binary –7 MB / Startmemory –7 MB, macOS-Stall-Fix, stabilere Hintergrund-Agenten &amp; Windows-PATH-Fix
 
 ## Quellen
 
