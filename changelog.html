@@ -152,9 +152,53 @@
 
 <main>
   <h1 class="page-title">Claude Code – Changelog</h1>
-  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 8. Juli 2026 · <span id="count"></span></p>
+  <p class="page-sub">Neueste CLI-Updates · Zuletzt aktualisiert: 9. Juli 2026 · <span id="count"></span></p>
 
   <div id="entries">
+
+    <!-- v2.1.205 | 08.07.2026 – Sicherheit -->
+    <div class="entry" data-cat="Sicherheit">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.205</span>
+        <span class="entry-date">8. Juli 2026</span>
+        <div class="entry-title">Auto-Modus blockiert Transcript-Manipulationen + Notifications gegen fabrizierte Freigaben</div>
+        <span class="badge badge-Sicherheit">Sicherheit</span>
+      </div>
+      <p class="entry-desc">Eine neue Auto-Modus-Regel verhindert, dass Agenten Session-Transcript-Dateien manipulieren können — ein wichtiger Schutz gegen Prompt-Injection-Angriffe. Background-Task-Notifications enthalten jetzt explizit den Hinweis, dass kein menschlicher Input erfolgt ist, sodass fabrizierte In-Transcript-Freigaben nicht mehr als echte Nutzerbestätigungen interpretiert werden können.</p>
+    </div>
+
+    <!-- v2.1.205 | 08.07.2026 – Produktivität -->
+    <div class="entry" data-cat="Produktivität">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.205</span>
+        <span class="entry-date">8. Juli 2026</span>
+        <div class="entry-title">/doctor als vollständiger Setup-Check + Agents-View mit PR-Verlinkung &amp; farbigen Status-Zeilen</div>
+        <span class="badge badge-Produktivität">Produktivität</span>
+      </div>
+      <p class="entry-desc"><code>/doctor</code> (Alias: <code>/checkup</code>) wurde zum vollständigen Setup-Checkup ausgebaut: Es erkennt und behebt Konfigurationsprobleme direkt. In der Agents-Ansicht verlinken Sessions, die einen PR bearbeitet, gemergt, kommentiert oder gepusht haben, direkt auf diesen PR. Zeilen zeigen jetzt ein farbiges Status-Wort und einen KI-generierten Überschrifttext statt rohe Tool-Call-Texte; der Peek-View zeigt bei blockierten Sessions die genaue Anfrage.</p>
+    </div>
+
+    <!-- v2.1.205 | 08.07.2026 – Performance -->
+    <div class="entry" data-cat="Performance">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.205</span>
+        <span class="entry-date">8. Juli 2026</span>
+        <div class="entry-title">Auto-Update streamt Binary auf Disk: –400 MB Peak-Speicherverbrauch beim Updater</div>
+        <span class="badge badge-Performance">Performance</span>
+      </div>
+      <p class="entry-desc">Beim automatischen Update werden Binary-Downloads jetzt direkt auf die Disk gestreamt statt zuerst vollständig in den Speicher geladen zu werden. Das senkt den Peak-Speicherverbrauch des Updaters um rund 400 MB — besonders nützlich auf speicherbeschränkten Systemen und in Container-Umgebungen.</p>
+    </div>
+
+    <!-- v2.1.205 | 08.07.2026 – Fix -->
+    <div class="entry" data-cat="Fix">
+      <div class="entry-header">
+        <span class="entry-version">v2.1.205</span>
+        <span class="entry-date">8. Juli 2026</span>
+        <div class="entry-title">Großes Fix-Paket: --json-schema, --max-turns-Nachrichten, Windows-Worktree, MCP-Desktop-Import &amp; 10 weitere</div>
+        <span class="badge badge-Fix">Fix</span>
+      </div>
+      <p class="entry-desc"><code>--json-schema</code> erzeugte bei ungültigem Schema still unstrukturierten Output statt zu scheitern — behoben; Schemas mit dem <code>format</code>-Schlüssel wurden fälschlich abgelehnt — ebenfalls behoben. Nachrichten, die beim <code>--max-turns</code>-Limit eintrafen, gingen still verloren — behoben. Windows: Worktree-Removal löschte bei NTFS-Junctions Dateien außerhalb des Worktrees — behoben. <code>claude mcp add-from-claude-desktop</code> blieb bei Servernamen mit ungültigen Zeichen hängen — behoben; ungültige Namen werden gemeldet, restliche Server trotzdem importiert. Plugin-LSP-Server, der beim Init scheiterte, blockierte validen LSP-Server desselben Dateityps aus anderem Plugin — behoben. Windows-Crash aus gelöschtem Startverzeichnis — behoben. File-Watcher-Crash bei laufendem Directory-Scan — behoben. Project-Verify-Skills wurden bei jeder Session neu geschrieben statt nur bei Änderungen — behoben. Agent-View renderte eine Zeile zu hoch — behoben. Remote-Control-Panels zeigten veralteten „Running"-Status — behoben. Cowork-VM-Sessionen starteten mit „Not logged in" unter CLI 2.1.203+ — behoben. Der MCP-Server-Name „Claude Browser" ist jetzt reserviert (neben „Claude Preview").</p>
+    </div>
 
     <!-- v2.1.204 | 08.07.2026 – Fix -->
     <div class="entry" data-cat="Fix">

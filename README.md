@@ -15,7 +15,7 @@ Automatisch generiertes Changelog für die neuesten **Claude Code CLI**-Updates 
 
 ## Letztes Update
 
-**2026-07-08** — 322 Einträge (v2.1.83–v2.1.204, KW 14–28, März–Juli 2026) — +5 neue Einträge: v2.1.204: SessionStart-Hook-Streaming-Fix für Headless-Sessionen; v2.1.203: Login-Ablauf-Warnungen, manueller Modus-Badge (⏸), MCP roots/list-Erweiterung, Binary –7 MB / Startmemory –7 MB, macOS-Stall-Fix, stabilere Hintergrund-Agenten &amp; Windows-PATH-Fix
+**2026-07-09** — 326 Einträge (v2.1.83–v2.1.205, KW 14–28, März–Juli 2026) — +4 neue Einträge: v2.1.205: Auto-Modus blockiert Transcript-Manipulationen, /doctor als vollständiger Setup-Check, Agents-View mit PR-Verlinkung & farbigen Status-Zeilen, Auto-Update streamt Binary (–400 MB Peak-Speicher), großes Fix-Paket
 
 ## Quellen
 
